@@ -26,17 +26,213 @@ public class Perfiles extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        I_Volver = new javax.swing.JLabel();
+        lbl_Perfiles = new javax.swing.JLabel();
+        Panel_PerfilActual = new javax.swing.JPanel();
+        lbl_PerfilActual = new javax.swing.JLabel();
+        lbl_Cedula = new javax.swing.JLabel();
+        lbl_Nombres = new javax.swing.JLabel();
+        lbl_Apellidos = new javax.swing.JLabel();
+        lbl_Celular = new javax.swing.JLabel();
+        lbl_Correo = new javax.swing.JLabel();
+        campo_Cedula = new javax.swing.JLabel();
+        campo_Nombres = new javax.swing.JLabel();
+        campo_Apellidos = new javax.swing.JLabel();
+        campo_Celular = new javax.swing.JLabel();
+        campo_Correo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btn_EliminarPerfil = new javax.swing.JButton();
+        btn_RegistrarPerf = new javax.swing.JButton();
+        btn_ModiPerfil = new javax.swing.JButton();
+        btn_ListaPerf = new javax.swing.JButton();
+        I_RegistPerf = new javax.swing.JLabel();
+        I_ModifPerf = new javax.swing.JLabel();
+        I_ListaPerfiles = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(800, 500));
+
+        I_Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/volver.png"))); // NOI18N
+
+        lbl_Perfiles.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lbl_Perfiles.setText("Perfiles");
+
+        Panel_PerfilActual.setBackground(new java.awt.Color(204, 255, 255));
+
+        lbl_PerfilActual.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl_PerfilActual.setText("Perfil Actual");
+
+        lbl_Cedula.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_Cedula.setText("Cedula:");
+
+        lbl_Nombres.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_Nombres.setText("Nombres:");
+
+        lbl_Apellidos.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_Apellidos.setText("Apellidos:");
+
+        lbl_Celular.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_Celular.setText("Celular:");
+
+        lbl_Correo.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_Correo.setText("Correo:");
+
+        campo_Cedula.setText("UsuarioCed");
+
+        campo_Nombres.setText("UsuarioNom");
+
+        campo_Apellidos.setText("UsuarioApe");
+
+        campo_Celular.setText("UsuarioCel");
+
+        campo_Correo.setText("UsuarioCor");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/logopequeno.png"))); // NOI18N
+
+        javax.swing.GroupLayout Panel_PerfilActualLayout = new javax.swing.GroupLayout(Panel_PerfilActual);
+        Panel_PerfilActual.setLayout(Panel_PerfilActualLayout);
+        Panel_PerfilActualLayout.setHorizontalGroup(
+            Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_PerfilActualLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel_PerfilActualLayout.createSequentialGroup()
+                        .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_Cedula)
+                            .addComponent(lbl_Correo))
+                        .addGap(46, 46, 46)
+                        .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campo_Correo)
+                            .addComponent(campo_Nombres)
+                            .addComponent(campo_Cedula)
+                            .addComponent(campo_Apellidos)
+                            .addComponent(campo_Celular))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_PerfilActualLayout.createSequentialGroup()
+                        .addComponent(lbl_PerfilActual)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addComponent(jLabel5))
+                    .addGroup(Panel_PerfilActualLayout.createSequentialGroup()
+                        .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_Nombres)
+                            .addComponent(lbl_Apellidos)
+                            .addComponent(lbl_Celular))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        Panel_PerfilActualLayout.setVerticalGroup(
+            Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel_PerfilActualLayout.createSequentialGroup()
+                .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(Panel_PerfilActualLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(lbl_PerfilActual)))
+                .addGap(19, 19, 19)
+                .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Cedula)
+                    .addComponent(campo_Cedula))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Nombres)
+                    .addComponent(campo_Nombres))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Apellidos)
+                    .addComponent(campo_Apellidos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Celular)
+                    .addComponent(campo_Celular))
+                .addGap(7, 7, 7)
+                .addGroup(Panel_PerfilActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Correo)
+                    .addComponent(campo_Correo))
+                .addContainerGap(87, Short.MAX_VALUE))
+        );
+
+        btn_EliminarPerfil.setBackground(new java.awt.Color(255, 102, 102));
+        btn_EliminarPerfil.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btn_EliminarPerfil.setForeground(new java.awt.Color(0, 0, 0));
+        btn_EliminarPerfil.setText("Eliminar Perfil");
+
+        btn_RegistrarPerf.setText("Registrar Perfil");
+
+        btn_ModiPerfil.setText("Modificar Perfil");
+
+        btn_ListaPerf.setText("Lista de Perfiles");
+
+        I_RegistPerf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/registrar.png"))); // NOI18N
+
+        I_ModifPerf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/modificarP.png"))); // NOI18N
+
+        I_ListaPerfiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/listaP.png"))); // NOI18N
+
+        jButton1.setText("Volver");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(I_Volver)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(I_ListaPerfiles)
+                                    .addComponent(I_RegistPerf)
+                                    .addComponent(I_ModifPerf))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_RegistrarPerf)
+                                    .addComponent(btn_ModiPerfil)
+                                    .addComponent(btn_ListaPerf))
+                                .addGap(128, 128, 128)
+                                .addComponent(Panel_PerfilActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(136, 136, 136)
+                                .addComponent(lbl_Perfiles))))
+                    .addComponent(btn_EliminarPerfil))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(I_Volver)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton1)
+                        .addComponent(lbl_Perfiles)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Panel_PerfilActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(btn_RegistrarPerf)
+                                .addGap(50, 50, 50)
+                                .addComponent(btn_ModiPerfil)
+                                .addGap(44, 44, 44)
+                                .addComponent(btn_ListaPerf))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(I_RegistPerf)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(I_ModifPerf)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(I_ListaPerfiles)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                        .addComponent(btn_EliminarPerfil)
+                        .addContainerGap())))
         );
 
         pack();
@@ -78,5 +274,28 @@ public class Perfiles extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel I_ListaPerfiles;
+    private javax.swing.JLabel I_ModifPerf;
+    private javax.swing.JLabel I_RegistPerf;
+    private javax.swing.JLabel I_Volver;
+    private javax.swing.JPanel Panel_PerfilActual;
+    private javax.swing.JButton btn_EliminarPerfil;
+    private javax.swing.JButton btn_ListaPerf;
+    private javax.swing.JButton btn_ModiPerfil;
+    private javax.swing.JButton btn_RegistrarPerf;
+    private javax.swing.JLabel campo_Apellidos;
+    private javax.swing.JLabel campo_Cedula;
+    private javax.swing.JLabel campo_Celular;
+    private javax.swing.JLabel campo_Correo;
+    private javax.swing.JLabel campo_Nombres;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbl_Apellidos;
+    private javax.swing.JLabel lbl_Cedula;
+    private javax.swing.JLabel lbl_Celular;
+    private javax.swing.JLabel lbl_Correo;
+    private javax.swing.JLabel lbl_Nombres;
+    private javax.swing.JLabel lbl_PerfilActual;
+    private javax.swing.JLabel lbl_Perfiles;
     // End of variables declaration//GEN-END:variables
 }
