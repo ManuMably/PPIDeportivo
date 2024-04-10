@@ -8,28 +8,21 @@ package skatelab;
  *
  * @author ROGER
  */
-public abstract class Usuario {
-    protected Integer cedula;
-    protected Integer contrasena;
-    protected String respuestaSeguridad;
-    protected String nombres;
-    protected String apellidos;
-    protected Integer celular;
-    protected String correo;
-
-    public Usuario() {
-    }
-
-    public Usuario(Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Integer celular, String correo) {
-        this.cedula = cedula;
-        this.contrasena = contrasena;
-        this.respuestaSeguridad = respuestaSeguridad;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.celular = celular;
-        this.correo = correo;
-    }
+public class Instructor extends Usuario {
+    private String diasDisp;
     
+    public Instructor (Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Integer celular, String correo, String diasDispo){
+        super(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo);
+        this.diasDisp = diasDispo;
+    }
+
+    public String getDiasDisp() {
+        return diasDisp;
+    }
+
+    public void setDiasDisp(String diasDisp) {
+        this.diasDisp = diasDisp;
+    }
 
     public Integer getCedula() {
         return cedula;
@@ -85,11 +78,6 @@ public abstract class Usuario {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" + "cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", celular=" + celular + ", correo=" + correo + '}';
     }
     
     
