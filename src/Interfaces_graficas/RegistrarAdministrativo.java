@@ -55,6 +55,11 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
         I_Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/volver.png"))); // NOI18N
 
         btn_Volver.setText("Volver");
+        btn_Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_VolverActionPerformed(evt);
+            }
+        });
 
         I_RegistrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/registrarPrf.JPG"))); // NOI18N
 
@@ -209,6 +214,15 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
     private void txt_ContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_ContrasenaActionPerformed
+
+    private void btn_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VolverActionPerformed
+        // TODO add your handling code here:
+        // cerramos la ventana actual
+        this.dispose();
+        // creamos una nueva instancia de la ventana anterior
+        RegistrarPerfil ventanaRegistrarPerfil = new RegistrarPerfil();
+        ventanaRegistrarPerfil.setVisible(true);
+    }//GEN-LAST:event_btn_VolverActionPerformed
 
     /**
      * @param args the command line arguments

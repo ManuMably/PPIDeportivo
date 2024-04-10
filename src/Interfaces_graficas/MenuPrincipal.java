@@ -30,16 +30,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         iconoEntrenamientos = new javax.swing.JLabel();
         iconoAgendamiento = new javax.swing.JLabel();
         iconoInformes = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_MenuPPal = new javax.swing.JLabel();
         imgCerrarSesion = new javax.swing.JLabel();
-        lbl_CerrarSesion = new javax.swing.JLabel();
         btn_Perfiles = new javax.swing.JButton();
         btn_Agendamiento = new javax.swing.JButton();
         btn_EntrenamientosAgendados = new javax.swing.JButton();
         btn_InformesEntrenamientos = new javax.swing.JButton();
+        bnt_CerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(754, 500));
 
         iconoPerfiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/Perfiles.png"))); // NOI18N
 
@@ -49,14 +48,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         iconoInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/Informes Entrenamientos.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Menu Principal");
+        lbl_MenuPPal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl_MenuPPal.setText("Menu Principal");
 
         imgCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/Cerrar Sesion.png"))); // NOI18N
 
-        lbl_CerrarSesion.setText("Cerrar Sesion");
-
         btn_Perfiles.setText("Perfiles");
+        btn_Perfiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_PerfilesActionPerformed(evt);
+            }
+        });
 
         btn_Agendamiento.setText("Agendamiento");
 
@@ -64,25 +66,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btn_InformesEntrenamientos.setText("Informes Entrenamientos");
 
+        bnt_CerrarSesion.setText("Cerrar Sesion");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(imgCerrarSesion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl_CerrarSesion))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(imgCerrarSesion)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bnt_CerrarSesion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addComponent(lbl_MenuPPal)
                         .addGap(269, 269, 269))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(iconoEntrenamientos)
                             .addComponent(iconoPerfiles)
@@ -94,7 +94,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(iconoInformes)
                             .addComponent(btn_Agendamiento)
                             .addComponent(btn_InformesEntrenamientos))
-                        .addContainerGap(117, Short.MAX_VALUE))))
+                        .addGap(137, 137, 137))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,17 +102,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(iconoPerfiles)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_Perfiles))
+                            .addComponent(lbl_MenuPPal)
+                            .addComponent(bnt_CerrarSesion))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(iconoAgendamiento)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_Agendamiento)))
+                                .addComponent(btn_Agendamiento))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(iconoPerfiles)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_Perfiles)))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(iconoEntrenamientos, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -121,16 +123,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_EntrenamientosAgendados)
                             .addComponent(btn_InformesEntrenamientos))
-                        .addGap(97, 97, 97))
+                        .addGap(56, 56, 56))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(imgCerrarSesion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_CerrarSesion)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_PerfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PerfilesActionPerformed
+        // TODO add your handling code here:
+        
+        //cierro la ventana actual
+        this.dispose();
+        // creo una instacia de la ventana de Perfiles
+        Perfiles ventanaPerfiles = new Perfiles();
+        // hacemos la ventana visible
+        ventanaPerfiles.setVisible(true);
+    }//GEN-LAST:event_btn_PerfilesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,6 +179,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bnt_CerrarSesion;
     private javax.swing.JButton btn_Agendamiento;
     private javax.swing.JButton btn_EntrenamientosAgendados;
     private javax.swing.JButton btn_InformesEntrenamientos;
@@ -177,7 +189,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel iconoInformes;
     private javax.swing.JLabel iconoPerfiles;
     private javax.swing.JLabel imgCerrarSesion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lbl_CerrarSesion;
+    private javax.swing.JLabel lbl_MenuPPal;
     // End of variables declaration//GEN-END:variables
 }

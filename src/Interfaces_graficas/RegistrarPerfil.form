@@ -107,6 +107,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bnt_VolverActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_RegistrarPerfil">
       <Properties>
@@ -141,16 +144,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Alumno"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_AlumnoRActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_InstructorR">
       <Properties>
         <Property name="text" type="java.lang.String" value="Instructor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_InstructorRActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_AdminR">
       <Properties>
         <Property name="text" type="java.lang.String" value="Administrativo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_AdminRActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_PreguntaTipo">
       <Properties>

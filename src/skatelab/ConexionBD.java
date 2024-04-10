@@ -50,6 +50,9 @@ public class ConexionBD {
         }
     
     }
+    // Insersiones: Usuarios,claseParticular-------------------------------------------
+    
+    // fin inserciones: ususarios, claseParticular-------------------------------------
     
     // consultas : nombre, apellido, cedula--------------------------------------------
     public void buscarPorNombres(String nombreSolicitado){

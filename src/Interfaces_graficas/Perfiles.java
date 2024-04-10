@@ -48,11 +48,10 @@ public class Perfiles extends javax.swing.JFrame {
         I_RegistPerf = new javax.swing.JLabel();
         I_ModifPerf = new javax.swing.JLabel();
         I_ListaPerfiles = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
         I_Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/volver.png"))); // NOI18N
 
@@ -158,10 +157,25 @@ public class Perfiles extends javax.swing.JFrame {
         btn_EliminarPerfil.setText("Eliminar Perfil");
 
         btn_RegistrarPerf.setText("Registrar Perfil");
+        btn_RegistrarPerf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistrarPerfActionPerformed(evt);
+            }
+        });
 
         btn_ModiPerfil.setText("Modificar Perfil");
+        btn_ModiPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ModiPerfilActionPerformed(evt);
+            }
+        });
 
         btn_ListaPerf.setText("Lista de Perfiles");
+        btn_ListaPerf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ListaPerfActionPerformed(evt);
+            }
+        });
 
         I_RegistPerf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/registrar.png"))); // NOI18N
 
@@ -169,7 +183,12 @@ public class Perfiles extends javax.swing.JFrame {
 
         I_ListaPerfiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/listaP.png"))); // NOI18N
 
-        jButton1.setText("Volver");
+        btn_Volver.setText("Volver");
+        btn_Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_VolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,7 +214,7 @@ public class Perfiles extends javax.swing.JFrame {
                                 .addGap(128, 128, 128)
                                 .addComponent(Panel_PerfilActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btn_Volver)
                                 .addGap(136, 136, 136)
                                 .addComponent(lbl_Perfiles))))
                     .addComponent(btn_EliminarPerfil))
@@ -208,7 +227,7 @@ public class Perfiles extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(I_Volver)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1)
+                        .addComponent(btn_Volver)
                         .addComponent(lbl_Perfiles)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -237,6 +256,42 @@ public class Perfiles extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VolverActionPerformed
+        // TODO add your handling code here:
+        // Cerrar la ventana actual
+        this.dispose();
+        // Crear una instancia de la ventana del menú principal 
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        menuPrincipal.setVisible(true);
+    }//GEN-LAST:event_btn_VolverActionPerformed
+
+    private void btn_RegistrarPerfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarPerfActionPerformed
+        // TODO add your handling code here:
+        // Cerrar la ventana actual
+        this.dispose();
+        // Crear una instancia de la ventana Registrar Perfil
+        RegistrarPerfil ventanaRegistrarPerfil = new RegistrarPerfil();
+        ventanaRegistrarPerfil.setVisible(true);
+    }//GEN-LAST:event_btn_RegistrarPerfActionPerformed
+
+    private void btn_ModiPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModiPerfilActionPerformed
+        // TODO add your handling code here:
+        // Cerrar la ventana actual
+        this.dispose();
+        // Crear una instancia de la ventana Modificar Perfil
+        ModificarPerfil ventanaModificarPerfil = new ModificarPerfil();
+        ventanaModificarPerfil.setVisible(true);
+    }//GEN-LAST:event_btn_ModiPerfilActionPerformed
+
+    private void btn_ListaPerfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ListaPerfActionPerformed
+        // TODO add your handling code here:
+        // Cerrar la ventana actual
+        this.dispose();
+        // Crear una instancia de la ventana lista Perfiles
+        ListaPerfiles ventanaListaPerfiles = new ListaPerfiles();
+        ventanaListaPerfiles.setVisible(true);
+    }//GEN-LAST:event_btn_ListaPerfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,12 +338,12 @@ public class Perfiles extends javax.swing.JFrame {
     private javax.swing.JButton btn_ListaPerf;
     private javax.swing.JButton btn_ModiPerfil;
     private javax.swing.JButton btn_RegistrarPerf;
+    private javax.swing.JButton btn_Volver;
     private javax.swing.JLabel campo_Apellidos;
     private javax.swing.JLabel campo_Cedula;
     private javax.swing.JLabel campo_Celular;
     private javax.swing.JLabel campo_Correo;
     private javax.swing.JLabel campo_Nombres;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lbl_Apellidos;
     private javax.swing.JLabel lbl_Cedula;

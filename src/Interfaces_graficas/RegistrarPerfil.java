@@ -42,6 +42,11 @@ public class RegistrarPerfil extends javax.swing.JFrame {
         I_Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/volver.png"))); // NOI18N
 
         bnt_Volver.setText("Volver");
+        bnt_Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bnt_VolverActionPerformed(evt);
+            }
+        });
 
         lbl_RegistrarPerfil.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbl_RegistrarPerfil.setText("Registrar Perfil");
@@ -53,10 +58,25 @@ public class RegistrarPerfil extends javax.swing.JFrame {
         I_RAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/registrarPrf.JPG"))); // NOI18N
 
         btn_AlumnoR.setText("Alumno");
+        btn_AlumnoR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AlumnoRActionPerformed(evt);
+            }
+        });
 
         btn_InstructorR.setText("Instructor");
+        btn_InstructorR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_InstructorRActionPerformed(evt);
+            }
+        });
 
         btn_AdminR.setText("Administrativo");
+        btn_AdminR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AdminRActionPerformed(evt);
+            }
+        });
 
         lbl_PreguntaTipo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_PreguntaTipo.setText("¿Que tipo de Perfil desea registrar?");
@@ -122,6 +142,42 @@ public class RegistrarPerfil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bnt_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_VolverActionPerformed
+        // TODO add your handling code here:
+        // cerramos la ventana actual
+        this.dispose();
+        // creamos una instancia de la ventana anterior
+        Perfiles ventanaPerfiles = new Perfiles();
+        ventanaPerfiles.setVisible(true);
+    }//GEN-LAST:event_bnt_VolverActionPerformed
+
+    private void btn_AlumnoRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AlumnoRActionPerformed
+        // TODO add your handling code here:
+        // cerramos la ventana actual
+        this.dispose();
+        // creamos una instancia de la ventana registrar alumno
+        RegistrarAlumno ventanaRegistrarAlumno = new RegistrarAlumno();
+        ventanaRegistrarAlumno.setVisible(true);
+    }//GEN-LAST:event_btn_AlumnoRActionPerformed
+
+    private void btn_InstructorRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_InstructorRActionPerformed
+        // TODO add your handling code here:
+        // cerramos la ventana actual
+        this.dispose();
+        // creamos una instancia de la ventana registrar alumno
+        RegistrarInstructor ventanaRegistrarInstructor = new RegistrarInstructor();
+        ventanaRegistrarInstructor.setVisible(true);
+    }//GEN-LAST:event_btn_InstructorRActionPerformed
+
+    private void btn_AdminRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminRActionPerformed
+        // TODO add your handling code here:
+        // cerramos la ventana actual
+        this.dispose();
+        // creamos una instancia de la ventana registrar alumno
+        RegistrarAdministrativo ventanaRegistrarAdministrativo = new RegistrarAdministrativo();
+        ventanaRegistrarAdministrativo.setVisible(true);
+    }//GEN-LAST:event_btn_AdminRActionPerformed
 
     /**
      * @param args the command line arguments
