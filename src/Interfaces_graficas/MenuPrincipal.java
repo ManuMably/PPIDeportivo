@@ -67,6 +67,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btn_InformesEntrenamientos.setText("Informes Entrenamientos");
 
         bnt_CerrarSesion.setText("Cerrar Sesion");
+        bnt_CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bnt_CerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,6 +147,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // hacemos la ventana visible
         ventanaPerfiles.setVisible(true);
     }//GEN-LAST:event_btn_PerfilesActionPerformed
+
+    private void bnt_CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_CerrarSesionActionPerformed
+        // TODO add your handling code here:
+        // Cerrar la ventana actual
+        this.dispose();
+        // Crear una instancia de la ventana del menú principal 
+        InicioSesion inicioSesion = new InicioSesion();
+        inicioSesion.setVisible(true);
+    }//GEN-LAST:event_bnt_CerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments

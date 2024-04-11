@@ -6,6 +6,8 @@ import java.util.List;
 
 
 public class ControladorPerfiles {
+    // Perfil Logueado actualmente en el sistema
+    static Usuario sesionActualUsuario;
     
     //listas que contendran los perfiles que hay en la base de datos
     static List<Usuario> perfilesBD = new ArrayList<>();
@@ -125,4 +127,24 @@ public class ControladorPerfiles {
         conectorBD.InsertarUsuario(perfilNuevo);
     }
     
+    public static Usuario buscarPerfil(Integer cedulaUsuario){
+        for (Usuario usuario : perfilesBD) {
+            if (usuario.getCedula().equals(cedulaUsuario)) {
+                System.out.println("Cedula Encontrada");
+                return usuario;
+            }             
+        }
+        System.out.println("Cedula no Encontrada");
+        Alumno nn= new Alumno(); 
+        nn.setCedula(0);
+        return nn;
+    }
+    
+    public static Usuario getSesionActualUsuario() {
+        return sesionActualUsuario;
+    }
+
+    public static void setSesionActualUsuario(Usuario sesionActualUsuario) {
+        ControladorPerfiles.sesionActualUsuario = sesionActualUsuario;
+    }    
 }

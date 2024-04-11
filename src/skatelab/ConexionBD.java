@@ -86,7 +86,7 @@ public class ConexionBD {
                     perfilesbdList.add(instructorBD);
                     
                 }
-                System.out.println(rs.getString("nombres"));
+                System.out.println(rs.getString("id_cedula"));
             } while (rs.next());
         } catch (SQLException e) {
             System.out.println("Error al conectar con la base de datos: " + e.getMessage());

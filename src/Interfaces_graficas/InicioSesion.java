@@ -6,7 +6,10 @@ package Interfaces_graficas;
 
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
+import java.util.Objects;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import skatelab.ControladorPerfiles;
 
 /**
  *
@@ -115,6 +118,41 @@ public class InicioSesion extends javax.swing.JFrame {
 
     private void btn_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EntrarActionPerformed
         // TODO add your handling code here:
+        
+        try {
+            System.out.println(ControladorPerfiles.getSesionActualUsuario());
+            Integer cedulaIngresada = Integer.parseInt(txt_IngresarCedula.getText());
+            Integer contrasenaIngresada = Integer.parseInt(txt_IngresarContrasena.getText());
+                        
+            System.out.println(contrasenaIngresada);
+            System.out.println(ControladorPerfiles.getSesionActualUsuario());
+
+            ControladorPerfiles.setSesionActualUsuario(ControladorPerfiles.buscarPerfil(cedulaIngresada));
+            System.out.println(ControladorPerfiles.getSesionActualUsuario().getNombres());
+            if (ControladorPerfiles.getSesionActualUsuario().getCedula() == 0) {
+                // Mostrar una ventana de alerta con un mensaje
+                JOptionPane.showMessageDialog(null, "No se Encontro la Cedula Ingresada, Verifica los Datos y vuelve a Ingresar");            
+            }else{
+                System.out.println(ControladorPerfiles.getSesionActualUsuario().getContrasena().getClass());
+                System.out.println(ControladorPerfiles.getSesionActualUsuario().getContrasena());
+                System.out.println(ControladorPerfiles.getSesionActualUsuario().getNombres());
+                if (Objects.equals(ControladorPerfiles.getSesionActualUsuario().getContrasena(), contrasenaIngresada)) {
+                    System.out.println("Ha ingresado con Exito al Sistema");
+                    // cerramos la ventana actual
+                    this.dispose();
+                    // creamos una nueva instancia de la ventana anterior
+                    MenuPrincipal ventanaMenuPrincipal = new MenuPrincipal();
+                    ventanaMenuPrincipal.setVisible(true);
+                }else{JOptionPane.showMessageDialog(null, "No Coincide La contraseña con el Usuario Registrado, Verifica los datos Y vuelve a Ingresar");}
+
+
+
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debes Ingresar Por lo Menos Un Dato Correcto, Verifica Que sea un Numero de cedula O Contraseña Valido");
+        }
+        
     }//GEN-LAST:event_btn_EntrarActionPerformed
 
     /**

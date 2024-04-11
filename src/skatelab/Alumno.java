@@ -10,6 +10,9 @@ package skatelab;
  */
 public class Alumno extends Usuario {
     private String ocupacion;
+
+    public Alumno() {
+    }
     
     
     public Alumno (Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Long celular, String correo, String ocupacion){
