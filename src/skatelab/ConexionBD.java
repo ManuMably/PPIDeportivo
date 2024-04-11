@@ -391,4 +391,35 @@ public class ConexionBD {
     }
     // FIN consultas : nombre, apellido, cedula--------------------------------------------
     
+    // Eliminar datos BD: Usuarios---------------------------------------------------------
+    public void eliminarUsuario(Usuario usuarioBorrar){
+            String cedula = Integer.toString(usuarioBorrar.getCedula());
+        try {
+            con = DriverManager.getConnection(url, usuario, clave);
+            stmt = con.createStatement();
+            // Sentencia DELETE para eliminar el usuario con la cédula proporcionada
+            String sql = "DELETE FROM usuario WHERE id_cedula = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, cedula);
+
+            int filasAfectadas = pstmt.executeUpdate();
+            if (filasAfectadas > 0) {
+                System.out.println("Usuario eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún usuario con la cédula proporcionada.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al conectar con la base de datos: " + e.getMessage());
+        } finally {
+            // Cerrar recursos
+            try {
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
+    }
+    // Fin Eliminar datos BD: Usuarios-----------------------------------------------------
 }
