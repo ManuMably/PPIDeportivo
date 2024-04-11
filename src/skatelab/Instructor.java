@@ -11,7 +11,7 @@ package skatelab;
 public class Instructor extends Usuario {
     private String diasDisp;
     
-    public Instructor (Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Integer celular, String correo, String diasDispo){
+    public Instructor (Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Long celular, String correo, String diasDispo){
         super(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo);
         this.diasDisp = diasDispo;
     }
@@ -64,11 +64,11 @@ public class Instructor extends Usuario {
         this.apellidos = apellidos;
     }
 
-    public Integer getCelular() {
+    public Long getCelular() {
         return celular;
     }
 
-    public void setCelular(Integer celular) {
+    public void setCelular(Long celular) {
         this.celular = celular;
     }
 

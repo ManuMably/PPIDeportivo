@@ -12,7 +12,7 @@ public class Alumno extends Usuario {
     private String ocupacion;
     
     
-    public Alumno (Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Integer celular, String correo, String ocupacion){
+    public Alumno (Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Long celular, String correo, String ocupacion){
         super(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo);
         this.ocupacion = ocupacion;
     
@@ -66,11 +66,11 @@ public class Alumno extends Usuario {
         this.apellidos = apellidos;
     }
 
-    public Integer getCelular() {
+    public Long getCelular() {
         return celular;
     }
 
-    public void setCelular(Integer celular) {
+    public void setCelular(Long celular) {
         this.celular = celular;
     }
 

@@ -3,6 +3,8 @@ package skatelab;
 
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 public class ConexionBD {
     
     //Atributos
@@ -35,20 +37,61 @@ public class ConexionBD {
         }
     }
     
-    public void imprimirDatos(){
+    public List cargarListaUsuarios(){
+        List<Usuario> perfilesbdList = new ArrayList<>();
         try {
             // preparamos el statement para solicitar los datos 
             con = DriverManager.getConnection(url, usuario, clave);
             stmt = con.createStatement();
             rs = stmt.executeQuery("SELECT * FROM usuario");
             rs.next();
-            do {                
+            do {
+                if (rs.getString("ocupacion")!= null) {
+                    Integer cedula = rs.getInt("id_cedula");
+                    Integer contrasena = Integer.parseInt(rs.getString("clave"));
+                    String respuestaSeguridad = rs.getString("respuesta_seguridad");
+                    String nombres = rs.getString("nombres");
+                    String apellidos = rs.getString("apellidos");
+                    Long celular = Long.parseLong(rs.getString("celular"));
+                    String correo = rs.getString("correo");
+                    String ocupacion = rs.getString("ocupacion");
+                    
+                    Alumno alumnoBD = new Alumno(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, ocupacion);
+                    perfilesbdList.add(alumnoBD);
+                }
+                else if (rs.getString("segundaClave")!= null) {
+                    Integer cedula = rs.getInt("id_cedula");
+                    Integer contrasena = Integer.parseInt(rs.getString("clave"));
+                    String respuestaSeguridad = rs.getString("respuesta_seguridad");
+                    String nombres = rs.getString("nombres");
+                    String apellidos = rs.getString("apellidos");
+                    Long celular = Long.parseLong(rs.getString("celular"));
+                    String correo = rs.getString("correo");
+                    String contrasena2 = rs.getString("segundaClave");
+                    
+                    Administrativo administrativoBD = new Administrativo(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, contrasena2);
+                    perfilesbdList.add(administrativoBD);
+                    
+                }else{
+                    Integer cedula = rs.getInt("id_cedula");
+                    Integer contrasena = Integer.parseInt(rs.getString("clave"));
+                    String respuestaSeguridad = rs.getString("respuesta_seguridad");
+                    String nombres = rs.getString("nombres");
+                    String apellidos = rs.getString("apellidos");
+                    Long celular = Long.parseLong(rs.getString("celular"));
+                    String correo = rs.getString("correo");
+                    String diasDisponibles = rs.getString("dias_disponibles");
+                    
+                    Instructor instructorBD = new Instructor(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, diasDisponibles);
+                    perfilesbdList.add(instructorBD);
+                    
+                }
                 System.out.println(rs.getString("nombres"));
             } while (rs.next());
         } catch (SQLException e) {
             System.out.println("Error al conectar con la base de datos: " + e.getMessage());
         }
-    
+        return perfilesbdList;
     }
     // Insersiones: Usuarios,claseParticular-------------------------------------------
     public <T extends Usuario> void InsertarUsuario(T instancia) {

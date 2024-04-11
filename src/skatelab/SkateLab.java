@@ -1,6 +1,9 @@
 
 package skatelab;
 
+import com.sun.source.tree.InstanceOfTree;
+import java.util.List;
+
 
 
 public class SkateLab {
@@ -20,6 +23,11 @@ public class SkateLab {
          
          Alumno alumno1 = new Alumno(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, ocupacion);
          conectorBD.actualizarUsuario(alumno1);*/
+         
+         List<Usuario> usuariosBD = conectorBD.cargarListaUsuarios();
+         for (Usuario usuario : usuariosBD) {
+             System.out.println( usuario.getClass());
+        }
         
         
     }

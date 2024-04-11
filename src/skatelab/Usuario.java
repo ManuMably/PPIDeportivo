@@ -14,13 +14,13 @@ public abstract class Usuario {
     protected String respuestaSeguridad;
     protected String nombres;
     protected String apellidos;
-    protected Integer celular;
+    protected Long celular;
     protected String correo;
 
     public Usuario() {
     }
 
-    public Usuario(Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Integer celular, String correo) {
+    public Usuario(Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Long celular, String correo) {
         this.cedula = cedula;
         this.contrasena = contrasena;
         this.respuestaSeguridad = respuestaSeguridad;
@@ -71,11 +71,11 @@ public abstract class Usuario {
         this.apellidos = apellidos;
     }
 
-    public Integer getCelular() {
+    public Long getCelular() {
         return celular;
     }
 
-    public void setCelular(Integer celular) {
+    public void setCelular(Long celular) {
         this.celular = celular;
     }
 
@@ -86,12 +86,6 @@ public abstract class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
-    @Override
-    public String toString() {
-        return "Usuario{" + "cedula=" + cedula + ", nombres=" + nombres + ", apellidos=" + apellidos + ", celular=" + celular + ", correo=" + correo + '}';
-    }
-    
     
     
 }

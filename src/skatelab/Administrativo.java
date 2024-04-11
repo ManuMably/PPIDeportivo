@@ -11,7 +11,7 @@ package skatelab;
 public class Administrativo extends Usuario {
     private String contrasena2;
     
-    public Administrativo (Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Integer celular, String correo, String contras2){
+    public Administrativo (Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Long celular, String correo, String contras2){
         super(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo);
         this.contrasena2 = contras2;
     }
@@ -64,11 +64,11 @@ public class Administrativo extends Usuario {
         this.apellidos = apellidos;
     }
 
-    public Integer getCelular() {
+    public Long getCelular() {
         return celular;
     }
 
-    public void setCelular(Integer celular) {
+    public void setCelular(Long celular) {
         this.celular = celular;
     }
 
