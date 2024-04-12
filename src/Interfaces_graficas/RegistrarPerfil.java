@@ -4,11 +4,25 @@
  */
 package Interfaces_graficas;
 
+import javax.swing.JOptionPane;
+import skatelab.Administrativo;
+import skatelab.ControladorPerfiles;
+
 /**
  *
  * @author ROGER
  */
 public class RegistrarPerfil extends javax.swing.JFrame {
+
+    
+    public Boolean bandera = false;
+    public Boolean getBandera() {
+        return bandera;
+    }
+
+    public void setBandera(Boolean bandera) {
+        this.bandera = bandera;
+    }
 
     /**
      * Creates new form RegistrarPerfil
@@ -146,11 +160,18 @@ public class RegistrarPerfil extends javax.swing.JFrame {
 
     private void bnt_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_VolverActionPerformed
         // TODO add your handling code here:
-        // cerramos la ventana actual
+        if (bandera) {
+            bandera = false;
+            this.dispose();
+            InicioSesion ventanaInicio = new InicioSesion();
+            ventanaInicio.setVisible(true);
+            
+        }else{// cerramos la ventana actual
         this.dispose();
         // creamos una instancia de la ventana anterior
         Perfiles ventanaPerfiles = new Perfiles();
-        ventanaPerfiles.setVisible(true);
+        ventanaPerfiles.setVisible(true);}
+        
     }//GEN-LAST:event_bnt_VolverActionPerformed
 
     private void btn_AlumnoRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AlumnoRActionPerformed
@@ -174,10 +195,13 @@ public class RegistrarPerfil extends javax.swing.JFrame {
     private void btn_AdminRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminRActionPerformed
         // TODO add your handling code here:
         // cerramos la ventana actual
-        this.dispose();
+        if (ControladorPerfiles.getSesionActualUsuario() instanceof Administrativo){this.dispose();
         // creamos una instancia de la ventana registrar alumno
         RegistrarAdministrativo ventanaRegistrarAdministrativo = new RegistrarAdministrativo();
-        ventanaRegistrarAdministrativo.setVisible(true);
+        ventanaRegistrarAdministrativo.setVisible(true);}else{
+            JOptionPane.showMessageDialog(null, "No cuentas con el acceso de administrador, comunicate con un administrador para crear este perfil");        
+        }
+        
     }//GEN-LAST:event_btn_AdminRActionPerformed
 
     /**

@@ -63,6 +63,11 @@ public class InicioSesion extends javax.swing.JFrame {
         });
 
         btn_Registrarse.setText("Registrarse");
+        btn_Registrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistrarseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,6 +162,16 @@ public class InicioSesion extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btn_EntrarActionPerformed
+
+    private void btn_RegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarseActionPerformed
+        // TODO add your handling code here:
+        // Cerrar la ventana actual
+        this.dispose();
+        // Crear una instancia de la ventana Registrar Perfil
+        RegistrarPerfil ventanaRegistrarPerfil = new RegistrarPerfil();
+        ventanaRegistrarPerfil.setBandera(true);
+        ventanaRegistrarPerfil.setVisible(true);
+    }//GEN-LAST:event_btn_RegistrarseActionPerformed
 
     /**
      * @param args the command line arguments

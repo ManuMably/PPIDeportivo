@@ -4,6 +4,8 @@
  */
 package Interfaces_graficas;
 
+import javax.swing.JOptionPane;
+import skatelab.Administrativo;
 import skatelab.ControladorPerfiles;
 
 /**
@@ -44,7 +46,6 @@ public class Perfiles extends javax.swing.JFrame {
         campo_Celular = new javax.swing.JLabel();
         campo_Correo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btn_EliminarPerfil = new javax.swing.JButton();
         btn_RegistrarPerf = new javax.swing.JButton();
         btn_ModiPerfil = new javax.swing.JButton();
         btn_ListaPerf = new javax.swing.JButton();
@@ -164,11 +165,6 @@ public class Perfiles extends javax.swing.JFrame {
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
-        btn_EliminarPerfil.setBackground(new java.awt.Color(255, 102, 102));
-        btn_EliminarPerfil.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        btn_EliminarPerfil.setForeground(new java.awt.Color(0, 0, 0));
-        btn_EliminarPerfil.setText("Eliminar Perfil");
-
         btn_RegistrarPerf.setText("Registrar Perfil");
         btn_RegistrarPerf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,28 +205,25 @@ public class Perfiles extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(I_Volver)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(I_Volver)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(I_ListaPerfiles)
+                            .addComponent(I_RegistPerf)
+                            .addComponent(I_ModifPerf))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(I_ListaPerfiles)
-                                    .addComponent(I_RegistPerf)
-                                    .addComponent(I_ModifPerf))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_RegistrarPerf)
-                                    .addComponent(btn_ModiPerfil)
-                                    .addComponent(btn_ListaPerf))
-                                .addGap(128, 128, 128)
-                                .addComponent(Panel_PerfilActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_Volver)
-                                .addGap(136, 136, 136)
-                                .addComponent(lbl_Perfiles))))
-                    .addComponent(btn_EliminarPerfil))
+                            .addComponent(btn_RegistrarPerf)
+                            .addComponent(btn_ModiPerfil)
+                            .addComponent(btn_ListaPerf))
+                        .addGap(128, 128, 128)
+                        .addComponent(Panel_PerfilActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_Volver)
+                        .addGap(136, 136, 136)
+                        .addComponent(lbl_Perfiles)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -242,11 +235,8 @@ public class Perfiles extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btn_Volver)
                         .addComponent(lbl_Perfiles)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Panel_PerfilActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -262,9 +252,11 @@ public class Perfiles extends javax.swing.JFrame {
                                 .addComponent(I_ModifPerf)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(I_ListaPerfiles)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                        .addComponent(btn_EliminarPerfil)
-                        .addContainerGap())))
+                        .addContainerGap(163, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Panel_PerfilActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(108, Short.MAX_VALUE))))
         );
 
         pack();
@@ -300,10 +292,16 @@ public class Perfiles extends javax.swing.JFrame {
     private void btn_ListaPerfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ListaPerfActionPerformed
         // TODO add your handling code here:
         // Cerrar la ventana actual
-        this.dispose();
+        if (ControladorPerfiles.getSesionActualUsuario() instanceof Administrativo) {
+            this.dispose();
         // Crear una instancia de la ventana lista Perfiles
         ListaPerfiles ventanaListaPerfiles = new ListaPerfiles();
-        ventanaListaPerfiles.setVisible(true);
+        ventanaListaPerfiles.setVisible(true);            
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "No cuentas con el acceso de administrador, comunicate con un administrador para visualizar todos los perfiles");        
+        }
+        
     }//GEN-LAST:event_btn_ListaPerfActionPerformed
 
     private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
@@ -365,7 +363,6 @@ public class Perfiles extends javax.swing.JFrame {
     private javax.swing.JLabel I_RegistPerf;
     private javax.swing.JLabel I_Volver;
     private javax.swing.JPanel Panel_PerfilActual;
-    private javax.swing.JButton btn_EliminarPerfil;
     private javax.swing.JButton btn_ListaPerf;
     private javax.swing.JButton btn_ModiPerfil;
     private javax.swing.JButton btn_RegistrarPerf;

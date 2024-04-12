@@ -6,6 +6,7 @@ package Interfaces_graficas;
 
 import skatelab.ConexionBD;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import skatelab.Administrativo;
@@ -51,11 +52,8 @@ public class ListaPerfiles extends javax.swing.JFrame {
         tablaPerfiles = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
+        txt_cedulaB = new javax.swing.JTextField();
+        btn_BuscarCedula = new javax.swing.JButton();
         btn_ModificarP = new javax.swing.JButton();
         btn_EliminarP = new javax.swing.JButton();
         btn_ListaCompleta = new javax.swing.JButton();
@@ -117,16 +115,14 @@ public class ListaPerfiles extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cedula:");
 
-        jTextField1.setText("Ingrese Cedula");
+        txt_cedulaB.setText("Ingrese Cedula");
 
-        jButton4.setText("Buscar Por Cedula");
-
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Nombre:");
-
-        jTextField2.setText("Ingrese Nombre");
-
-        jButton5.setText("Buscar Por Nombre");
+        btn_BuscarCedula.setText("Buscar Por Cedula");
+        btn_BuscarCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BuscarCedulaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,30 +132,19 @@ public class ListaPerfiles extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
-                .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_BuscarCedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_cedulaB))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_cedulaB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                .addComponent(btn_BuscarCedula)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -171,6 +156,11 @@ public class ListaPerfiles extends javax.swing.JFrame {
         });
 
         btn_EliminarP.setText("eliminar perfil");
+        btn_EliminarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EliminarPActionPerformed(evt);
+            }
+        });
 
         btn_ListaCompleta.setText("Lista Completa");
         btn_ListaCompleta.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +201,7 @@ public class ListaPerfiles extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
+                        .addGap(229, 229, 229)
                         .addComponent(btn_ModificarP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_EliminarP)
@@ -419,6 +409,78 @@ public class ListaPerfiles extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_ModificarPActionPerformed
 
+    private void btn_BuscarCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarCedulaActionPerformed
+        // TODO add your handling code here:
+        Integer cedulaIngresada = Integer.parseInt(txt_cedulaB.getText());
+        Usuario perfilSolicitado = ControladorPerfiles.buscarPerfil(cedulaIngresada);
+        
+        modelo = (DefaultTableModel) tablaPerfiles.getModel();
+        modelo.setRowCount(0);
+        String[] PerfilU = new String[10];
+        
+            PerfilU[0] = String.valueOf(perfilSolicitado.getCedula());
+            PerfilU[1] = String.valueOf(perfilSolicitado.getContrasena());
+            PerfilU[2] = perfilSolicitado.getRespuestaSeguridad();
+            PerfilU[3] = perfilSolicitado.getNombres();
+            PerfilU[4] = perfilSolicitado.getApellidos();
+            PerfilU[5] = String.valueOf(perfilSolicitado.getCelular());
+            PerfilU[6] = perfilSolicitado.getCorreo();
+            if (perfilSolicitado instanceof Alumno) {
+                PerfilU[7] = ((Alumno)perfilSolicitado).getOcupacion();
+                PerfilU[8] = "null";
+                PerfilU[9] = "null";
+            }else if (perfilSolicitado instanceof Administrativo) {
+                PerfilU[7] = "null";
+                PerfilU[8] = ((Administrativo)perfilSolicitado).getContrasena2();
+                PerfilU[9] = "null";
+                
+            }else{
+                PerfilU[7] = "null";
+                PerfilU[8] = "null";
+                PerfilU[9] = ((Instructor)perfilSolicitado).getDiasDisp();          
+            }
+            modelo.addRow(PerfilU);
+                
+        
+    }//GEN-LAST:event_btn_BuscarCedulaActionPerformed
+
+    private void btn_EliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarPActionPerformed
+        // TODO add your handling code here:
+        tablaPerfiles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                String[] filaDatos = new String[10];
+                tablaPerfiles.getSelectionModel().addListSelectionListener(e -> {
+                int filaSeleccionada = tablaPerfiles.getSelectedRow();
+            
+            if (filaSeleccionada != -1) {
+                // Obtener los valores de la fila seleccionada
+                
+                for (int i = 0; i < filaDatos.length; i++) {
+                    filaDatos[i] = (String) tablaPerfiles.getValueAt(filaSeleccionada, i);
+                }
+                // Mostrar los valores en la consola
+                System.out.println("Datos de la fila seleccionada:");
+                for (Object dato : filaDatos) {
+                    System.out.println(dato);
+                } 
+            }
+            Integer cedulaSeleccion = Integer.parseInt(filaDatos[0]);
+                
+                Usuario perfilUsuario = ControladorPerfiles.buscarPerfil(cedulaSeleccion);
+                int opcion = JOptionPane.showOptionDialog(null, "seguro desea borrar el perfil?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, new String[]{"Sí", "No"}, "Sí");
+
+                if (opcion == JOptionPane.YES_OPTION) {
+                    // El usuario seleccionó "Sí"
+                    System.out.println("El usuario seleccionó 'Sí'");
+                    ControladorPerfiles.borrarPerfil(perfilUsuario);
+                    JOptionPane.showMessageDialog(null, "perfil borrado con exito");
+                } else {
+                    // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                    System.out.println("El usuario seleccionó 'No' o cerró el cuadro de diálogo");
+                }
+                
+        });
+    }//GEN-LAST:event_btn_EliminarPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -456,6 +518,7 @@ public class ListaPerfiles extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel I_Volver;
+    private javax.swing.JButton btn_BuscarCedula;
     private javax.swing.JButton btn_EliminarP;
     private javax.swing.JButton btn_FiltroAdmin;
     private javax.swing.JButton btn_FiltroAlumnos;
@@ -463,16 +526,12 @@ public class ListaPerfiles extends javax.swing.JFrame {
     private javax.swing.JButton btn_ListaCompleta;
     private javax.swing.JButton btn_ModificarP;
     private javax.swing.JButton btn_Volver;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tablaPerfiles;
+    private javax.swing.JTextField txt_cedulaB;
     // End of variables declaration//GEN-END:variables
 }
