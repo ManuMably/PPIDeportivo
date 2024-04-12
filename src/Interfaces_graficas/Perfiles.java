@@ -4,6 +4,8 @@
  */
 package Interfaces_graficas;
 
+import skatelab.ControladorPerfiles;
+
 /**
  *
  * @author ROGER
@@ -15,6 +17,7 @@ public class Perfiles extends javax.swing.JFrame {
      */
     public Perfiles() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -52,6 +55,16 @@ public class Perfiles extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                formPropertyChange(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         I_Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/volver.png"))); // NOI18N
 
@@ -292,6 +305,24 @@ public class Perfiles extends javax.swing.JFrame {
         ListaPerfiles ventanaListaPerfiles = new ListaPerfiles();
         ventanaListaPerfiles.setVisible(true);
     }//GEN-LAST:event_btn_ListaPerfActionPerformed
+
+    private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formPropertyChange
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        Integer valorCedulaSesion = ControladorPerfiles.getSesionActualUsuario().getCedula();
+        campo_Cedula.setText(String.valueOf(valorCedulaSesion));
+        String valorNombre = ControladorPerfiles.getSesionActualUsuario().getNombres();
+        campo_Nombres.setText(valorNombre);
+        String valorApellido = ControladorPerfiles.getSesionActualUsuario().getApellidos();
+        campo_Apellidos.setText(valorApellido);
+        String valorCelular = String.valueOf(ControladorPerfiles.getSesionActualUsuario().getCelular());
+        campo_Celular.setText(valorCelular);
+        String valorCorreo = ControladorPerfiles.getSesionActualUsuario().getCorreo();
+        campo_Correo.setText(valorCorreo);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

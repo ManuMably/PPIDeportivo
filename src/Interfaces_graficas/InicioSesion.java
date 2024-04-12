@@ -22,6 +22,7 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     public InicioSesion() {
         initComponents(); 
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -37,10 +38,10 @@ public class InicioSesion extends javax.swing.JFrame {
         imagenLogoInicio = new javax.swing.JLabel();
         lbl_IngresarCedula = new javax.swing.JLabel();
         txt_IngresarCedula = new javax.swing.JTextField();
-        txt_IngresarContrasena = new javax.swing.JTextField();
         lbl_IngresarContrasena = new javax.swing.JLabel();
         btn_Entrar = new javax.swing.JButton();
         btn_Registrarse = new javax.swing.JButton();
+        txt_IngresarContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -68,7 +69,7 @@ public class InicioSesion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(113, 113, 113)
                         .addComponent(Lbl_IniciarSesion))
@@ -80,13 +81,15 @@ public class InicioSesion extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_Registrarse)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_Registrarse)
+                                .addGap(115, 115, 115))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl_IngresarContrasena)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btn_Entrar)
-                                    .addComponent(txt_IngresarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txt_IngresarContrasena))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(imagenLogoInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -199,7 +202,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_IngresarCedula;
     private javax.swing.JLabel lbl_IngresarContrasena;
     private javax.swing.JTextField txt_IngresarCedula;
-    private javax.swing.JTextField txt_IngresarContrasena;
+    private javax.swing.JPasswordField txt_IngresarContrasena;
     // End of variables declaration//GEN-END:variables
 
 }

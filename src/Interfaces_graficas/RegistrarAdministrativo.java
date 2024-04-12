@@ -4,6 +4,11 @@
  */
 package Interfaces_graficas;
 
+import javax.swing.JOptionPane;
+import skatelab.Administrativo;
+import skatelab.Alumno;
+import skatelab.ControladorPerfiles;
+
 /**
  *
  * @author ROGER
@@ -15,6 +20,7 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
      */
     public RegistrarAdministrativo() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -106,6 +112,11 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
         txt_SegundaContras.setText("Ingrese Contraseña2");
 
         btn_Registrar.setText("Registrar");
+        btn_Registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistrarActionPerformed(evt);
+            }
+        });
 
         ListaPreguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -223,6 +234,39 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
         RegistrarPerfil ventanaRegistrarPerfil = new RegistrarPerfil();
         ventanaRegistrarPerfil.setVisible(true);
     }//GEN-LAST:event_btn_VolverActionPerformed
+
+    private void btn_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarActionPerformed
+        // TODO add your handling code here:
+        try {
+            
+            Integer cedulaIngresada = Integer.parseInt(txt_Cedula.getText());
+            Integer contrasenaIngresada = Integer.parseInt(txt_Contrasena.getText());
+            String respuestaSIngresada = txt_RespSeg.getText();
+            String nombresIngresados = txt_Nombres.getText();
+            String apellidosIngresados = txt_Apellidos.getText();
+            Long celularIngresados = Long.parseLong(txt_Celular.getText());
+            String correoIngresados = txt_Correo.getText();
+            String conta2Ingresados = txt_SegundaContras.getText();
+            
+            Administrativo nuevoAdministrativo = new Administrativo(cedulaIngresada, contrasenaIngresada, respuestaSIngresada, nombresIngresados, apellidosIngresados, celularIngresados, correoIngresados, conta2Ingresados);
+            
+            System.out.println(nuevoAdministrativo);
+            
+            ControladorPerfiles.registrarPerfil(nuevoAdministrativo);
+            JOptionPane.showMessageDialog(null, "Perfil Registrado Correctamente");
+            
+            //Cerramos la ventana Actual
+            this.dispose();
+            // creamos una instancia de la ventana anterior
+            RegistrarPerfil ventanaRegistrarPerfil = new RegistrarPerfil();
+            ventanaRegistrarPerfil.setVisible(true);
+                                  
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debes Ingresar Por lo Menos Un Dato Correcto, Verifica los datos ingresados sean Validos");
+        }
+    }//GEN-LAST:event_btn_RegistrarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -15,6 +15,7 @@ public class RegistrarPerfil extends javax.swing.JFrame {
      */
     public RegistrarPerfil() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

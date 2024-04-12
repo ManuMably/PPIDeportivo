@@ -146,5 +146,38 @@ public class ControladorPerfiles {
 
     public static void setSesionActualUsuario(Usuario sesionActualUsuario) {
         ControladorPerfiles.sesionActualUsuario = sesionActualUsuario;
-    }    
+    } 
+
+    public static List<Usuario> getPerfilesBD() {
+        return perfilesBD;
+    }
+
+    public static void setPerfilesBD(List<Usuario> perfilesBD) {
+        ControladorPerfiles.perfilesBD = perfilesBD;
+    }
+
+    public static List<Administrativo> getPerfilesAdmin() {
+        return perfilesAdmin;
+    }
+
+    public static void setPerfilesAdmin(List<Administrativo> perfilesAdmin) {
+        ControladorPerfiles.perfilesAdmin = perfilesAdmin;
+    }
+
+    public static List<Instructor> getPerfilesInstruc() {
+        return perfilesInstruc;
+    }
+
+    public static void setPerfilesInstruc(List<Instructor> perfilesInstruc) {
+        ControladorPerfiles.perfilesInstruc = perfilesInstruc;
+    }
+
+    public static List<Alumno> getPerfilesAlumno() {
+        return perfilesAlumno;
+    }
+
+    public static void setPerfilesAlumno(List<Alumno> perfilesAlumno) {
+        ControladorPerfiles.perfilesAlumno = perfilesAlumno;
+    }
+    
 }

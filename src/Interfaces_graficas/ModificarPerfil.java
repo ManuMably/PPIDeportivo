@@ -5,15 +5,24 @@
 
 package Interfaces_graficas;
 
+import javax.swing.JOptionPane;
+import skatelab.Administrativo;
+import skatelab.Alumno;
+import skatelab.ControladorPerfiles;
+import skatelab.Instructor;
+import skatelab.Usuario;
+
 /**
  *
  * @author ROGER
  */
 public class ModificarPerfil extends javax.swing.JFrame {
+    public Usuario usuarioEnviado = new Alumno();
 
     /** Creates new form ModificarPerfil */
     public ModificarPerfil() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -31,23 +40,25 @@ public class ModificarPerfil extends javax.swing.JFrame {
         lbl_ModificarPerf = new javax.swing.JLabel();
         panel_Datos = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txt_Celular = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txt_Correo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txt_RespSeg = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txt_Contrasena2 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        listaPreguntas = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txt_Contrasena = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txt_Nombres = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txt_Apellidos = new javax.swing.JTextField();
+        txt_Cedula = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txt_Ocupacion = new javax.swing.JTextField();
         panel_DiasDisp = new javax.swing.JPanel();
         lbl_DiasDisp = new javax.swing.JLabel();
         ch_Lunes = new javax.swing.JCheckBox();
@@ -60,6 +71,11 @@ public class ModificarPerfil extends javax.swing.JFrame {
         btn_Modificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/volver.png"))); // NOI18N
 
@@ -81,12 +97,12 @@ public class ModificarPerfil extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Nombres:");
 
-        jTextField5.setText("Ingrese Celular");
+        txt_Celular.setText("Ingrese Celular");
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Apellidos:");
 
-        jTextField6.setText("Ingrese Correo");
+        txt_Correo.setText("Ingrese Correo");
 
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Celular:");
@@ -94,34 +110,40 @@ public class ModificarPerfil extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Correo:");
 
-        jTextField8.setText("Ingrese Respuesta");
+        txt_RespSeg.setText("Ingrese Respuesta");
 
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Pregunta Seguridad:");
 
-        jTextField9.setText("Ingrese Contraseña 2");
+        txt_Contrasena2.setText("Ingrese Contraseña 2");
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Respuesta Seguridad:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listaPreguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Contraseña 2:");
 
-        jTextField1.setText("Ingrese Cedula");
-
-        jTextField2.setText("Ingrese Contraseña");
+        txt_Contrasena.setText("Ingrese Contraseña");
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Cedula:");
 
-        jTextField3.setText("Ingrese Nombres");
+        txt_Nombres.setText("Ingrese Nombres");
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Contraseña:");
 
-        jTextField4.setText("Ingrese Apellidos");
+        txt_Apellidos.setText("Ingrese Apellidos");
+
+        txt_Cedula.setForeground(new java.awt.Color(0, 0, 0));
+        txt_Cedula.setText("jLabel2");
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Ocupacion:");
+
+        txt_Ocupacion.setText("Ingrese Ocupacion");
 
         javax.swing.GroupLayout panel_DatosLayout = new javax.swing.GroupLayout(panel_Datos);
         panel_Datos.setLayout(panel_DatosLayout);
@@ -141,69 +163,75 @@ public class ModificarPerfil extends javax.swing.JFrame {
                             .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField6)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_Contrasena)
+                            .addComponent(txt_Nombres)
+                            .addComponent(txt_Apellidos)
+                            .addComponent(txt_Celular)
+                            .addComponent(txt_Correo)
+                            .addComponent(listaPreguntas, 0, 160, Short.MAX_VALUE)
+                            .addComponent(txt_Cedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_DatosLayout.createSequentialGroup()
                         .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel12))
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(jTextField8)))))
+                            .addComponent(txt_Contrasena2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(txt_RespSeg)
+                            .addComponent(txt_Ocupacion)))))
         );
         panel_DatosLayout.setVerticalGroup(
             panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_DatosLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Cedula))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listaPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_RespSeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Contrasena2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_Ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         panel_DiasDisp.setBackground(new java.awt.Color(204, 255, 204));
         panel_DiasDisp.setForeground(new java.awt.Color(0, 0, 0));
 
         lbl_DiasDisp.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_DiasDisp.setText("Dias Disponibles:");
+        lbl_DiasDisp.setText("Dias Disponibles: (solo para Instructores)");
 
         ch_Lunes.setForeground(new java.awt.Color(0, 0, 0));
         ch_Lunes.setText("Lunes");
@@ -266,6 +294,11 @@ public class ModificarPerfil extends javax.swing.JFrame {
         );
 
         btn_Modificar.setText("Modificar");
+        btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -274,7 +307,7 @@ public class ModificarPerfil extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(panel_Datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(panel_DiasDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120))
             .addGroup(layout.createSequentialGroup()
@@ -319,7 +352,7 @@ public class ModificarPerfil extends javax.swing.JFrame {
                         .addComponent(panel_DiasDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_Modificar)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
@@ -333,6 +366,277 @@ public class ModificarPerfil extends javax.swing.JFrame {
         Perfiles ventanaPerfiles = new Perfiles();
         ventanaPerfiles.setVisible(true);
     }//GEN-LAST:event_btn_VolverActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        if (usuarioEnviado.getCedula() == null) {
+            txt_Cedula.setText(String.valueOf(ControladorPerfiles.getSesionActualUsuario().getCedula()));
+            txt_Contrasena.setText(String.valueOf(ControladorPerfiles.getSesionActualUsuario().getContrasena()));
+            txt_Nombres.setText(ControladorPerfiles.getSesionActualUsuario().getNombres());
+            txt_Apellidos.setText(ControladorPerfiles.getSesionActualUsuario().getApellidos());
+            txt_Celular.setText(String.valueOf(ControladorPerfiles.getSesionActualUsuario().getCelular()));
+            txt_Correo.setText(ControladorPerfiles.getSesionActualUsuario().getCorreo());
+            txt_RespSeg.setText(ControladorPerfiles.getSesionActualUsuario().getRespuestaSeguridad());
+
+            if (ControladorPerfiles.getSesionActualUsuario() instanceof Alumno) {            
+                txt_Ocupacion.setText(((Alumno)ControladorPerfiles.getSesionActualUsuario()).getOcupacion());
+                txt_Contrasena2.setText("Solo Administradores");
+            }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Instructor) {
+                txt_Ocupacion.setText("Solo Alumnos");
+                txt_Contrasena2.setText("Solo Administradores");
+
+                String diasDisp = ((Instructor)ControladorPerfiles.getSesionActualUsuario()).getDiasDisp();
+                for (int i = 0; i < diasDisp.length(); i++) {
+                    switch (diasDisp.charAt(i)) {
+                        case '1':
+                            ch_Lunes.setSelected(true);
+                            break;
+                        case '2':
+                            ch_Martes.setSelected(true);                        
+                            break;
+                        case '3':
+                            ch_Miercoles.setSelected(true);                        
+                            break;
+                        case '4':
+                            ch_Jueves.setSelected(true);
+                            break;
+                        case '5':
+                            ch_Viernes.setSelected(true);
+                            break;
+                        case '6':
+                            ch_Sabado.setSelected(true);
+                            break;
+                        case '7':
+                            ch_Domingo.setSelected(true);
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+
+                }
+
+            }else{
+                txt_Ocupacion.setText("Solo Alumnos");
+                txt_Contrasena2.setText(((Administrativo)ControladorPerfiles.getSesionActualUsuario()).getContrasena2());                    
+            }
+            
+        }else{
+            txt_Cedula.setText(String.valueOf(usuarioEnviado.getCedula()));
+            txt_Contrasena.setText(String.valueOf(usuarioEnviado.getContrasena()));
+            txt_Nombres.setText(usuarioEnviado.getNombres());
+            txt_Apellidos.setText(usuarioEnviado.getApellidos());
+            txt_Celular.setText(String.valueOf(usuarioEnviado.getCelular()));
+            txt_Correo.setText(usuarioEnviado.getCorreo());
+            txt_RespSeg.setText(usuarioEnviado.getRespuestaSeguridad());
+
+            if (usuarioEnviado instanceof Alumno) {            
+                txt_Ocupacion.setText(((Alumno)usuarioEnviado).getOcupacion());
+                txt_Contrasena2.setText("Solo Administradores");
+            }else if (usuarioEnviado instanceof Instructor) {
+                txt_Ocupacion.setText("Solo Alumnos");
+                txt_Contrasena2.setText("Solo Administradores");
+
+                String diasDisp = ((Instructor)usuarioEnviado).getDiasDisp();
+                for (int i = 0; i < diasDisp.length(); i++) {
+                    switch (diasDisp.charAt(i)) {
+                        case '1':
+                            ch_Lunes.setSelected(true);
+                            break;
+                        case '2':
+                            ch_Martes.setSelected(true);                        
+                            break;
+                        case '3':
+                            ch_Miercoles.setSelected(true);                        
+                            break;
+                        case '4':
+                            ch_Jueves.setSelected(true);
+                            break;
+                        case '5':
+                            ch_Viernes.setSelected(true);
+                            break;
+                        case '6':
+                            ch_Sabado.setSelected(true);
+                            break;
+                        case '7':
+                            ch_Domingo.setSelected(true);
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+
+                }
+
+            }else{
+                txt_Ocupacion.setText("Solo Alumnos");
+                txt_Contrasena2.setText(((Administrativo)usuarioEnviado).getContrasena2());                    
+            }
+        
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
+        // TODO add your handling code here:
+        if (usuarioEnviado.getCedula() == null){
+            try {
+            if (ControladorPerfiles.getSesionActualUsuario() instanceof Alumno) {
+            ControladorPerfiles.getSesionActualUsuario().setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setRespuestaSeguridad(txt_RespSeg.getText());
+            ControladorPerfiles.getSesionActualUsuario().setNombres(txt_Nombres.getText());
+            ControladorPerfiles.getSesionActualUsuario().setApellidos(txt_Apellidos.getText());
+            ControladorPerfiles.getSesionActualUsuario().setCelular(Long.parseLong(txt_Celular.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setCorreo(txt_Correo.getText());
+            ((Alumno)ControladorPerfiles.getSesionActualUsuario()).setOcupacion(txt_Ocupacion.getText());
+            
+            
+            
+            ControladorPerfiles.actualizarPerfil(ControladorPerfiles.getSesionActualUsuario());
+            
+        }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Instructor) {
+            ControladorPerfiles.getSesionActualUsuario().setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setRespuestaSeguridad(txt_RespSeg.getText());
+            ControladorPerfiles.getSesionActualUsuario().setNombres(txt_Nombres.getText());
+            ControladorPerfiles.getSesionActualUsuario().setApellidos(txt_Apellidos.getText());
+            ControladorPerfiles.getSesionActualUsuario().setCelular(Long.parseLong(txt_Celular.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setCorreo(txt_Correo.getText());
+            
+                boolean estadoLunes = ch_Lunes.isSelected();
+                boolean estadoMartes = ch_Martes.isSelected();
+                boolean estadoMiercoles = ch_Miercoles.isSelected();
+                boolean estadoJueves = ch_Jueves.isSelected();
+                boolean estadoViernes = ch_Viernes.isSelected();
+                boolean estadoSabado = ch_Sabado.isSelected();
+                boolean estadoDomingo = ch_Domingo.isSelected();
+                String diasDisp = "";
+                
+                boolean[] codigoDiasDisp = new boolean[7];
+                codigoDiasDisp[0]=estadoLunes;
+                codigoDiasDisp[1]=estadoMartes;
+                codigoDiasDisp[2]=estadoMiercoles;
+                codigoDiasDisp[3]=estadoJueves;
+                codigoDiasDisp[4]=estadoViernes;
+                codigoDiasDisp[5]=estadoSabado;
+                codigoDiasDisp[6]=estadoDomingo;
+                for (int i = 0; i < 7; i++) {
+                    if (codigoDiasDisp[i]== true) {
+                        diasDisp = diasDisp + (i+1);
+                    }
+                    
+                }
+            
+            ((Instructor)ControladorPerfiles.getSesionActualUsuario()).setDiasDisp(diasDisp);
+            
+            
+            
+            ControladorPerfiles.actualizarPerfil(ControladorPerfiles.getSesionActualUsuario());
+            
+            
+        }else{
+            ControladorPerfiles.getSesionActualUsuario().setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setRespuestaSeguridad(txt_RespSeg.getText());
+            ControladorPerfiles.getSesionActualUsuario().setNombres(txt_Nombres.getText());
+            ControladorPerfiles.getSesionActualUsuario().setApellidos(txt_Apellidos.getText());
+            ControladorPerfiles.getSesionActualUsuario().setCelular(Long.parseLong(txt_Celular.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setCorreo(txt_Correo.getText());
+            ((Administrativo)ControladorPerfiles.getSesionActualUsuario()).setContrasena2(txt_Contrasena2.getText());
+            
+            ControladorPerfiles.actualizarPerfil(ControladorPerfiles.getSesionActualUsuario());
+        
+        }
+            JOptionPane.showMessageDialog(null, "Perfil Actualizado con exito");
+            
+            this.dispose();
+            Perfiles ventanaPerfiles = new Perfiles();
+            ventanaPerfiles.setVisible(true);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debes Ingresar Por lo Menos Un Dato Correcto, Verifica los datos ingresados sean Validos");
+        }
+        
+        }else{
+            try {
+            if (usuarioEnviado instanceof Alumno) {
+            usuarioEnviado.setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            usuarioEnviado.setRespuestaSeguridad(txt_RespSeg.getText());
+            usuarioEnviado.setNombres(txt_Nombres.getText());
+            usuarioEnviado.setApellidos(txt_Apellidos.getText());
+            usuarioEnviado.setCelular(Long.parseLong(txt_Celular.getText()));
+            usuarioEnviado.setCorreo(txt_Correo.getText());
+            ((Alumno)usuarioEnviado).setOcupacion(txt_Ocupacion.getText());
+            
+            
+            
+            ControladorPerfiles.actualizarPerfil(usuarioEnviado);
+            
+        }else if (usuarioEnviado instanceof Instructor) {
+            usuarioEnviado.setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            usuarioEnviado.setRespuestaSeguridad(txt_RespSeg.getText());
+            usuarioEnviado.setNombres(txt_Nombres.getText());
+            usuarioEnviado.setApellidos(txt_Apellidos.getText());
+            usuarioEnviado.setCelular(Long.parseLong(txt_Celular.getText()));
+            usuarioEnviado.setCorreo(txt_Correo.getText());
+            
+                boolean estadoLunes = ch_Lunes.isSelected();
+                boolean estadoMartes = ch_Martes.isSelected();
+                boolean estadoMiercoles = ch_Miercoles.isSelected();
+                boolean estadoJueves = ch_Jueves.isSelected();
+                boolean estadoViernes = ch_Viernes.isSelected();
+                boolean estadoSabado = ch_Sabado.isSelected();
+                boolean estadoDomingo = ch_Domingo.isSelected();
+                String diasDisp = "";
+                
+                boolean[] codigoDiasDisp = new boolean[7];
+                codigoDiasDisp[0]=estadoLunes;
+                codigoDiasDisp[1]=estadoMartes;
+                codigoDiasDisp[2]=estadoMiercoles;
+                codigoDiasDisp[3]=estadoJueves;
+                codigoDiasDisp[4]=estadoViernes;
+                codigoDiasDisp[5]=estadoSabado;
+                codigoDiasDisp[6]=estadoDomingo;
+                for (int i = 0; i < 7; i++) {
+                    if (codigoDiasDisp[i]== true) {
+                        diasDisp = diasDisp + (i+1);
+                    }
+                    
+                }
+            
+            ((Instructor)usuarioEnviado).setDiasDisp(diasDisp);
+            
+            
+            
+            ControladorPerfiles.actualizarPerfil(usuarioEnviado);
+            
+            
+        }else{
+            usuarioEnviado.setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            usuarioEnviado.setRespuestaSeguridad(txt_RespSeg.getText());
+            usuarioEnviado.setNombres(txt_Nombres.getText());
+            usuarioEnviado.setApellidos(txt_Apellidos.getText());
+            usuarioEnviado.setCelular(Long.parseLong(txt_Celular.getText()));
+            usuarioEnviado.setCorreo(txt_Correo.getText());
+            ((Administrativo)usuarioEnviado).setContrasena2(txt_Contrasena2.getText());
+            
+            ControladorPerfiles.actualizarPerfil(usuarioEnviado);
+        
+        }
+            JOptionPane.showMessageDialog(null, "Perfil Actualizado con exito");
+            
+            this.dispose();
+            Perfiles ventanaPerfiles = new Perfiles();
+            ventanaPerfiles.setVisible(true);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debes Ingresar Por lo Menos Un Dato Correcto, Verifica los datos ingresados sean Validos");
+        }
+        
+        }
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btn_ModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,29 +684,39 @@ public class ModificarPerfil extends javax.swing.JFrame {
     private javax.swing.JCheckBox ch_Miercoles;
     private javax.swing.JCheckBox ch_Sabado;
     private javax.swing.JCheckBox ch_Viernes;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbl_DiasDisp;
     private javax.swing.JLabel lbl_ModificarPerf;
+    private javax.swing.JComboBox<String> listaPreguntas;
     private javax.swing.JPanel panel_Datos;
     private javax.swing.JPanel panel_DiasDisp;
+    private javax.swing.JTextField txt_Apellidos;
+    private javax.swing.JLabel txt_Cedula;
+    private javax.swing.JTextField txt_Celular;
+    private javax.swing.JTextField txt_Contrasena;
+    private javax.swing.JTextField txt_Contrasena2;
+    private javax.swing.JTextField txt_Correo;
+    private javax.swing.JTextField txt_Nombres;
+    private javax.swing.JTextField txt_Ocupacion;
+    private javax.swing.JTextField txt_RespSeg;
     // End of variables declaration//GEN-END:variables
+
+    public Usuario getUsuarioEnviado() {
+        return usuarioEnviado;
+    }
+
+    public void setUsuarioEnviado(Usuario usuarioEnviado) {
+        this.usuarioEnviado = usuarioEnviado;
+    }
 
 }

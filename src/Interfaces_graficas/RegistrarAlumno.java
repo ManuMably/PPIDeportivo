@@ -4,6 +4,11 @@
  */
 package Interfaces_graficas;
 
+import java.util.Objects;
+import javax.swing.JOptionPane;
+import skatelab.Alumno;
+import skatelab.ControladorPerfiles;
+
 /**
  *
  * @author ROGER
@@ -15,6 +20,7 @@ public class RegistrarAlumno extends javax.swing.JFrame {
      */
     public RegistrarAlumno() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -103,6 +109,11 @@ public class RegistrarAlumno extends javax.swing.JFrame {
         txt_Ocupacion.setText("IngresaOcupacion");
 
         btn_Registrar.setText("Registrar");
+        btn_Registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,6 +231,39 @@ public class RegistrarAlumno extends javax.swing.JFrame {
         RegistrarPerfil ventanaRegistrarPerfil = new RegistrarPerfil();
         ventanaRegistrarPerfil.setVisible(true);
     }//GEN-LAST:event_btn_VolverActionPerformed
+
+    private void btn_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarActionPerformed
+        // TODO add your handling code here:
+        try {
+            
+            Integer cedulaIngresada = Integer.parseInt(txt_Cedula.getText());
+            Integer contrasenaIngresada = Integer.parseInt(txt_Contrasena.getText());
+            String respuestaSIngresada = txt_Respuesta.getText();
+            String nombresIngresados = txt_Nombres.getText();
+            String apellidosIngresados = txt_Apellidos.getText();
+            Long celularIngresados = Long.parseLong(txt_Celular.getText());
+            String correoIngresados = txt_Correo.getText();
+            String ocupacionIngresados = txt_Ocupacion.getText();
+            
+            Alumno nuevoAlumno = new Alumno(cedulaIngresada, contrasenaIngresada, respuestaSIngresada, nombresIngresados, apellidosIngresados, celularIngresados, correoIngresados, ocupacionIngresados);
+            
+            System.out.println(nuevoAlumno);
+            
+            ControladorPerfiles.registrarPerfil(nuevoAlumno);
+            JOptionPane.showMessageDialog(null, "Perfil Registrado Correctamente");
+            
+            //Cerramos la ventana Actual
+            this.dispose();
+            // creamos una instancia de la ventana anterior
+            RegistrarPerfil ventanaRegistrarPerfil = new RegistrarPerfil();
+            ventanaRegistrarPerfil.setVisible(true);
+                                  
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debes Ingresar Por lo Menos Un Dato Correcto, Verifica los datos ingresados sean Validos");
+        }
+    }//GEN-LAST:event_btn_RegistrarActionPerformed
 
     /**
      * @param args the command line arguments

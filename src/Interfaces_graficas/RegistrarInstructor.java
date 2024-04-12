@@ -4,6 +4,11 @@
  */
 package Interfaces_graficas;
 
+import javax.swing.JOptionPane;
+import skatelab.Administrativo;
+import skatelab.ControladorPerfiles;
+import skatelab.Instructor;
+
 /**
  *
  * @author ROGER
@@ -15,6 +20,7 @@ public class RegistrarInstructor extends javax.swing.JFrame {
      */
     public RegistrarInstructor() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -40,14 +46,14 @@ public class RegistrarInstructor extends javax.swing.JFrame {
         Ch_Sabado = new javax.swing.JCheckBox();
         Ch_Domingo = new javax.swing.JCheckBox();
         lbl_Cedula = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txt_cedula = new javax.swing.JTextField();
+        txt_contrasena = new javax.swing.JTextField();
+        txt_Nombres = new javax.swing.JTextField();
+        txt_Apellidos = new javax.swing.JTextField();
+        txt_Celular = new javax.swing.JTextField();
+        txt_Correo = new javax.swing.JTextField();
+        txt_RespuestaSeg = new javax.swing.JTextField();
+        listaPreguntas = new javax.swing.JComboBox<>();
         lbl_Contrasena = new javax.swing.JLabel();
         lbl_Nombres = new javax.swing.JLabel();
         lbl_Apellidos = new javax.swing.JLabel();
@@ -133,26 +139,26 @@ public class RegistrarInstructor extends javax.swing.JFrame {
 
         lbl_Cedula.setText("Cedula:");
 
-        jTextField1.setText("Ingrese Cedula");
+        txt_cedula.setText("Ingrese Cedula");
 
-        jTextField2.setText("Ingrese Contraseña");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txt_contrasena.setText("Ingrese Contraseña");
+        txt_contrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txt_contrasenaActionPerformed(evt);
             }
         });
 
-        jTextField3.setText("Ingrese Nombres");
+        txt_Nombres.setText("Ingrese Nombres");
 
-        jTextField4.setText("Ingrese Apellidos");
+        txt_Apellidos.setText("Ingrese Apellidos");
 
-        jTextField5.setText("Ingrese Celular");
+        txt_Celular.setText("Ingrese Celular");
 
-        jTextField6.setText("Ingrese Correo");
+        txt_Correo.setText("Ingrese Correo");
 
-        jTextField8.setText("Ingrese Respuesta");
+        txt_RespuestaSeg.setText("Ingrese Respuesta");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listaPreguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lbl_Contrasena.setText("Contraseña:");
 
@@ -169,6 +175,11 @@ public class RegistrarInstructor extends javax.swing.JFrame {
         lbl_RespSeg.setText("Respuesta Seguridad:");
 
         btn_Registrar.setText("Registrar");
+        btn_Registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,14 +212,14 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                                     .addComponent(lbl_RespSeg))
                                 .addGap(70, 70, 70)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField5)
-                                    .addComponent(jTextField6)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField8)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(txt_Celular)
+                                    .addComponent(txt_Correo)
+                                    .addComponent(txt_Apellidos)
+                                    .addComponent(txt_Nombres)
+                                    .addComponent(txt_contrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                    .addComponent(txt_cedula)
+                                    .addComponent(txt_RespuestaSeg)
+                                    .addComponent(listaPreguntas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                         .addComponent(PanelDiasDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36))))
@@ -234,35 +245,35 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_Cedula))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_Contrasena))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_Nombres)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_Apellidos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_Celular))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_Correo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listaPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_PreguntSeg))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_RespuestaSeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_RespSeg))
                 .addGap(55, 55, 55)
                 .addComponent(btn_Registrar)
@@ -272,9 +283,9 @@ public class RegistrarInstructor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txt_contrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contrasenaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txt_contrasenaActionPerformed
 
     private void btn_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VolverActionPerformed
         // TODO add your handling code here:
@@ -284,6 +295,63 @@ public class RegistrarInstructor extends javax.swing.JFrame {
         RegistrarPerfil ventanaRegistrarPerfil = new RegistrarPerfil();
         ventanaRegistrarPerfil.setVisible(true);
     }//GEN-LAST:event_btn_VolverActionPerformed
+
+    private void btn_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarActionPerformed
+        // TODO add your handling code here:
+            try {
+
+                Integer cedulaIngresada = Integer.parseInt(txt_cedula.getText());
+                Integer contrasenaIngresada = Integer.parseInt(txt_contrasena.getText());
+                String respuestaSIngresada = txt_RespuestaSeg.getText();
+                String nombresIngresados = txt_Nombres.getText();
+                String apellidosIngresados = txt_Apellidos.getText();
+                Long celularIngresados = Long.parseLong(txt_Celular.getText());
+                String correoIngresados = txt_Correo.getText();
+                
+                boolean estadoLunes = Ch_lunes.isSelected();
+                boolean estadoMartes = Ch_Martes.isSelected();
+                boolean estadoMiercoles = Ch_Miercoles.isSelected();
+                boolean estadoJueves = Ch_Jueves.isSelected();
+                boolean estadoViernes = Ch_Viernes.isSelected();
+                boolean estadoSabado = Ch_Sabado.isSelected();
+                boolean estadoDomingo = Ch_Domingo.isSelected();
+                String diasDisp = "";
+                
+                boolean[] codigoDiasDisp = new boolean[7];
+                codigoDiasDisp[0]=estadoLunes;
+                codigoDiasDisp[1]=estadoMartes;
+                codigoDiasDisp[2]=estadoMiercoles;
+                codigoDiasDisp[3]=estadoJueves;
+                codigoDiasDisp[4]=estadoViernes;
+                codigoDiasDisp[5]=estadoSabado;
+                codigoDiasDisp[6]=estadoDomingo;
+                for (int i = 0; i < 7; i++) {
+                    if (codigoDiasDisp[i]== true) {
+                        diasDisp = diasDisp + (i+1);
+                    }
+                    
+                }
+                
+
+                Instructor nuevoInstructor = new Instructor(cedulaIngresada, contrasenaIngresada, respuestaSIngresada, nombresIngresados, apellidosIngresados, celularIngresados, correoIngresados, diasDisp);
+
+                System.out.println(nuevoInstructor.getDiasDisp());
+
+                ControladorPerfiles.registrarPerfil(nuevoInstructor);
+                JOptionPane.showMessageDialog(null, "Perfil Registrado Correctamente");
+
+                //Cerramos la ventana Actual
+                this.dispose();
+                // creamos una instancia de la ventana anterior
+                RegistrarPerfil ventanaRegistrarPerfil = new RegistrarPerfil();
+                ventanaRegistrarPerfil.setVisible(true);
+
+
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Debes Ingresar Por lo Menos Un Dato Correcto, Verifica los datos ingresados sean Validos");
+            }
+    }//GEN-LAST:event_btn_RegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,16 +400,8 @@ public class RegistrarInstructor extends javax.swing.JFrame {
     private javax.swing.JPanel PanelDiasDisp;
     private javax.swing.JButton btn_Registrar;
     private javax.swing.JButton btn_Volver;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lbl_Apellidos;
     private javax.swing.JLabel lbl_Cedula;
     private javax.swing.JLabel lbl_Celular;
@@ -351,5 +411,13 @@ public class RegistrarInstructor extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_Nombres;
     private javax.swing.JLabel lbl_PreguntSeg;
     private javax.swing.JLabel lbl_RespSeg;
+    private javax.swing.JComboBox<String> listaPreguntas;
+    private javax.swing.JTextField txt_Apellidos;
+    private javax.swing.JTextField txt_Celular;
+    private javax.swing.JTextField txt_Correo;
+    private javax.swing.JTextField txt_Nombres;
+    private javax.swing.JTextField txt_RespuestaSeg;
+    private javax.swing.JTextField txt_cedula;
+    private javax.swing.JTextField txt_contrasena;
     // End of variables declaration//GEN-END:variables
 }
