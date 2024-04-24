@@ -12,22 +12,22 @@ public class ControladorPerfiles {
     //listas que contendran los perfiles que hay en la base de datos
     static List<Usuario> perfilesBD = new ArrayList<>();
     static List<Administrativo> perfilesAdmin = new ArrayList<>();
-    static List<Instructor> perfilesInstruc = new ArrayList<>();
-    static List<Alumno> perfilesAlumno = new ArrayList<>();
+    static List<Docente> perfilesInstruc = new ArrayList<>();
+    static List<Estudiante> perfilesAlumno = new ArrayList<>();
     
     public static void cargarOrganizarPerfiles(){
         ConexionBD conectorBD= new ConexionBD();
         
         perfilesBD = conectorBD.cargarListaUsuarios();
         for (Usuario usuario : perfilesBD) {
-            if (usuario instanceof Alumno) {
-                perfilesAlumno.add((Alumno)usuario);
+            if (usuario instanceof Estudiante) {
+                perfilesAlumno.add((Estudiante)usuario);
                 
             }else if (usuario instanceof Administrativo) {
                 perfilesAdmin.add((Administrativo)usuario);
                 
             } else{
-                perfilesInstruc.add((Instructor)usuario);
+                perfilesInstruc.add((Docente)usuario);
             }
             
         }
@@ -41,10 +41,10 @@ public class ControladorPerfiles {
             }
             
         }
-        if (PerfilUsuario instanceof Alumno) {
+        if (PerfilUsuario instanceof Estudiante) {
             for (int i = 0; i < perfilesAlumno.size(); i++) {
                 if (perfilesAlumno.get(i).getCedula() == PerfilUsuario.getCedula()) {
-                perfilesAlumno.set(i, (Alumno)PerfilUsuario);
+                perfilesAlumno.set(i, (Estudiante)PerfilUsuario);
                                 
             }
                 
@@ -62,7 +62,7 @@ public class ControladorPerfiles {
         }else{
             for (int i = 0; i < perfilesInstruc.size(); i++) {
                 if (perfilesInstruc.get(i).getCedula() == PerfilUsuario.getCedula()) {
-                perfilesInstruc.set(i, (Instructor)PerfilUsuario);
+                perfilesInstruc.set(i, (Docente)PerfilUsuario);
                                 
             }
                 
@@ -81,7 +81,7 @@ public class ControladorPerfiles {
             }
             
         }
-        if (PerfilUsuario instanceof Alumno) {
+        if (PerfilUsuario instanceof Estudiante) {
             for (int i = 0; i < perfilesAlumno.size(); i++) {
                 if (perfilesAlumno.get(i).getCedula() == PerfilUsuario.getCedula()) {
                 perfilesAlumno.remove(i);
@@ -115,12 +115,12 @@ public class ControladorPerfiles {
     }
     public static void registrarPerfil(Usuario perfilNuevo){
         perfilesBD.add(perfilNuevo);
-        if (perfilNuevo instanceof Alumno) {
-            perfilesAlumno.add((Alumno)perfilNuevo);
+        if (perfilNuevo instanceof Estudiante) {
+            perfilesAlumno.add((Estudiante)perfilNuevo);
         }else if (perfilNuevo instanceof Administrativo) {
             perfilesAdmin.add((Administrativo)perfilNuevo);
         }else{
-            perfilesInstruc.add((Instructor)perfilNuevo);
+            perfilesInstruc.add((Docente)perfilNuevo);
         }
         
         ConexionBD conectorBD= new ConexionBD();
@@ -135,7 +135,7 @@ public class ControladorPerfiles {
             }             
         }
         System.out.println("Cedula no Encontrada");
-        Alumno nn= new Alumno(); 
+        Estudiante nn= new Estudiante(); 
         nn.setCedula(0);
         return nn;
     }
@@ -164,19 +164,19 @@ public class ControladorPerfiles {
         ControladorPerfiles.perfilesAdmin = perfilesAdmin;
     }
 
-    public static List<Instructor> getPerfilesInstruc() {
+    public static List<Docente> getPerfilesInstruc() {
         return perfilesInstruc;
     }
 
-    public static void setPerfilesInstruc(List<Instructor> perfilesInstruc) {
+    public static void setPerfilesInstruc(List<Docente> perfilesInstruc) {
         ControladorPerfiles.perfilesInstruc = perfilesInstruc;
     }
 
-    public static List<Alumno> getPerfilesAlumno() {
+    public static List<Estudiante> getPerfilesAlumno() {
         return perfilesAlumno;
     }
 
-    public static void setPerfilesAlumno(List<Alumno> perfilesAlumno) {
+    public static void setPerfilesAlumno(List<Estudiante> perfilesAlumno) {
         ControladorPerfiles.perfilesAlumno = perfilesAlumno;
     }
     

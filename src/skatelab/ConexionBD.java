@@ -56,7 +56,7 @@ public class ConexionBD {
                     String correo = rs.getString("correo");
                     String ocupacion = rs.getString("ocupacion");
                     
-                    Alumno alumnoBD = new Alumno(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, ocupacion);
+                    Estudiante alumnoBD = new Estudiante(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, ocupacion);
                     perfilesbdList.add(alumnoBD);
                 }
                 else if (rs.getString("segundaClave")!= null) {
@@ -82,7 +82,7 @@ public class ConexionBD {
                     String correo = rs.getString("correo");
                     String diasDisponibles = rs.getString("dias_disponibles");
                     
-                    Instructor instructorBD = new Instructor(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, diasDisponibles);
+                    Docente instructorBD = new Docente(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, diasDisponibles);
                     perfilesbdList.add(instructorBD);
                     
                 }
@@ -95,7 +95,7 @@ public class ConexionBD {
     }
     // Insersiones: Usuarios,claseParticular-------------------------------------------
     public <T extends Usuario> void InsertarUsuario(T instancia) {
-        if (instancia instanceof Alumno) {
+        if (instancia instanceof Estudiante) {
                     try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
@@ -103,14 +103,14 @@ public class ConexionBD {
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
                 // Establecemos los valores de los parámetros en la sentencia SQL
-                pstmt.setInt(1, ((Alumno) instancia).getCedula());
+                pstmt.setInt(1, ((Estudiante) instancia).getCedula());
                 pstmt.setString(2, String.valueOf(instancia.getContrasena()));
                 pstmt.setString(3, instancia.getRespuestaSeguridad());
                 pstmt.setString(4, instancia.getNombres());
                 pstmt.setString(5, instancia.getApellidos());
                 pstmt.setString(6, String.valueOf(instancia.getCelular()));
                 pstmt.setString(7, instancia.getCorreo());
-                pstmt.setString(8, ((Alumno) instancia).getOcupacion());
+                pstmt.setString(8, ((Estudiante) instancia).getOcupacion());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -133,7 +133,7 @@ public class ConexionBD {
             }
             
         }
-        else if (instancia instanceof Instructor) {
+        else if (instancia instanceof Docente) {
             try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
@@ -141,14 +141,14 @@ public class ConexionBD {
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
                 // Establecemos los valores de los parámetros en la sentencia SQL
-                pstmt.setInt(1, ((Instructor) instancia).getCedula());
+                pstmt.setInt(1, ((Docente) instancia).getCedula());
                 pstmt.setString(2, String.valueOf(instancia.getContrasena()));
                 pstmt.setString(3, instancia.getRespuestaSeguridad());
                 pstmt.setString(4, instancia.getNombres());
                 pstmt.setString(5, instancia.getApellidos());
                 pstmt.setString(6, String.valueOf(instancia.getCelular()));
                 pstmt.setString(7, instancia.getCorreo());
-                pstmt.setString(8, ((Instructor) instancia).getDiasDisp());
+                pstmt.setString(8, ((Docente) instancia).getDiasDisp());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -214,7 +214,7 @@ public class ConexionBD {
     
     // actualizaciones  : ususarios, claseParticular-----------------------------------
     public <T extends Usuario> void actualizarUsuario(T instancia) {
-        if (instancia instanceof Alumno) {
+        if (instancia instanceof Estudiante) {
                     try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
@@ -229,8 +229,8 @@ public class ConexionBD {
                 pstmt.setString(4, instancia.getApellidos());
                 pstmt.setString(5, String.valueOf(instancia.getCelular()));
                 pstmt.setString(6, instancia.getCorreo());
-                pstmt.setString(7, ((Alumno) instancia).getOcupacion());
-                pstmt.setInt(8, ((Alumno) instancia).getCedula());
+                pstmt.setString(7, ((Estudiante) instancia).getOcupacion());
+                pstmt.setInt(8, ((Estudiante) instancia).getCedula());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -253,7 +253,7 @@ public class ConexionBD {
             }
             
         }
-        else if (instancia instanceof Instructor) {
+        else if (instancia instanceof Docente) {
             try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
@@ -268,8 +268,8 @@ public class ConexionBD {
                 pstmt.setString(4, instancia.getApellidos());
                 pstmt.setString(5, String.valueOf(instancia.getCelular()));
                 pstmt.setString(6, instancia.getCorreo());
-                pstmt.setString(7, ((Instructor) instancia).getDiasDisp());
-                pstmt.setInt(8, ((Instructor) instancia).getCedula());
+                pstmt.setString(7, ((Docente) instancia).getDiasDisp());
+                pstmt.setInt(8, ((Docente) instancia).getCedula());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();

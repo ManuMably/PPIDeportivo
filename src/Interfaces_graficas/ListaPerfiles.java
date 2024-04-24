@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import skatelab.Administrativo;
-import skatelab.Alumno;
+import skatelab.Estudiante;
 import skatelab.ControladorPerfiles;
-import skatelab.Instructor;
+import skatelab.Docente;
 import skatelab.Usuario;
 
 /**
@@ -266,8 +266,8 @@ public class ListaPerfiles extends javax.swing.JFrame {
             PerfilRegistrado[4] = ControladorPerfiles.getPerfilesBD().get(j).getApellidos();
             PerfilRegistrado[5] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getCelular());
             PerfilRegistrado[6] = ControladorPerfiles.getPerfilesBD().get(j).getCorreo();
-            if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Alumno) {
-                PerfilRegistrado[7] = ((Alumno)ControladorPerfiles.getPerfilesBD().get(j)).getOcupacion();
+            if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Estudiante) {
+                PerfilRegistrado[7] = ((Estudiante)ControladorPerfiles.getPerfilesBD().get(j)).getOcupacion();
                 PerfilRegistrado[8] = "null";
                 PerfilRegistrado[9] = "null";
             }else if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Administrativo) {
@@ -278,7 +278,7 @@ public class ListaPerfiles extends javax.swing.JFrame {
             }else{
                 PerfilRegistrado[7] = "null";
                 PerfilRegistrado[8] = "null";
-                PerfilRegistrado[9] = ((Instructor)ControladorPerfiles.getPerfilesBD().get(j)).getDiasDisp();          
+                PerfilRegistrado[9] = ((Docente)ControladorPerfiles.getPerfilesBD().get(j)).getDiasDisp();          
             }
             modelo.addRow(PerfilRegistrado);
         }
@@ -359,8 +359,8 @@ public class ListaPerfiles extends javax.swing.JFrame {
             PerfilRegistrado[4] = ControladorPerfiles.getPerfilesBD().get(j).getApellidos();
             PerfilRegistrado[5] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getCelular());
             PerfilRegistrado[6] = ControladorPerfiles.getPerfilesBD().get(j).getCorreo();
-            if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Alumno) {
-                PerfilRegistrado[7] = ((Alumno)ControladorPerfiles.getPerfilesBD().get(j)).getOcupacion();
+            if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Estudiante) {
+                PerfilRegistrado[7] = ((Estudiante)ControladorPerfiles.getPerfilesBD().get(j)).getOcupacion();
                 PerfilRegistrado[8] = "null";
                 PerfilRegistrado[9] = "null";
             }else if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Administrativo) {
@@ -371,7 +371,7 @@ public class ListaPerfiles extends javax.swing.JFrame {
             }else{
                 PerfilRegistrado[7] = "null";
                 PerfilRegistrado[8] = "null";
-                PerfilRegistrado[9] = ((Instructor)ControladorPerfiles.getPerfilesBD().get(j)).getDiasDisp();          
+                PerfilRegistrado[9] = ((Docente)ControladorPerfiles.getPerfilesBD().get(j)).getDiasDisp();          
             }
             modelo.addRow(PerfilRegistrado);
         }
@@ -425,8 +425,8 @@ public class ListaPerfiles extends javax.swing.JFrame {
             PerfilU[4] = perfilSolicitado.getApellidos();
             PerfilU[5] = String.valueOf(perfilSolicitado.getCelular());
             PerfilU[6] = perfilSolicitado.getCorreo();
-            if (perfilSolicitado instanceof Alumno) {
-                PerfilU[7] = ((Alumno)perfilSolicitado).getOcupacion();
+            if (perfilSolicitado instanceof Estudiante) {
+                PerfilU[7] = ((Estudiante)perfilSolicitado).getOcupacion();
                 PerfilU[8] = "null";
                 PerfilU[9] = "null";
             }else if (perfilSolicitado instanceof Administrativo) {
@@ -437,7 +437,7 @@ public class ListaPerfiles extends javax.swing.JFrame {
             }else{
                 PerfilU[7] = "null";
                 PerfilU[8] = "null";
-                PerfilU[9] = ((Instructor)perfilSolicitado).getDiasDisp();          
+                PerfilU[9] = ((Docente)perfilSolicitado).getDiasDisp();          
             }
             modelo.addRow(PerfilU);
                 

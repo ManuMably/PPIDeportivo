@@ -7,9 +7,9 @@ package Interfaces_graficas;
 
 import javax.swing.JOptionPane;
 import skatelab.Administrativo;
-import skatelab.Alumno;
+import skatelab.Estudiante;
 import skatelab.ControladorPerfiles;
-import skatelab.Instructor;
+import skatelab.Docente;
 import skatelab.Usuario;
 
 /**
@@ -17,7 +17,7 @@ import skatelab.Usuario;
  * @author ROGER
  */
 public class ModificarPerfil extends javax.swing.JFrame {
-    public Usuario usuarioEnviado = new Alumno();
+    public Usuario usuarioEnviado = new Estudiante();
 
     /** Creates new form ModificarPerfil */
     public ModificarPerfil() {
@@ -378,14 +378,14 @@ public class ModificarPerfil extends javax.swing.JFrame {
             txt_Correo.setText(ControladorPerfiles.getSesionActualUsuario().getCorreo());
             txt_RespSeg.setText(ControladorPerfiles.getSesionActualUsuario().getRespuestaSeguridad());
 
-            if (ControladorPerfiles.getSesionActualUsuario() instanceof Alumno) {            
-                txt_Ocupacion.setText(((Alumno)ControladorPerfiles.getSesionActualUsuario()).getOcupacion());
+            if (ControladorPerfiles.getSesionActualUsuario() instanceof Estudiante) {            
+                txt_Ocupacion.setText(((Estudiante)ControladorPerfiles.getSesionActualUsuario()).getOcupacion());
                 txt_Contrasena2.setText("Solo Administradores");
-            }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Instructor) {
+            }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Docente) {
                 txt_Ocupacion.setText("Solo Alumnos");
                 txt_Contrasena2.setText("Solo Administradores");
 
-                String diasDisp = ((Instructor)ControladorPerfiles.getSesionActualUsuario()).getDiasDisp();
+                String diasDisp = ((Docente)ControladorPerfiles.getSesionActualUsuario()).getDiasDisp();
                 for (int i = 0; i < diasDisp.length(); i++) {
                     switch (diasDisp.charAt(i)) {
                         case '1':
@@ -429,14 +429,14 @@ public class ModificarPerfil extends javax.swing.JFrame {
             txt_Correo.setText(usuarioEnviado.getCorreo());
             txt_RespSeg.setText(usuarioEnviado.getRespuestaSeguridad());
 
-            if (usuarioEnviado instanceof Alumno) {            
-                txt_Ocupacion.setText(((Alumno)usuarioEnviado).getOcupacion());
+            if (usuarioEnviado instanceof Estudiante) {            
+                txt_Ocupacion.setText(((Estudiante)usuarioEnviado).getOcupacion());
                 txt_Contrasena2.setText("Solo Administradores");
-            }else if (usuarioEnviado instanceof Instructor) {
+            }else if (usuarioEnviado instanceof Docente) {
                 txt_Ocupacion.setText("Solo Alumnos");
                 txt_Contrasena2.setText("Solo Administradores");
 
-                String diasDisp = ((Instructor)usuarioEnviado).getDiasDisp();
+                String diasDisp = ((Docente)usuarioEnviado).getDiasDisp();
                 for (int i = 0; i < diasDisp.length(); i++) {
                     switch (diasDisp.charAt(i)) {
                         case '1':
@@ -479,20 +479,20 @@ public class ModificarPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (usuarioEnviado.getCedula() == null){
             try {
-            if (ControladorPerfiles.getSesionActualUsuario() instanceof Alumno) {
+            if (ControladorPerfiles.getSesionActualUsuario() instanceof Estudiante) {
             ControladorPerfiles.getSesionActualUsuario().setContrasena(Integer.parseInt(txt_Contrasena.getText()));
             ControladorPerfiles.getSesionActualUsuario().setRespuestaSeguridad(txt_RespSeg.getText());
             ControladorPerfiles.getSesionActualUsuario().setNombres(txt_Nombres.getText());
             ControladorPerfiles.getSesionActualUsuario().setApellidos(txt_Apellidos.getText());
             ControladorPerfiles.getSesionActualUsuario().setCelular(Long.parseLong(txt_Celular.getText()));
             ControladorPerfiles.getSesionActualUsuario().setCorreo(txt_Correo.getText());
-            ((Alumno)ControladorPerfiles.getSesionActualUsuario()).setOcupacion(txt_Ocupacion.getText());
+            ((Estudiante)ControladorPerfiles.getSesionActualUsuario()).setOcupacion(txt_Ocupacion.getText());
             
             
             
             ControladorPerfiles.actualizarPerfil(ControladorPerfiles.getSesionActualUsuario());
             
-        }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Instructor) {
+        }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Docente) {
             ControladorPerfiles.getSesionActualUsuario().setContrasena(Integer.parseInt(txt_Contrasena.getText()));
             ControladorPerfiles.getSesionActualUsuario().setRespuestaSeguridad(txt_RespSeg.getText());
             ControladorPerfiles.getSesionActualUsuario().setNombres(txt_Nombres.getText());
@@ -524,7 +524,7 @@ public class ModificarPerfil extends javax.swing.JFrame {
                     
                 }
             
-            ((Instructor)ControladorPerfiles.getSesionActualUsuario()).setDiasDisp(diasDisp);
+            ((Docente)ControladorPerfiles.getSesionActualUsuario()).setDiasDisp(diasDisp);
             
             
             
@@ -555,20 +555,20 @@ public class ModificarPerfil extends javax.swing.JFrame {
         
         }else{
             try {
-            if (usuarioEnviado instanceof Alumno) {
+            if (usuarioEnviado instanceof Estudiante) {
             usuarioEnviado.setContrasena(Integer.parseInt(txt_Contrasena.getText()));
             usuarioEnviado.setRespuestaSeguridad(txt_RespSeg.getText());
             usuarioEnviado.setNombres(txt_Nombres.getText());
             usuarioEnviado.setApellidos(txt_Apellidos.getText());
             usuarioEnviado.setCelular(Long.parseLong(txt_Celular.getText()));
             usuarioEnviado.setCorreo(txt_Correo.getText());
-            ((Alumno)usuarioEnviado).setOcupacion(txt_Ocupacion.getText());
+            ((Estudiante)usuarioEnviado).setOcupacion(txt_Ocupacion.getText());
             
             
             
             ControladorPerfiles.actualizarPerfil(usuarioEnviado);
             
-        }else if (usuarioEnviado instanceof Instructor) {
+        }else if (usuarioEnviado instanceof Docente) {
             usuarioEnviado.setContrasena(Integer.parseInt(txt_Contrasena.getText()));
             usuarioEnviado.setRespuestaSeguridad(txt_RespSeg.getText());
             usuarioEnviado.setNombres(txt_Nombres.getText());
@@ -600,7 +600,7 @@ public class ModificarPerfil extends javax.swing.JFrame {
                     
                 }
             
-            ((Instructor)usuarioEnviado).setDiasDisp(diasDisp);
+            ((Docente)usuarioEnviado).setDiasDisp(diasDisp);
             
             
             

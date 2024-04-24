@@ -6,7 +6,7 @@ package Interfaces_graficas;
 
 import javax.swing.JOptionPane;
 import skatelab.Administrativo;
-import skatelab.Alumno;
+import skatelab.Estudiante;
 import skatelab.ControladorPerfiles;
 
 /**

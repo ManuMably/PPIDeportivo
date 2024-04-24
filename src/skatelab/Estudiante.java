@@ -8,35 +8,47 @@ package skatelab;
  *
  * @author ROGER
  */
-public class Instructor extends Usuario {
-    private String diasDisp;
+public class Estudiante extends Usuario {
+    private String programaMatriculado;
+
+    public Estudiante() {
+    }
+
+    public Estudiante(String ProgramaMatriculado) {
+        this.programaMatriculado = ProgramaMatriculado;
+    }
+
+    public Estudiante(String ProgramaMatriculado, Integer carnet, String nombres, String apellidos, String correo, Long celular, String contrasena, String respuestaSeguridad) {
+        super(carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
+        this.programaMatriculado = ProgramaMatriculado;
+    }
     
-    public Instructor (Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Long celular, String correo, String diasDispo){
-        super(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo);
-        this.diasDisp = diasDispo;
+    
+    
+
+    public String getProgramaMatriculado() {
+        return programaMatriculado;
     }
 
-    public String getDiasDisp() {
-        return diasDisp;
+    public void setProgramaMatriculado(String programaMatriculado) {
+        this.programaMatriculado = programaMatriculado;
     }
 
-    public void setDiasDisp(String diasDisp) {
-        this.diasDisp = diasDisp;
+    public Integer getCarnet() {
+        return carnet;
     }
 
-    public Integer getCedula() {
-        return cedula;
+    public void setCarnet(Integer carnet) {
+        this.carnet = carnet;
     }
 
-    public void setCedula(Integer cedula) {
-        this.cedula = cedula;
-    }
+    
 
-    public Integer getContrasena() {
+    public String getContrasena() {
         return contrasena;
     }
 
-    public void setContrasena(Integer contrasena) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 
@@ -79,7 +91,6 @@ public class Instructor extends Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
     
     
 }

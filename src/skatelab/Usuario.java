@@ -9,41 +9,44 @@ package skatelab;
  * @author ROGER
  */
 public abstract class Usuario {
-    protected Integer cedula;
-    protected Integer contrasena;
-    protected String respuestaSeguridad;
+    protected Integer carnet;
     protected String nombres;
     protected String apellidos;
-    protected Long celular;
     protected String correo;
+    protected Long celular;
+    protected String contrasena;
+    protected String respuestaSeguridad;
+    
+    
+    
 
     public Usuario() {
     }
 
-    public Usuario(Integer cedula, Integer contrasena, String respuestaSeguridad, String nombres, String apellidos, Long celular, String correo) {
-        this.cedula = cedula;
-        this.contrasena = contrasena;
-        this.respuestaSeguridad = respuestaSeguridad;
+    public Usuario(Integer carnet, String nombres, String apellidos, String correo, Long celular, String contrasena, String respuestaSeguridad   ) {
+        this.carnet = carnet;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.celular = celular;
         this.correo = correo;
+        this.celular = celular;
+        this.contrasena = contrasena;
+        this.respuestaSeguridad = respuestaSeguridad;
     }
     
 
-    public Integer getCedula() {
-        return cedula;
+    public Integer getCarnet() {
+        return carnet;
     }
 
-    public void setCedula(Integer cedula) {
-        this.cedula = cedula;
+    public void setCarnet(Integer carnet) {
+        this.carnet = carnet;
     }
 
-    public Integer getContrasena() {
+    public String getContrasena() {
         return contrasena;
     }
 
-    public void setContrasena(Integer contrasena) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 

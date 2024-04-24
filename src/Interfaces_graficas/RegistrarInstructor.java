@@ -7,7 +7,7 @@ package Interfaces_graficas;
 import javax.swing.JOptionPane;
 import skatelab.Administrativo;
 import skatelab.ControladorPerfiles;
-import skatelab.Instructor;
+import skatelab.Docente;
 
 /**
  *
@@ -333,7 +333,7 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                 }
                 
 
-                Instructor nuevoInstructor = new Instructor(cedulaIngresada, contrasenaIngresada, respuestaSIngresada, nombresIngresados, apellidosIngresados, celularIngresados, correoIngresados, diasDisp);
+                Docente nuevoInstructor = new Docente(cedulaIngresada, contrasenaIngresada, respuestaSIngresada, nombresIngresados, apellidosIngresados, celularIngresados, correoIngresados, diasDisp);
 
                 System.out.println(nuevoInstructor.getDiasDisp());
 

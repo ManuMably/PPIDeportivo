@@ -6,7 +6,7 @@ package Interfaces_graficas;
 
 import java.util.Objects;
 import javax.swing.JOptionPane;
-import skatelab.Alumno;
+import skatelab.Estudiante;
 import skatelab.ControladorPerfiles;
 
 /**
@@ -245,7 +245,7 @@ public class RegistrarAlumno extends javax.swing.JFrame {
             String correoIngresados = txt_Correo.getText();
             String ocupacionIngresados = txt_Ocupacion.getText();
             
-            Alumno nuevoAlumno = new Alumno(cedulaIngresada, contrasenaIngresada, respuestaSIngresada, nombresIngresados, apellidosIngresados, celularIngresados, correoIngresados, ocupacionIngresados);
+            Estudiante nuevoAlumno = new Estudiante(cedulaIngresada, contrasenaIngresada, respuestaSIngresada, nombresIngresados, apellidosIngresados, celularIngresados, correoIngresados, ocupacionIngresados);
             
             System.out.println(nuevoAlumno);
             

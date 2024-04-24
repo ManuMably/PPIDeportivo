@@ -8,24 +8,25 @@ package skatelab;
  *
  * @author ROGER
  */
-public class Administrativo extends Usuario {
-    private String claveAdmin;
+public class Docente extends Usuario {
+    private Boolean vinculado;
 
-    public Administrativo(String claveAdmin) {
-        this.claveAdmin = claveAdmin;
+    public Docente() {
     }
 
-    public Administrativo(String claveAdmin, Integer carnet, String nombres, String apellidos, String correo, Long celular, String contrasena, String respuestaSeguridad) {
+    
+
+    public Docente(Boolean vinculado, Integer carnet, String nombres, String apellidos, String correo, Long celular, String contrasena, String respuestaSeguridad) {
         super(carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
-        this.claveAdmin = claveAdmin;
+        this.vinculado = vinculado;
     }
 
-    public String getClaveAdmin() {
-        return claveAdmin;
+    public Boolean getVinculado() {
+        return vinculado;
     }
 
-    public void setClaveAdmin(String claveAdmin) {
-        this.claveAdmin = claveAdmin;
+    public void setVinculado(Boolean vinculado) {
+        this.vinculado = vinculado;
     }
 
     public Integer getCarnet() {
@@ -84,6 +85,9 @@ public class Administrativo extends Usuario {
         this.respuestaSeguridad = respuestaSeguridad;
     }
     
+    
+    
+
     
     
     
