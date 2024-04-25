@@ -10,7 +10,7 @@ public class ConexionBD {
     //Atributos
     String usuario = "root";
     String clave = "";
-    String url = "jdbc:mysql://localhost:3306/bd_skatelab";
+    String url = "jdbc:mysql://localhost:3306/bd_poli";
     Connection con;
     Statement stmt;
     ResultSet rs;
@@ -46,47 +46,58 @@ public class ConexionBD {
             rs = stmt.executeQuery("SELECT * FROM usuario");
             rs.next();
             do {
-                if (rs.getString("ocupacion")!= null) {
-                    Integer cedula = rs.getInt("id_cedula");
-                    Integer contrasena = Integer.parseInt(rs.getString("clave"));
-                    String respuestaSeguridad = rs.getString("respuesta_seguridad");
+                if (rs.getString("programaMatriculado")!= null) {
+                    Integer carnet = rs.getInt("carnet");
                     String nombres = rs.getString("nombres");
                     String apellidos = rs.getString("apellidos");
-                    Long celular = Long.parseLong(rs.getString("celular"));
                     String correo = rs.getString("correo");
-                    String ocupacion = rs.getString("ocupacion");
+                    Long celular = Long.parseLong(rs.getString("celular"));
+                    String contrasena = rs.getString("contrasena");
+                    String respuestaSeguridad = rs.getString("respuestaSeguridad");                    
+                    String programaMatriculado = rs.getString("programaMatriculado");
                     
-                    Estudiante alumnoBD = new Estudiante(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, ocupacion);
-                    perfilesbdList.add(alumnoBD);
+                    Estudiante estudianteBD = new Estudiante(programaMatriculado, carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
+                    perfilesbdList.add(estudianteBD);
                 }
-                else if (rs.getString("segundaClave")!= null) {
-                    Integer cedula = rs.getInt("id_cedula");
-                    Integer contrasena = Integer.parseInt(rs.getString("clave"));
-                    String respuestaSeguridad = rs.getString("respuesta_seguridad");
+                else if (rs.getString("claveAdmin")!= null) {
+                    Integer carnet = rs.getInt("carnet");
                     String nombres = rs.getString("nombres");
                     String apellidos = rs.getString("apellidos");
-                    Long celular = Long.parseLong(rs.getString("celular"));
                     String correo = rs.getString("correo");
-                    String contrasena2 = rs.getString("segundaClave");
+                    Long celular = Long.parseLong(rs.getString("celular"));
+                    String contrasena = rs.getString("contrasena");
+                    String respuestaSeguridad = rs.getString("respuestaSeguridad"); 
+                    String claveAdmin = rs.getString("claveAdmin");
                     
-                    Administrativo administrativoBD = new Administrativo(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, contrasena2);
+                    Administrativo administrativoBD = new Administrativo(claveAdmin, carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
                     perfilesbdList.add(administrativoBD);
                     
-                }else{
-                    Integer cedula = rs.getInt("id_cedula");
-                    Integer contrasena = Integer.parseInt(rs.getString("clave"));
-                    String respuestaSeguridad = rs.getString("respuesta_seguridad");
+                }else if (rs.getString("vinculado")!= null) {
+                    Integer carnet = rs.getInt("carnet");
                     String nombres = rs.getString("nombres");
                     String apellidos = rs.getString("apellidos");
-                    Long celular = Long.parseLong(rs.getString("celular"));
                     String correo = rs.getString("correo");
-                    String diasDisponibles = rs.getString("dias_disponibles");
+                    Long celular = Long.parseLong(rs.getString("celular"));
+                    String contrasena = rs.getString("contrasena");
+                    String respuestaSeguridad = rs.getString("respuestaSeguridad");
+                    Boolean vinculado = rs.getBoolean("vinculado");
                     
-                    Docente instructorBD = new Docente(cedula, contrasena, respuestaSeguridad, nombres, apellidos, celular, correo, diasDisponibles);
-                    perfilesbdList.add(instructorBD);
-                    
-                }
-                System.out.println(rs.getString("id_cedula"));
+                    Docente docenteBD = new Docente(vinculado, carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
+                    perfilesbdList.add(docenteBD);
+                    }else {
+                        Integer carnet = rs.getInt("carnet");
+                        String nombres = rs.getString("nombres");
+                        String apellidos = rs.getString("apellidos");
+                        String correo = rs.getString("correo");
+                        Long celular = Long.parseLong(rs.getString("celular"));
+                        String contrasena = rs.getString("contrasena");
+                        String respuestaSeguridad = rs.getString("respuestaSeguridad");
+                        String ocupacion = rs.getString("ocupacion");
+                        
+                        TrabajadorExterno trabajadorBD = new TrabajadorExterno(ocupacion, carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
+                        perfilesbdList.add(trabajadorBD);
+                }                         
+               
             } while (rs.next());
         } catch (SQLException e) {
             System.out.println("Error al conectar con la base de datos: " + e.getMessage());
@@ -99,18 +110,18 @@ public class ConexionBD {
                     try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
-                String sql = "INSERT INTO usuario (id_cedula, clave, respuesta_seguridad, nombres, apellidos, celular, correo, ocupacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO usuarios (carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad, programaMatriculado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
                 // Establecemos los valores de los parámetros en la sentencia SQL
-                pstmt.setInt(1, ((Estudiante) instancia).getCedula());
-                pstmt.setString(2, String.valueOf(instancia.getContrasena()));
-                pstmt.setString(3, instancia.getRespuestaSeguridad());
-                pstmt.setString(4, instancia.getNombres());
-                pstmt.setString(5, instancia.getApellidos());
-                pstmt.setString(6, String.valueOf(instancia.getCelular()));
-                pstmt.setString(7, instancia.getCorreo());
-                pstmt.setString(8, ((Estudiante) instancia).getOcupacion());
+                pstmt.setInt(1, instancia.getCarnet());
+                pstmt.setString(2, instancia.getNombres());
+                pstmt.setString(3, instancia.getApellidos());
+                pstmt.setString(4, instancia.getCorreo());
+                pstmt.setString(5, String.valueOf(instancia.getCelular()));
+                pstmt.setString(6, String.valueOf(instancia.getContrasena()));
+                pstmt.setString(7, instancia.getRespuestaSeguridad());    
+                pstmt.setString(8, ((Estudiante) instancia).getProgramaMatriculado());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -137,18 +148,18 @@ public class ConexionBD {
             try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
-                String sql = "INSERT INTO usuario (id_cedula, clave, respuesta_seguridad, nombres, apellidos, celular, correo, dias_disponibles) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO usuarios (carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad, vinculado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
                 // Establecemos los valores de los parámetros en la sentencia SQL
-                pstmt.setInt(1, ((Docente) instancia).getCedula());
-                pstmt.setString(2, String.valueOf(instancia.getContrasena()));
-                pstmt.setString(3, instancia.getRespuestaSeguridad());
-                pstmt.setString(4, instancia.getNombres());
-                pstmt.setString(5, instancia.getApellidos());
-                pstmt.setString(6, String.valueOf(instancia.getCelular()));
-                pstmt.setString(7, instancia.getCorreo());
-                pstmt.setString(8, ((Docente) instancia).getDiasDisp());
+                pstmt.setInt(1, instancia.getCarnet());
+                pstmt.setString(2, instancia.getNombres());
+                pstmt.setString(3, instancia.getApellidos());
+                pstmt.setString(4, instancia.getCorreo());
+                pstmt.setString(5, String.valueOf(instancia.getCelular()));
+                pstmt.setString(6, String.valueOf(instancia.getContrasena()));
+                pstmt.setString(7, instancia.getRespuestaSeguridad());
+                pstmt.setBoolean(8, ((Docente) instancia).getVinculado());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -171,22 +182,21 @@ public class ConexionBD {
             }
             
         }
-        else{
+        else if (instancia instanceof Administrativo){
             try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
-                String sql = "INSERT INTO usuario (id_cedula, clave, respuesta_seguridad, nombres, apellidos, celular, correo, segundaClave) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO usuarios (carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad, claveAdmin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
-                // Establecemos los valores de los parámetros en la sentencia SQL
-                pstmt.setInt(1, ((Administrativo) instancia).getCedula());
-                pstmt.setString(2, String.valueOf(instancia.getContrasena()));
-                pstmt.setString(3, instancia.getRespuestaSeguridad());
-                pstmt.setString(4, instancia.getNombres());
-                pstmt.setString(5, instancia.getApellidos());
-                pstmt.setString(6, String.valueOf(instancia.getCelular()));
-                pstmt.setString(7, instancia.getCorreo());
-                pstmt.setString(8, ((Administrativo) instancia).getContrasena2());
+                pstmt.setInt(1, instancia.getCarnet());
+                pstmt.setString(2, instancia.getNombres());
+                pstmt.setString(3, instancia.getApellidos());
+                pstmt.setString(4, instancia.getCorreo());
+                pstmt.setString(5, String.valueOf(instancia.getCelular()));
+                pstmt.setString(6, String.valueOf(instancia.getContrasena()));
+                pstmt.setString(7, instancia.getRespuestaSeguridad());
+                pstmt.setString(8, ((Administrativo) instancia).getClaveAdmin());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -207,6 +217,43 @@ public class ConexionBD {
                     System.out.println("Error al cerrar la conexión: " + e.getMessage());
                 }
             }
+        }else{
+            try {
+                // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "INSERT INTO usuarios (carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad, ocupacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+
+                pstmt.setInt(1, instancia.getCarnet());
+                pstmt.setString(2, instancia.getNombres());
+                pstmt.setString(3, instancia.getApellidos());
+                pstmt.setString(4, instancia.getCorreo());
+                pstmt.setString(5, String.valueOf(instancia.getCelular()));
+                pstmt.setString(6, String.valueOf(instancia.getContrasena()));
+                pstmt.setString(7, instancia.getRespuestaSeguridad());
+                pstmt.setString(8, ((TrabajadorExterno) instancia).getOcupacion());
+
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han insertado correctamente.");
+                } else {
+                    System.out.println("No se han insertado datos.");
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al conectar con la base de datos o al insertar datos: " + e.getMessage());
+            } finally {
+                // Cerramos los recursos
+                try {
+                    if (stmt != null) stmt.close();
+                    if (con != null) con.close();
+                } catch (SQLException e) {
+                    System.out.println("Error al cerrar la conexión: " + e.getMessage());
+                }
+            }
+        
+        
         }
     }
     
@@ -218,19 +265,19 @@ public class ConexionBD {
                     try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
-                String sql = "UPDATE usuario SET clave = ?, respuesta_seguridad = ?, nombres = ?, apellidos = ?, celular = ?, correo = ?, ocupacion = ? WHERE id_cedula = ?";
+                String sql = "UPDATE usuarios SET nombres= ?, apellidos = ?, correo = ?, celular = ?, contrasena = ?, respuestaSeguridad = ?, programaMatriculado = ? WHERE carnet = ?";
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
                 // Establecemos los valores de los parámetros en la sentencia SQL
                 
-                pstmt.setString(1, String.valueOf(instancia.getContrasena()));
-                pstmt.setString(2, instancia.getRespuestaSeguridad());
-                pstmt.setString(3, instancia.getNombres());
-                pstmt.setString(4, instancia.getApellidos());
-                pstmt.setString(5, String.valueOf(instancia.getCelular()));
-                pstmt.setString(6, instancia.getCorreo());
-                pstmt.setString(7, ((Estudiante) instancia).getOcupacion());
-                pstmt.setInt(8, ((Estudiante) instancia).getCedula());
+                pstmt.setString(1, instancia.getNombres());
+                pstmt.setString(2, instancia.getApellidos());
+                pstmt.setString(3, instancia.getCorreo());
+                pstmt.setString(4, String.valueOf(instancia.getCelular()));
+                pstmt.setString(5, String.valueOf(instancia.getContrasena()));
+                pstmt.setString(6, instancia.getRespuestaSeguridad());
+                pstmt.setString(7, ((Estudiante) instancia).getProgramaMatriculado());
+                pstmt.setInt(8, ((Estudiante) instancia).getCarnet());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -257,19 +304,19 @@ public class ConexionBD {
             try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
-                String sql = "UPDATE usuario SET clave = ?, respuesta_seguridad = ?, nombres = ?, apellidos = ?, celular = ?, correo = ?, dias_disponibles = ? WHERE id_cedula = ?";
+                String sql = "UPDATE usuarios SET nombres= ?, apellidos = ?, correo = ?, celular = ?, contrasena = ?, respuestaSeguridad = ?, vinculado = ? WHERE carnet = ?";
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
                 // Establecemos los valores de los parámetros en la sentencia SQL
                 
-                pstmt.setString(1, String.valueOf(instancia.getContrasena()));
-                pstmt.setString(2, instancia.getRespuestaSeguridad());
-                pstmt.setString(3, instancia.getNombres());
-                pstmt.setString(4, instancia.getApellidos());
-                pstmt.setString(5, String.valueOf(instancia.getCelular()));
-                pstmt.setString(6, instancia.getCorreo());
-                pstmt.setString(7, ((Docente) instancia).getDiasDisp());
-                pstmt.setInt(8, ((Docente) instancia).getCedula());
+                pstmt.setString(1, instancia.getNombres());
+                pstmt.setString(2, instancia.getApellidos());
+                pstmt.setString(3, instancia.getCorreo());
+                pstmt.setString(4, String.valueOf(instancia.getCelular()));
+                pstmt.setString(5, String.valueOf(instancia.getContrasena()));
+                pstmt.setString(6, instancia.getRespuestaSeguridad());
+                pstmt.setBoolean(7, ((Docente) instancia).getVinculado());
+                pstmt.setInt(8, ((Docente) instancia).getCarnet());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -292,23 +339,23 @@ public class ConexionBD {
             }
             
         }
-        else{
+        else if (instancia instanceof Administrativo){
             try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
-                String sql = "UPDATE usuario SET clave = ?, respuesta_seguridad = ?, nombres = ?, apellidos = ?, celular = ?, correo = ?, segundaClave = ? WHERE id_cedula = ?";
+                String sql = "UPDATE usuarios SET nombres= ?, apellidos = ?, correo = ?, celular = ?, contrasena = ?, respuestaSeguridad = ?, claveAdmin = ? WHERE carnet = ?";
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
                 // Establecemos los valores de los parámetros en la sentencia SQL
                 
-                pstmt.setString(1, String.valueOf(instancia.getContrasena()));
-                pstmt.setString(2, instancia.getRespuestaSeguridad());
-                pstmt.setString(3, instancia.getNombres());
-                pstmt.setString(4, instancia.getApellidos());
-                pstmt.setString(5, String.valueOf(instancia.getCelular()));
-                pstmt.setString(6, instancia.getCorreo());
-                pstmt.setString(7, ((Administrativo) instancia).getContrasena2());
-                pstmt.setInt(8, ((Administrativo) instancia).getCedula());
+                pstmt.setString(1, instancia.getNombres());
+                pstmt.setString(2, instancia.getApellidos());
+                pstmt.setString(3, instancia.getCorreo());
+                pstmt.setString(4, String.valueOf(instancia.getCelular()));
+                pstmt.setString(5, String.valueOf(instancia.getContrasena()));
+                pstmt.setString(6, instancia.getRespuestaSeguridad());
+                pstmt.setString(7, ((Administrativo) instancia).getClaveAdmin());
+                pstmt.setInt(8, ((Administrativo) instancia).getCarnet());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -329,6 +376,44 @@ public class ConexionBD {
                     System.out.println("Error al cerrar la conexión: " + e.getMessage());
                 }
             }
+        }else{
+            try {
+                // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "UPDATE usuarios SET nombres= ?, apellidos = ?, correo = ?, celular = ?, contrasena = ?, respuestaSeguridad = ?, ocupacion = ? WHERE carnet = ?";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+
+                // Establecemos los valores de los parámetros en la sentencia SQL
+                
+                pstmt.setString(1, instancia.getNombres());
+                pstmt.setString(2, instancia.getApellidos());
+                pstmt.setString(3, instancia.getCorreo());
+                pstmt.setString(4, String.valueOf(instancia.getCelular()));
+                pstmt.setString(5, String.valueOf(instancia.getContrasena()));
+                pstmt.setString(6, instancia.getRespuestaSeguridad());
+                pstmt.setString(7, ((TrabajadorExterno) instancia).getOcupacion());
+                pstmt.setInt(8, ((TrabajadorExterno) instancia).getCarnet());
+
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han insertado correctamente.");
+                } else {
+                    System.out.println("No se han insertado datos.");
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al conectar con la base de datos o al insertar datos: " + e.getMessage());
+            } finally {
+                // Cerramos los recursos
+                try {
+                    if (stmt != null) stmt.close();
+                    if (con != null) con.close();
+                } catch (SQLException e) {
+                    System.out.println("Error al cerrar la conexión: " + e.getMessage());
+                }
+            }
+        
         }
     }
     
@@ -393,7 +478,7 @@ public class ConexionBD {
     
     // Eliminar datos BD: Usuarios---------------------------------------------------------
     public void eliminarUsuario(Usuario usuarioBorrar){
-            String cedula = Integer.toString(usuarioBorrar.getCedula());
+            String cedula = Integer.toString(usuarioBorrar.getCarnet());
         try {
             con = DriverManager.getConnection(url, usuario, clave);
             stmt = con.createStatement();

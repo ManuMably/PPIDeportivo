@@ -12,8 +12,9 @@ public class ControladorPerfiles {
     //listas que contendran los perfiles que hay en la base de datos
     static List<Usuario> perfilesBD = new ArrayList<>();
     static List<Administrativo> perfilesAdmin = new ArrayList<>();
-    static List<Docente> perfilesInstruc = new ArrayList<>();
-    static List<Estudiante> perfilesAlumno = new ArrayList<>();
+    static List<Docente> perfilesdocentes = new ArrayList<>();
+    static List<Estudiante> perfilesEstudiantes = new ArrayList<>();
+    static List<TrabajadorExterno> perfilesExternos = new ArrayList<>();
     
     public static void cargarOrganizarPerfiles(){
         ConexionBD conectorBD= new ConexionBD();
@@ -21,13 +22,15 @@ public class ControladorPerfiles {
         perfilesBD = conectorBD.cargarListaUsuarios();
         for (Usuario usuario : perfilesBD) {
             if (usuario instanceof Estudiante) {
-                perfilesAlumno.add((Estudiante)usuario);
+                perfilesEstudiantes.add((Estudiante)usuario);
                 
             }else if (usuario instanceof Administrativo) {
                 perfilesAdmin.add((Administrativo)usuario);
                 
-            } else{
-                perfilesInstruc.add((Docente)usuario);
+            } else if (usuario instanceof Docente){
+                perfilesdocentes.add((Docente)usuario);
+            }else{
+                perfilesExternos.add((TrabajadorExterno)usuario);
             }
             
         }
@@ -35,16 +38,16 @@ public class ControladorPerfiles {
     }
     public  static  void actualizarPerfil(Usuario PerfilUsuario){
         for (int i = 0; i < perfilesBD.size(); i++) {
-            if (perfilesBD.get(i).getCedula() == PerfilUsuario.getCedula()) {
+            if (perfilesBD.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
                 perfilesBD.set(i, PerfilUsuario);
                                 
             }
             
         }
         if (PerfilUsuario instanceof Estudiante) {
-            for (int i = 0; i < perfilesAlumno.size(); i++) {
-                if (perfilesAlumno.get(i).getCedula() == PerfilUsuario.getCedula()) {
-                perfilesAlumno.set(i, (Estudiante)PerfilUsuario);
+            for (int i = 0; i < perfilesEstudiantes.size(); i++) {
+                if (perfilesEstudiantes.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
+                perfilesEstudiantes.set(i, (Estudiante)PerfilUsuario);
                                 
             }
                 
@@ -52,17 +55,26 @@ public class ControladorPerfiles {
             
         }else if (PerfilUsuario instanceof Administrativo) {
             for (int i = 0; i < perfilesAdmin.size(); i++) {
-                if (perfilesAdmin.get(i).getCedula() == PerfilUsuario.getCedula()) {
+                if (perfilesAdmin.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
                 perfilesAdmin.set(i, (Administrativo)PerfilUsuario);
                                 
             }
                 
             }
             
+        }else if (PerfilUsuario instanceof Docente){
+            for (int i = 0; i < perfilesdocentes.size(); i++) {
+                if (perfilesdocentes.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
+                perfilesdocentes.set(i, (Docente)PerfilUsuario);
+                                
+            }
+                
+            }
+        
         }else{
-            for (int i = 0; i < perfilesInstruc.size(); i++) {
-                if (perfilesInstruc.get(i).getCedula() == PerfilUsuario.getCedula()) {
-                perfilesInstruc.set(i, (Docente)PerfilUsuario);
+            for (int i = 0; i < perfilesExternos.size(); i++) {
+                if (perfilesExternos.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
+                perfilesExternos.set(i, (TrabajadorExterno)PerfilUsuario);
                                 
             }
                 
@@ -75,16 +87,16 @@ public class ControladorPerfiles {
     
     public  static  void borrarPerfil(Usuario PerfilUsuario){
         for (int i = 0; i < perfilesBD.size(); i++) {
-            if (perfilesBD.get(i).getCedula() == PerfilUsuario.getCedula()) {
+            if (perfilesBD.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
                 perfilesBD.remove(i);
                                 
             }
             
         }
         if (PerfilUsuario instanceof Estudiante) {
-            for (int i = 0; i < perfilesAlumno.size(); i++) {
-                if (perfilesAlumno.get(i).getCedula() == PerfilUsuario.getCedula()) {
-                perfilesAlumno.remove(i);
+            for (int i = 0; i < perfilesEstudiantes.size(); i++) {
+                if (perfilesEstudiantes.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
+                perfilesEstudiantes.remove(i);
                                 
             }
                 
@@ -92,17 +104,26 @@ public class ControladorPerfiles {
             
         }else if (PerfilUsuario instanceof Administrativo) {
             for (int i = 0; i < perfilesAdmin.size(); i++) {
-                if (perfilesAdmin.get(i).getCedula() == PerfilUsuario.getCedula()) {
+                if (perfilesAdmin.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
                 perfilesAdmin.remove(i);
                                 
             }
                 
             }
             
+        }else if (PerfilUsuario instanceof Docente){
+            for (int i = 0; i < perfilesdocentes.size(); i++) {
+                if (perfilesdocentes.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
+                perfilesdocentes.remove(i);
+                                
+            }
+                
+            }
+        
         }else{
-            for (int i = 0; i < perfilesInstruc.size(); i++) {
-                if (perfilesInstruc.get(i).getCedula() == PerfilUsuario.getCedula()) {
-                perfilesInstruc.remove(i);
+            for (int i = 0; i < perfilesExternos.size(); i++) {
+                if (perfilesExternos.get(i).getCarnet()== PerfilUsuario.getCarnet()) {
+                perfilesExternos.remove(i);
                                 
             }
                 
@@ -116,27 +137,29 @@ public class ControladorPerfiles {
     public static void registrarPerfil(Usuario perfilNuevo){
         perfilesBD.add(perfilNuevo);
         if (perfilNuevo instanceof Estudiante) {
-            perfilesAlumno.add((Estudiante)perfilNuevo);
+            perfilesEstudiantes.add((Estudiante)perfilNuevo);
         }else if (perfilNuevo instanceof Administrativo) {
             perfilesAdmin.add((Administrativo)perfilNuevo);
-        }else{
-            perfilesInstruc.add((Docente)perfilNuevo);
+        }else if (perfilNuevo instanceof Docente){
+            perfilesdocentes.add((Docente)perfilNuevo);
+        }else {
+            perfilesExternos.add((TrabajadorExterno)perfilNuevo);
         }
         
         ConexionBD conectorBD= new ConexionBD();
         conectorBD.InsertarUsuario(perfilNuevo);
     }
     
-    public static Usuario buscarPerfil(Integer cedulaUsuario){
+    public static Usuario buscarPerfil(Integer carnetUsuario){
         for (Usuario usuario : perfilesBD) {
-            if (usuario.getCedula().equals(cedulaUsuario)) {
-                System.out.println("Cedula Encontrada");
+            if (usuario.getCarnet().equals(carnetUsuario)) {
+                System.out.println("Carnet Encontrado");
                 return usuario;
             }             
         }
-        System.out.println("Cedula no Encontrada");
+        System.out.println("Carnet no Encontrado");
         Estudiante nn= new Estudiante(); 
-        nn.setCedula(0);
+        nn.setCarnet(0);
         return nn;
     }
     
@@ -164,20 +187,20 @@ public class ControladorPerfiles {
         ControladorPerfiles.perfilesAdmin = perfilesAdmin;
     }
 
-    public static List<Docente> getPerfilesInstruc() {
-        return perfilesInstruc;
+    public static List<Docente> getPerfilesDocentes() {
+        return perfilesdocentes;
     }
 
-    public static void setPerfilesInstruc(List<Docente> perfilesInstruc) {
-        ControladorPerfiles.perfilesInstruc = perfilesInstruc;
+    public static void setPerfilesDocentes(List<Docente> perfilesDocentes) {
+        ControladorPerfiles.perfilesdocentes = perfilesDocentes;
     }
 
-    public static List<Estudiante> getPerfilesAlumno() {
-        return perfilesAlumno;
+    public static List<Estudiante> getPerfilesEstudiantes() {
+        return perfilesEstudiantes;
     }
 
-    public static void setPerfilesAlumno(List<Estudiante> perfilesAlumno) {
-        ControladorPerfiles.perfilesAlumno = perfilesAlumno;
+    public static void setPerfilesEstudiantes(List<Estudiante> perfilesAlumno) {
+        ControladorPerfiles.perfilesEstudiantes = perfilesAlumno;
     }
     
 }
