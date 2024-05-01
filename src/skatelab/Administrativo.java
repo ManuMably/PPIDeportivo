@@ -15,7 +15,7 @@ public class Administrativo extends Usuario {
         this.claveAdmin = claveAdmin;
     }
 
-    public Administrativo(String claveAdmin, Integer carnet, String nombres, String apellidos, String correo, Long celular, String contrasena, String respuestaSeguridad) {
+    public Administrativo(String claveAdmin, Integer carnet, String nombres, String apellidos, String correo, String celular, String contrasena, String respuestaSeguridad) {
         super(carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
         this.claveAdmin = claveAdmin;
     }
@@ -60,11 +60,11 @@ public class Administrativo extends Usuario {
         this.correo = correo;
     }
 
-    public Long getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(Long celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 

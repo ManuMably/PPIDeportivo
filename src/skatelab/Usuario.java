@@ -13,7 +13,7 @@ public abstract class Usuario {
     protected String nombres;
     protected String apellidos;
     protected String correo;
-    protected Long celular;
+    protected String celular;
     protected String contrasena;
     protected String respuestaSeguridad;
     
@@ -23,7 +23,7 @@ public abstract class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Integer carnet, String nombres, String apellidos, String correo, Long celular, String contrasena, String respuestaSeguridad   ) {
+    public Usuario(Integer carnet, String nombres, String apellidos, String correo, String celular, String contrasena, String respuestaSeguridad   ) {
         this.carnet = carnet;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -74,11 +74,11 @@ public abstract class Usuario {
         this.apellidos = apellidos;
     }
 
-    public Long getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(Long celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 

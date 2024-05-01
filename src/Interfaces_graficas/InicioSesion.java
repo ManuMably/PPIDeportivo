@@ -137,7 +137,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
             ControladorPerfiles.setSesionActualUsuario(ControladorPerfiles.buscarPerfil(cedulaIngresada));
             System.out.println(ControladorPerfiles.getSesionActualUsuario().getNombres());
-            if (ControladorPerfiles.getSesionActualUsuario().getCedula() == 0) {
+            if (ControladorPerfiles.getSesionActualUsuario().getCarnet()== 0) {
                 // Mostrar una ventana de alerta con un mensaje
                 JOptionPane.showMessageDialog(null, "No se Encontro la Cedula Ingresada, Verifica los Datos y vuelve a Ingresar");            
             }else{

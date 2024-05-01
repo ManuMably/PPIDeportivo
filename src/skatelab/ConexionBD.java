@@ -51,7 +51,7 @@ public class ConexionBD {
                     String nombres = rs.getString("nombres");
                     String apellidos = rs.getString("apellidos");
                     String correo = rs.getString("correo");
-                    Long celular = Long.parseLong(rs.getString("celular"));
+                    String celular = rs.getString("celular");
                     String contrasena = rs.getString("contrasena");
                     String respuestaSeguridad = rs.getString("respuestaSeguridad");                    
                     String programaMatriculado = rs.getString("programaMatriculado");
@@ -64,7 +64,7 @@ public class ConexionBD {
                     String nombres = rs.getString("nombres");
                     String apellidos = rs.getString("apellidos");
                     String correo = rs.getString("correo");
-                    Long celular = Long.parseLong(rs.getString("celular"));
+                    String celular = rs.getString("celular");
                     String contrasena = rs.getString("contrasena");
                     String respuestaSeguridad = rs.getString("respuestaSeguridad"); 
                     String claveAdmin = rs.getString("claveAdmin");
@@ -77,19 +77,20 @@ public class ConexionBD {
                     String nombres = rs.getString("nombres");
                     String apellidos = rs.getString("apellidos");
                     String correo = rs.getString("correo");
-                    Long celular = Long.parseLong(rs.getString("celular"));
+                    String celular = rs.getString("celular");
                     String contrasena = rs.getString("contrasena");
                     String respuestaSeguridad = rs.getString("respuestaSeguridad");
                     Boolean vinculado = rs.getBoolean("vinculado");
+                    String codigoDias = rs.getString("codigoDias");
                     
-                    Docente docenteBD = new Docente(vinculado, carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
+                    Docente docenteBD = new Docente(vinculado, codigoDias, carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
                     perfilesbdList.add(docenteBD);
                     }else {
                         Integer carnet = rs.getInt("carnet");
                         String nombres = rs.getString("nombres");
                         String apellidos = rs.getString("apellidos");
                         String correo = rs.getString("correo");
-                        Long celular = Long.parseLong(rs.getString("celular"));
+                        String celular = rs.getString("celular");
                         String contrasena = rs.getString("contrasena");
                         String respuestaSeguridad = rs.getString("respuestaSeguridad");
                         String ocupacion = rs.getString("ocupacion");
@@ -118,7 +119,7 @@ public class ConexionBD {
                 pstmt.setString(2, instancia.getNombres());
                 pstmt.setString(3, instancia.getApellidos());
                 pstmt.setString(4, instancia.getCorreo());
-                pstmt.setString(5, String.valueOf(instancia.getCelular()));
+                pstmt.setString(5, instancia.getCelular());
                 pstmt.setString(6, String.valueOf(instancia.getContrasena()));
                 pstmt.setString(7, instancia.getRespuestaSeguridad());    
                 pstmt.setString(8, ((Estudiante) instancia).getProgramaMatriculado());
@@ -148,7 +149,7 @@ public class ConexionBD {
             try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
-                String sql = "INSERT INTO usuarios (carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad, vinculado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO usuarios (carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad, vinculado, codigoDias) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
                 // Establecemos los valores de los parámetros en la sentencia SQL
@@ -156,10 +157,11 @@ public class ConexionBD {
                 pstmt.setString(2, instancia.getNombres());
                 pstmt.setString(3, instancia.getApellidos());
                 pstmt.setString(4, instancia.getCorreo());
-                pstmt.setString(5, String.valueOf(instancia.getCelular()));
+                pstmt.setString(5, instancia.getCelular());
                 pstmt.setString(6, String.valueOf(instancia.getContrasena()));
                 pstmt.setString(7, instancia.getRespuestaSeguridad());
                 pstmt.setBoolean(8, ((Docente) instancia).getVinculado());
+                pstmt.setString(9, ((Docente) instancia).getCodigoDias());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();
@@ -193,7 +195,7 @@ public class ConexionBD {
                 pstmt.setString(2, instancia.getNombres());
                 pstmt.setString(3, instancia.getApellidos());
                 pstmt.setString(4, instancia.getCorreo());
-                pstmt.setString(5, String.valueOf(instancia.getCelular()));
+                pstmt.setString(5, instancia.getCelular());
                 pstmt.setString(6, String.valueOf(instancia.getContrasena()));
                 pstmt.setString(7, instancia.getRespuestaSeguridad());
                 pstmt.setString(8, ((Administrativo) instancia).getClaveAdmin());
@@ -228,7 +230,7 @@ public class ConexionBD {
                 pstmt.setString(2, instancia.getNombres());
                 pstmt.setString(3, instancia.getApellidos());
                 pstmt.setString(4, instancia.getCorreo());
-                pstmt.setString(5, String.valueOf(instancia.getCelular()));
+                pstmt.setString(5, instancia.getCelular());
                 pstmt.setString(6, String.valueOf(instancia.getContrasena()));
                 pstmt.setString(7, instancia.getRespuestaSeguridad());
                 pstmt.setString(8, ((TrabajadorExterno) instancia).getOcupacion());
@@ -304,7 +306,7 @@ public class ConexionBD {
             try {
                 // Preparamos la conexión y la sentencia SQL para insertar los datos
                 con = DriverManager.getConnection(url, usuario, clave);
-                String sql = "UPDATE usuarios SET nombres= ?, apellidos = ?, correo = ?, celular = ?, contrasena = ?, respuestaSeguridad = ?, vinculado = ? WHERE carnet = ?";
+                String sql = "UPDATE usuarios SET nombres= ?, apellidos = ?, correo = ?, celular = ?, contrasena = ?, respuestaSeguridad = ?, vinculado = ?, codigoDias = ? WHERE carnet = ?";
                 PreparedStatement pstmt = con.prepareStatement(sql);
 
                 // Establecemos los valores de los parámetros en la sentencia SQL
@@ -316,7 +318,8 @@ public class ConexionBD {
                 pstmt.setString(5, String.valueOf(instancia.getContrasena()));
                 pstmt.setString(6, instancia.getRespuestaSeguridad());
                 pstmt.setBoolean(7, ((Docente) instancia).getVinculado());
-                pstmt.setInt(8, ((Docente) instancia).getCarnet());
+                pstmt.setString(8, ((Docente) instancia).getCodigoDias());
+                pstmt.setInt(9, ((Docente) instancia).getCarnet());
 
                 // Ejecutamos la sentencia SQL para insertar los datos
                 int filasAfectadas = pstmt.executeUpdate();

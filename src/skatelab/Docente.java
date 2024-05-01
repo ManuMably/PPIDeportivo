@@ -10,13 +10,14 @@ package skatelab;
  */
 public class Docente extends Usuario {
     private Boolean vinculado;
+    private String codigoDias;
 
     public Docente() {
     }
 
     
 
-    public Docente(Boolean vinculado, Integer carnet, String nombres, String apellidos, String correo, Long celular, String contrasena, String respuestaSeguridad) {
+    public Docente(Boolean vinculado, String codigoDias, Integer carnet, String nombres, String apellidos, String correo, String celular, String contrasena, String respuestaSeguridad) {
         super(carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
         this.vinculado = vinculado;
     }
@@ -28,6 +29,16 @@ public class Docente extends Usuario {
     public void setVinculado(Boolean vinculado) {
         this.vinculado = vinculado;
     }
+
+    public String getCodigoDias() {
+        return codigoDias;
+    }
+
+    public void setCodigoDias(String codigoDias) {
+        this.codigoDias = codigoDias;
+    }
+    
+    
 
     public Integer getCarnet() {
         return carnet;
@@ -61,11 +72,11 @@ public class Docente extends Usuario {
         this.correo = correo;
     }
 
-    public Long getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(Long celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 

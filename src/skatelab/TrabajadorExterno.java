@@ -14,7 +14,7 @@ public class TrabajadorExterno extends Usuario {
     public TrabajadorExterno() {
     }
 
-    public TrabajadorExterno(String ocupacion, Integer carnet, String nombres, String apellidos, String correo, Long celular, String contrasena, String respuestaSeguridad) {
+    public TrabajadorExterno(String ocupacion, Integer carnet, String nombres, String apellidos, String correo, String celular, String contrasena, String respuestaSeguridad) {
         super(carnet, nombres, apellidos, correo, celular, contrasena, respuestaSeguridad);
         this.ocupacion = ocupacion;
     }
@@ -59,11 +59,11 @@ public class TrabajadorExterno extends Usuario {
         this.correo = correo;
     }
 
-    public Long getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(Long celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
