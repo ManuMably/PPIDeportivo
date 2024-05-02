@@ -753,7 +753,7 @@ public class ConexionBD {
     // fin Escenarios CRUD:-------------------------------------------------------------------------------
     
     // CRUD ESCENarios y deportes de la lista en BD:------------------------------------------------------
-    public void InsertarEscenario(EscenarioDeportivo EscenarioDeportivo, Deporte deporteAgregar) {
+    public void InsertarDepAEscenario(EscenarioDeportivo EscenarioDeportivo, Deporte deporteAgregar) {
         String codigoDeporte = deporteAgregar.getCodigoDeporte();
         String codigoEscenario = EscenarioDeportivo.getCodigoEscenario();
         try {
@@ -776,6 +776,39 @@ public class ConexionBD {
             
         } catch (Exception e) {
             System.out.println("Error al conectar con la base de datos o al insertar datos: " + e.getMessage());
+        }
+    }
+    
+    public void eliminarDepAEscenario(EscenarioDeportivo escenarioBorrar, Deporte deporteEliminar){
+            String codigoEscenario = escenarioBorrar.getCodigoEscenario();
+            String codigoDeporte = deporteEliminar.getCodigoDeporte();
+        try {
+            con = DriverManager.getConnection(url, usuario, clave);
+            stmt = con.createStatement();
+            // Sentencia DELETE para eliminar el usuario con la cédula proporcionada
+            String sql = "DELETE FROM escenariodeporte WHERE codigoEscenario = ? AND codigoDeporte = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, codigoEscenario);
+            pstmt.setString(2, codigoDeporte);
+            
+
+            int filasAfectadas = pstmt.executeUpdate();
+            if (filasAfectadas > 0) {
+                System.out.println("escenario y deporte eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún escenario con el codigo proporcionado.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al conectar con la base de datos: " + e.getMessage());
+        } finally {
+            // Cerrar recursos
+            try {
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
         }
     }
     
