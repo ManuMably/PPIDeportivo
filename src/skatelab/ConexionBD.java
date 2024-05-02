@@ -510,4 +510,276 @@ public class ConexionBD {
         }
     }
     // Fin Eliminar datos BD: Usuarios-----------------------------------------------------
+    
+    // Deportes CRUD: ---------------------------------------------------------------------------------
+    public List cargarListaDeportes(){
+        List<Deporte> deportesbdList = new ArrayList<>();
+        try {
+            // preparamos el statement para solicitar los datos 
+            con = DriverManager.getConnection(url, usuario, clave);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM deportes");
+            rs.next();
+            do {   
+                String codigoDeporte = rs.getString("codigoDeporte");
+                String nombreDeporte = rs.getString("nombreDeporte");
+                Integer docenteEncargado = rs.getInt("carnetDocenteEncargado");
+                String exigencia = rs.getString("exigencia");
+                
+                Deporte deporteBD = new Deporte(codigoDeporte, nombreDeporte, docenteEncargado, exigencia);
+                deportesbdList.add(deporteBD);
+                
+            } while (rs.next());
+        }
+            catch (Exception e) {
+            System.out.println("Error al conectar con la base de datos: " + e.getMessage());
+        }return deportesbdList;
+        }
+    
+    public void InsertarDeporte(Deporte nuevoDeporte) {
+        try {
+             // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "INSERT INTO deportes (codigoDeporte, nombreDeporte, carnetDocenteEncargado, exigencia) VALUES (?, ?, ?, ?)";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                
+                pstmt.setString(1, nuevoDeporte.getCodigoDeporte());
+                pstmt.setString(2, nuevoDeporte.getNombreDeporte());
+                pstmt.setInt(3, nuevoDeporte.getDocenteEncargado());
+                pstmt.setString(4, nuevoDeporte.getExigencia());
+                
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han insertado correctamente.");
+                } else {
+                    System.out.println("No se han insertado datos.");
+                }
+            
+        } catch (Exception e) {
+            System.out.println("Error al conectar con la base de datos o al insertar datos: " + e.getMessage());
+        }
+    }
+    
+    public void actualizarDeporte(Deporte actualizaDeporte) {
+        
+        try {
+                // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "UPDATE deportes SET nombreDeporte = ?, carnetDocenteEncargado = ?, exigencia = ? WHERE codigoDeporte = ?";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+
+                // Establecemos los valores de los parámetros en la sentencia SQL
+                
+                pstmt.setString(1, actualizaDeporte.getNombreDeporte());
+                pstmt.setInt(2, actualizaDeporte.getDocenteEncargado());
+                pstmt.setString(3, actualizaDeporte.getExigencia());
+                pstmt.setString(4, actualizaDeporte.getCodigoDeporte());
+                
+
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han actualizado correctamente.");
+                } else {
+                    System.out.println("No se han actualizado datos.");
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al conectar con la base de datos o al actualizar datos: " + e.getMessage());
+            } finally {
+                // Cerramos los recursos
+                try {
+                    if (stmt != null) stmt.close();
+                    if (con != null) con.close();
+                } catch (SQLException e) {
+                    System.out.println("Error al cerrar la conexión: " + e.getMessage());
+                }
+            }   
+        
+    }
+    public void eliminarDeporte(Deporte deporteBorrar){
+            String codigoDeporte = deporteBorrar.getCodigoDeporte();
+        try {
+            con = DriverManager.getConnection(url, usuario, clave);
+            stmt = con.createStatement();
+            // Sentencia DELETE para eliminar el usuario con la cédula proporcionada
+            String sql = "DELETE FROM deportes WHERE codigoDeporte = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, codigoDeporte);
+
+            int filasAfectadas = pstmt.executeUpdate();
+            if (filasAfectadas > 0) {
+                System.out.println("deporte eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún deporte con el codigo proporcionado.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al conectar con la base de datos: " + e.getMessage());
+        } finally {
+            // Cerrar recursos
+            try {
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
+    }
+        
+    
+    // fin Deportes Acccesos: ----------------------------------------------------------------------------
+    
+    //Escenarios CRUD:------------------------------------------------------------------------------------
+    public List cargarListaEscenarios(){
+        List<EscenarioDeportivo> escenariosbdList = new ArrayList<>();
+        try {
+            // preparamos el statement para solicitar los datos 
+            con = DriverManager.getConnection(url, usuario, clave);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM escenariosdeportivos");
+            rs.next();
+            do {   //codigoEscenario	carnetDocenteEncargado	capacidadPersonas	horariosDisponibles
+                String codigoEscenario = rs.getString("codigoEscenario");
+                Integer carnetDocenteEncargado = rs.getInt("carnetDocenteEncargado");
+                Integer capacidadPersonas = rs.getInt("capacidadPersonas");
+                String horariosDisponibles = rs.getString("horariosDisponibles");
+                
+                EscenarioDeportivo escenarioBD = new EscenarioDeportivo(codigoEscenario, carnetDocenteEncargado, capacidadPersonas, horariosDisponibles);
+                escenariosbdList.add(escenarioBD);
+                
+            } while (rs.next());
+        }
+            catch (Exception e) {
+            System.out.println("Error al conectar con la base de datos: " + e.getMessage());
+        }return escenariosbdList;
+        }
+    
+    public void InsertarEscenario(EscenarioDeportivo nuevoEscenarioDeportivo) {
+        try {
+             // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "INSERT INTO escenariosdeportivos (codigoEscenario, carnetDocenteEncargado, capacidadPersonas, horariosDisponibles) VALUES (?, ?, ?, ?)";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                
+                pstmt.setString(1, nuevoEscenarioDeportivo.getCodigoEscenario());
+                pstmt.setInt(2, nuevoEscenarioDeportivo.getDocenteEncargado());
+                pstmt.setInt(3, nuevoEscenarioDeportivo.getCapacidadPersonas());
+                pstmt.setString(4, nuevoEscenarioDeportivo.getHorariosDisponibles());
+                
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han insertado correctamente.");
+                } else {
+                    System.out.println("No se han insertado datos.");
+                }
+            
+        } catch (Exception e) {
+            System.out.println("Error al conectar con la base de datos o al insertar datos: " + e.getMessage());
+        }
+    }
+    
+    public void actualizarEscenario(EscenarioDeportivo actualizaEscenario) {
+        
+        try {
+                // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "UPDATE escenariosdeportivos SET carnetDocenteEncargado = ?, capacidadPersonas = ?, horariosDisponibles = ? WHERE codigoEscenario = ?";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+
+                // Establecemos los valores de los parámetros en la sentencia SQL
+                
+                pstmt.setInt(1, actualizaEscenario.getDocenteEncargado());
+                pstmt.setInt(2, actualizaEscenario.getCapacidadPersonas());
+                pstmt.setString(3, actualizaEscenario.getHorariosDisponibles());
+                pstmt.setString(4, actualizaEscenario.getCodigoEscenario());
+                
+
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han actualizado correctamente.");
+                } else {
+                    System.out.println("No se han actualizado datos.");
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al conectar con la base de datos o al actualizar datos: " + e.getMessage());
+            } finally {
+                // Cerramos los recursos
+                try {
+                    if (stmt != null) stmt.close();
+                    if (con != null) con.close();
+                } catch (SQLException e) {
+                    System.out.println("Error al cerrar la conexión: " + e.getMessage());
+                }
+            }   
+        
+    }
+    
+    public void eliminarEscenario(EscenarioDeportivo escenarioBorrar){
+            String codigoEscenario = escenarioBorrar.getCodigoEscenario();
+        try {
+            con = DriverManager.getConnection(url, usuario, clave);
+            stmt = con.createStatement();
+            // Sentencia DELETE para eliminar el usuario con la cédula proporcionada
+            String sql = "DELETE FROM escenariosdeportivos WHERE codigoEscenario = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, codigoEscenario);
+
+            int filasAfectadas = pstmt.executeUpdate();
+            if (filasAfectadas > 0) {
+                System.out.println("escenario eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún escenario con el codigo proporcionado.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al conectar con la base de datos: " + e.getMessage());
+        } finally {
+            // Cerrar recursos
+            try {
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
+    }
+    // fin Escenarios CRUD:-------------------------------------------------------------------------------
+    
+    // CRUD ESCENarios y deportes de la lista en BD:------------------------------------------------------
+    public void InsertarEscenario(EscenarioDeportivo EscenarioDeportivo, Deporte deporteAgregar) {
+        String codigoDeporte = deporteAgregar.getCodigoDeporte();
+        String codigoEscenario = EscenarioDeportivo.getCodigoEscenario();
+        try {
+             // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "INSERT INTO escenariodeporte (codigoDeporte, codigoEscenario) VALUES (?, ?)";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                
+                pstmt.setString(1, codigoDeporte);
+                pstmt.setString(2, codigoEscenario);
+                
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han insertado correctamente.");
+                } else {
+                    System.out.println("No se han insertado datos.");
+                }
+            
+        } catch (Exception e) {
+            System.out.println("Error al conectar con la base de datos o al insertar datos: " + e.getMessage());
+        }
+    }
+    
+    // FIN CRUD ESCENarios y deportes de la lista en BD:--------------------------------------------------
+    
+    
 }
