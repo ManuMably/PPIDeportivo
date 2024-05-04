@@ -814,5 +814,67 @@ public class ConexionBD {
     
     // FIN CRUD ESCENarios y deportes de la lista en BD:--------------------------------------------------
     
+    //CRUD integrantesgrupos:-----------------------------------------------------------------------------
+    public void InsertarInteAGrupo(GruposDeportivos grupoDeportivo, Usuario usuarioAgregar) {
+        String codigoGrupo = grupoDeportivo.getCodigoGrupo();
+        Integer carnetUsuario = usuarioAgregar.getCarnet();
+        try {
+             // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "INSERT INTO integrantesgrupos (codigoGrupo, carnetIntegrante) VALUES (?, ?)";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                
+                pstmt.setString(1, codigoGrupo);
+                pstmt.setInt(2, carnetUsuario);
+                
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han insertado correctamente.");
+                } else {
+                    System.out.println("No se han insertado datos.");
+                }
+            
+        } catch (Exception e) {
+            System.out.println("Error al conectar con la base de datos o al insertar datos: " + e.getMessage());
+        }
+    }
+    
+    public void eliminarInteAGrupo(GruposDeportivos grupoEliminar, Usuario usuarioEliminar){
+            String codigoGrupo = grupoEliminar.getCodigoGrupo();
+            Integer carnetUsuario = usuarioEliminar.getCarnet();
+        try {
+            con = DriverManager.getConnection(url, usuario, clave);
+            stmt = con.createStatement();
+            // Sentencia DELETE para eliminar el usuario con la cédula proporcionada
+            String sql = "DELETE FROM integrantesgrupos WHERE codigoGrupo = ? AND carnetIntegrante = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, codigoGrupo);
+            pstmt.setInt(2, carnetUsuario);
+            
+
+            int filasAfectadas = pstmt.executeUpdate();
+            if (filasAfectadas > 0) {
+                System.out.println("escenario y deporte eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún escenario con el codigo proporcionado.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al conectar con la base de datos: " + e.getMessage());
+        } finally {
+            // Cerrar recursos
+            try {
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
+    }
+    
+    //FIN CRUD integrantesgrupos:-------------------------------------------------------------------------
+    
     
 }
