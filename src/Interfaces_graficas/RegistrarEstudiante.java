@@ -4,8 +4,8 @@
  */
 package Interfaces_graficas;
 
+import java.util.Objects;
 import javax.swing.JOptionPane;
-import skatelab.Administrativo;
 import skatelab.Estudiante;
 import skatelab.ControladorPerfiles;
 
@@ -13,12 +13,12 @@ import skatelab.ControladorPerfiles;
  *
  * @author ROGER
  */
-public class RegistrarAdministrativo extends javax.swing.JFrame {
+public class RegistrarEstudiante extends javax.swing.JFrame {
 
     /**
-     * Creates new form RegistrarAdministrativo
+     * Creates new form RegistrarAlumno
      */
-    public RegistrarAdministrativo() {
+    public RegistrarEstudiante() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -32,33 +32,33 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        I_Volver = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         btn_Volver = new javax.swing.JButton();
-        I_RegistrarA = new javax.swing.JLabel();
-        lbl_RegAdmin = new javax.swing.JLabel();
+        I_RegistAlumn = new javax.swing.JLabel();
+        lbl_RegistAlumn = new javax.swing.JLabel();
         lbl_Cedula = new javax.swing.JLabel();
         lbl_Contrasena = new javax.swing.JLabel();
         lbl_Nombres = new javax.swing.JLabel();
         lbl_Apellidos = new javax.swing.JLabel();
         lbl_Celular = new javax.swing.JLabel();
         lbl_Correo = new javax.swing.JLabel();
-        lbl_PregSeg = new javax.swing.JLabel();
-        lbl_RespSeg = new javax.swing.JLabel();
-        lbl_SegundaContras = new javax.swing.JLabel();
+        lbl_Pregunta = new javax.swing.JLabel();
+        lbl_Respuesta = new javax.swing.JLabel();
+        lbl_ProgramaM = new javax.swing.JLabel();
         txt_Cedula = new javax.swing.JTextField();
         txt_Contrasena = new javax.swing.JTextField();
         txt_Nombres = new javax.swing.JTextField();
         txt_Apellidos = new javax.swing.JTextField();
         txt_Celular = new javax.swing.JTextField();
         txt_Correo = new javax.swing.JTextField();
-        txt_RespSeg = new javax.swing.JTextField();
-        txt_ClaveAdmin = new javax.swing.JTextField();
-        btn_Registrar = new javax.swing.JButton();
         ListaPreguntas = new javax.swing.JComboBox<>();
+        txt_Respuesta = new javax.swing.JTextField();
+        txt_ProgramaMatr = new javax.swing.JTextField();
+        btn_Registrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        I_Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/volver.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/volver.png"))); // NOI18N
 
         btn_Volver.setText("Volver");
         btn_Volver.addActionListener(new java.awt.event.ActionListener() {
@@ -67,10 +67,10 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
             }
         });
 
-        I_RegistrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/registrarPrf.JPG"))); // NOI18N
+        I_RegistAlumn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/registrarPrf.JPG"))); // NOI18N
 
-        lbl_RegAdmin.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lbl_RegAdmin.setText("Registrar Administrativo");
+        lbl_RegistAlumn.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lbl_RegistAlumn.setText("Registrar Estudiante");
 
         lbl_Cedula.setText("Cedula:");
 
@@ -84,32 +84,29 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
 
         lbl_Correo.setText("Correo:");
 
-        lbl_PregSeg.setText("Pregunta Seguridad:");
+        lbl_Pregunta.setText("Pregunta Seguridad:");
 
-        lbl_RespSeg.setText("Respuesta Seguridad:");
+        lbl_Respuesta.setText("Respuesta Seguridad:");
 
-        lbl_SegundaContras.setText("Clave Administrador:");
+        lbl_ProgramaM.setText("Programa Matriculado:");
 
-        txt_Cedula.setText("Ingrese Cedula");
+        txt_Cedula.setText("IngresaCedula");
 
-        txt_Contrasena.setText("Ingrese Contraseña");
-        txt_Contrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_ContrasenaActionPerformed(evt);
-            }
-        });
+        txt_Contrasena.setText("IngresaContraseña");
 
-        txt_Nombres.setText("Ingrese Nombres");
+        txt_Nombres.setText("IngresaNombres");
 
-        txt_Apellidos.setText("Ingrese Apellidos");
+        txt_Apellidos.setText("IngresaApellidos");
 
-        txt_Celular.setText("Ingrese Celular");
+        txt_Celular.setText("IngresaCelular");
 
-        txt_Correo.setText("Ingrese Correo");
+        txt_Correo.setText("IngresaCorreo");
 
-        txt_RespSeg.setText("Ingrese Respuesta");
+        ListaPreguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre Mascota?", "color Favorito?", "nombre de la madre?", "libro preferido" }));
 
-        txt_ClaveAdmin.setText("Ingrese Clave Admin");
+        txt_Respuesta.setText("IngresaRespuesta");
+
+        txt_ProgramaMatr.setText("IngresaProgramaMatriculado");
 
         btn_Registrar.setText("Registrar");
         btn_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,50 +115,53 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
             }
         });
 
-        ListaPreguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre Mascota?", "color Favorito?", "nombre de la madre?", "libro preferido" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(I_Volver)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_Volver)
-                .addGap(36, 36, 36)
+                .addGap(72, 72, 72)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(I_RegistrarA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_RegAdmin))
+                        .addComponent(I_RegistAlumn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_RegistAlumn))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Cedula)
-                            .addComponent(lbl_Contrasena)
-                            .addComponent(lbl_Nombres)
-                            .addComponent(lbl_Apellidos)
-                            .addComponent(lbl_Celular)
-                            .addComponent(lbl_Correo)
-                            .addComponent(lbl_PregSeg)
-                            .addComponent(lbl_SegundaContras)
-                            .addComponent(lbl_RespSeg))
-                        .addGap(88, 88, 88)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(lbl_Cedula)
+                                    .addGap(23, 23, 23))
+                                .addComponent(lbl_Nombres)
+                                .addComponent(lbl_Contrasena)
+                                .addComponent(lbl_Apellidos)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_Correo)
+                                    .addComponent(lbl_Celular)))
+                            .addComponent(lbl_Pregunta)
+                            .addComponent(lbl_Respuesta)
+                            .addComponent(lbl_ProgramaM))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_Contrasena)
-                            .addComponent(txt_Nombres)
-                            .addComponent(txt_Apellidos)
-                            .addComponent(txt_Celular)
+                            .addComponent(txt_Respuesta)
+                            .addComponent(txt_ProgramaMatr, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                            .addComponent(ListaPreguntas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txt_Correo)
-                            .addComponent(txt_RespSeg)
-                            .addComponent(txt_ClaveAdmin)
-                            .addComponent(txt_Cedula)
-                            .addComponent(ListaPreguntas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                            .addComponent(txt_Celular)
+                            .addComponent(txt_Apellidos)
+                            .addComponent(txt_Nombres)
+                            .addComponent(txt_Contrasena)
+                            .addComponent(txt_Cedula))))
+                .addContainerGap(72, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_Registrar)
-                .addGap(298, 298, 298))
+                .addGap(310, 310, 310))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,23 +173,23 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(I_RegistrarA)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(lbl_RegAdmin))
-                            .addComponent(I_Volver))))
-                .addGap(18, 18, 18)
+                            .addComponent(I_RegistAlumn)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lbl_RegistAlumn)))
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_Cedula)
-                    .addComponent(txt_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_Cedula))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_Contrasena)
-                    .addComponent(txt_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_Contrasena))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_Nombres)
-                    .addComponent(txt_Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_Nombres))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,27 +204,23 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
                     .addComponent(lbl_Correo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_PregSeg)
-                    .addComponent(ListaPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ListaPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_Pregunta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_RespSeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_RespSeg))
+                    .addComponent(txt_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_Respuesta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_ClaveAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_SegundaContras))
-                .addGap(49, 49, 49)
+                    .addComponent(txt_ProgramaMatr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_ProgramaM))
+                .addGap(18, 18, 18)
                 .addComponent(btn_Registrar)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_ContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ContrasenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_ContrasenaActionPerformed
 
     private void btn_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VolverActionPerformed
         // TODO add your handling code here:
@@ -241,18 +237,18 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
             
             Integer carnetIngresado = Integer.parseInt(txt_Cedula.getText());
             String contrasenaIngresada = txt_Contrasena.getText();
-            String respuestaSIngresada = txt_RespSeg.getText();
+            String respuestaSIngresada = txt_Respuesta.getText();
             String nombresIngresados = txt_Nombres.getText();
             String apellidosIngresados = txt_Apellidos.getText();
             String celularIngresados = txt_Celular.getText();
             String correoIngresados = txt_Correo.getText();
-            String claveAdmin = txt_ClaveAdmin.getText();
+            String programaIngresados = txt_ProgramaMatr.getText();
             
-            Administrativo nuevoAdministrativo = new Administrativo(claveAdmin, carnetIngresado, nombresIngresados, apellidosIngresados, correoIngresados, celularIngresados, contrasenaIngresada, respuestaSIngresada);
+            Estudiante nuevoEstudiante = new Estudiante(programaIngresados, carnetIngresado, nombresIngresados, apellidosIngresados, correoIngresados, celularIngresados, contrasenaIngresada, respuestaSIngresada);
             
-            System.out.println(nuevoAdministrativo);
+            System.out.println(nuevoEstudiante);
             
-            ControladorPerfiles.registrarPerfil(nuevoAdministrativo);
+            ControladorPerfiles.registrarPerfil(nuevoEstudiante);
             JOptionPane.showMessageDialog(null, "Perfil Registrado Correctamente");
             
             //Cerramos la ventana Actual
@@ -285,47 +281,48 @@ public class RegistrarAdministrativo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarAdministrativo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarAdministrativo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarAdministrativo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarAdministrativo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarAdministrativo().setVisible(true);
+                new RegistrarEstudiante().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel I_RegistrarA;
-    private javax.swing.JLabel I_Volver;
+    private javax.swing.JLabel I_RegistAlumn;
     private javax.swing.JComboBox<String> ListaPreguntas;
     private javax.swing.JButton btn_Registrar;
     private javax.swing.JButton btn_Volver;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_Apellidos;
     private javax.swing.JLabel lbl_Cedula;
     private javax.swing.JLabel lbl_Celular;
     private javax.swing.JLabel lbl_Contrasena;
     private javax.swing.JLabel lbl_Correo;
     private javax.swing.JLabel lbl_Nombres;
-    private javax.swing.JLabel lbl_PregSeg;
-    private javax.swing.JLabel lbl_RegAdmin;
-    private javax.swing.JLabel lbl_RespSeg;
-    private javax.swing.JLabel lbl_SegundaContras;
+    private javax.swing.JLabel lbl_Pregunta;
+    private javax.swing.JLabel lbl_ProgramaM;
+    private javax.swing.JLabel lbl_RegistAlumn;
+    private javax.swing.JLabel lbl_Respuesta;
     private javax.swing.JTextField txt_Apellidos;
     private javax.swing.JTextField txt_Cedula;
     private javax.swing.JTextField txt_Celular;
-    private javax.swing.JTextField txt_ClaveAdmin;
     private javax.swing.JTextField txt_Contrasena;
     private javax.swing.JTextField txt_Correo;
     private javax.swing.JTextField txt_Nombres;
-    private javax.swing.JTextField txt_RespSeg;
+    private javax.swing.JTextField txt_ProgramaMatr;
+    private javax.swing.JTextField txt_Respuesta;
     // End of variables declaration//GEN-END:variables
 }

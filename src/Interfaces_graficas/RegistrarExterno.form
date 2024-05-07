@@ -25,58 +25,48 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="I_Volver" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btn_Volver" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="I_RegistAlumn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbl_RegistAlumn" min="-2" max="-2" attributes="0"/>
+                      <Component id="I_RegistrarA" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lbl_RegAdmin" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="lbl_Cedula" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lbl_Nombres" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_Contrasena" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_Apellidos" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="lbl_Correo" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_Celular" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="lbl_Pregunta" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_Respuesta" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_Ocupacion" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_Cedula" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_Contrasena" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_Nombres" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_Apellidos" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_Celular" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_Correo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_PregSeg" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_SegundaContras" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_RespSeg" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txt_Ocupacion" min="-2" pref="119" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txt_Respuesta" min="-2" pref="119" max="-2" attributes="0"/>
-                              <Component id="txt_Nombres" min="-2" pref="119" max="-2" attributes="0"/>
-                              <Component id="txt_Apellidos" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
-                              <Component id="txt_Celular" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
-                              <Component id="txt_Correo" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
-                              <Component id="ListaPreguntas" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="txt_Contrasena" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
-                          <Component id="txt_Cedula" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txt_Contrasena" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_Nombres" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_Apellidos" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_Celular" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_Correo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_RespSeg" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_Ocupacion" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_Cedula" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ListaPreguntas" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="112" max="32767" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="btn_Registrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="310" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,29 +81,29 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="I_RegistAlumn" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="I_RegistrarA" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="lbl_RegAdmin" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="I_Volver" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="lbl_RegistAlumn" min="-2" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txt_Cedula" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbl_Cedula" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_Cedula" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txt_Contrasena" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbl_Contrasena" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_Contrasena" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txt_Nombres" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbl_Nombres" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_Nombres" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -132,28 +122,28 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbl_PregSeg" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ListaPreguntas" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbl_Pregunta" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txt_Respuesta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbl_Respuesta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_RespSeg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_RespSeg" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txt_Ocupacion" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbl_Ocupacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_SegundaContras" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Component id="btn_Registrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="67" max="32767" attributes="0"/>
+              <EmptySpace pref="78" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="I_Volver">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Interfaces_graficas/Imagenes/volver.png"/>
@@ -168,19 +158,19 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VolverActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="I_RegistAlumn">
+    <Component class="javax.swing.JLabel" name="I_RegistrarA">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Interfaces_graficas/Imagenes/registrarPrf.JPG"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_RegistAlumn">
+    <Component class="javax.swing.JLabel" name="lbl_RegAdmin">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="36" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Registrar Alumno"/>
+        <Property name="text" type="java.lang.String" value="Registrar Trabajador Externo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_Cedula">
@@ -213,74 +203,62 @@
         <Property name="text" type="java.lang.String" value="Correo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Pregunta">
+    <Component class="javax.swing.JLabel" name="lbl_PregSeg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pregunta Seguridad:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Respuesta">
+    <Component class="javax.swing.JLabel" name="lbl_RespSeg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Respuesta Seguridad:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Ocupacion">
+    <Component class="javax.swing.JLabel" name="lbl_SegundaContras">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ocupacion:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Cedula">
       <Properties>
-        <Property name="text" type="java.lang.String" value="IngresaCedula"/>
+        <Property name="text" type="java.lang.String" value="Ingrese Cedula"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Contrasena">
       <Properties>
-        <Property name="text" type="java.lang.String" value="IngresaContrase&#xf1;a"/>
+        <Property name="text" type="java.lang.String" value="Ingrese Contrase&#xf1;a"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_ContrasenaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Nombres">
       <Properties>
-        <Property name="text" type="java.lang.String" value="IngresaNombres"/>
+        <Property name="text" type="java.lang.String" value="Ingrese Nombres"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Apellidos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="IngresaApellidos"/>
+        <Property name="text" type="java.lang.String" value="Ingrese Apellidos"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Celular">
       <Properties>
-        <Property name="text" type="java.lang.String" value="IngresaCelular"/>
+        <Property name="text" type="java.lang.String" value="Ingrese Celular"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Correo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="IngresaCorreo"/>
+        <Property name="text" type="java.lang.String" value="Ingrese Correo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="ListaPreguntas">
+    <Component class="javax.swing.JTextField" name="txt_RespSeg">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt_Respuesta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="IngresaRespuesta"/>
+        <Property name="text" type="java.lang.String" value="Ingrese Respuesta"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Ocupacion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="IngresaOcupacion"/>
+        <Property name="text" type="java.lang.String" value="Ingrese Ocup&#xe0;cion"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_Registrar">
@@ -290,6 +268,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_RegistrarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="ListaPreguntas">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Nombre Mascota?&quot;, &quot;color Favorito?&quot;, &quot;nombre de la madre?&quot;, &quot;libro preferido&quot; })" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

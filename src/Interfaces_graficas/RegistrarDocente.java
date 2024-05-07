@@ -13,12 +13,12 @@ import skatelab.Docente;
  *
  * @author ROGER
  */
-public class RegistrarInstructor extends javax.swing.JFrame {
+public class RegistrarDocente extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistrarInstructor
      */
-    public RegistrarInstructor() {
+    public RegistrarDocente() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -32,6 +32,7 @@ public class RegistrarInstructor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         I_Volver = new javax.swing.JLabel();
         btn_Volver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -62,6 +63,9 @@ public class RegistrarInstructor extends javax.swing.JFrame {
         lbl_PreguntSeg = new javax.swing.JLabel();
         lbl_RespSeg = new javax.swing.JLabel();
         btn_Registrar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        ch_si = new javax.swing.JCheckBox();
+        ch_no = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,12 +81,12 @@ public class RegistrarInstructor extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/registrarPrf.JPG"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setText("Registrar Instructor");
+        jLabel2.setText("Registrar Docente");
 
         PanelDiasDisp.setBackground(new java.awt.Color(204, 255, 255));
 
         lbl_DiasDisp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbl_DiasDisp.setText("Dias Disponibles:");
+        lbl_DiasDisp.setText("Dias Trabajo:");
 
         Ch_lunes.setText("Lunes");
 
@@ -158,7 +162,7 @@ public class RegistrarInstructor extends javax.swing.JFrame {
 
         txt_RespuestaSeg.setText("Ingrese Respuesta");
 
-        listaPreguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listaPreguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre Mascota?", "color Favorito?", "nombre de la madre?", "libro preferido" }));
 
         lbl_Contrasena.setText("Contraseña:");
 
@@ -178,6 +182,22 @@ public class RegistrarInstructor extends javax.swing.JFrame {
         btn_Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_RegistrarActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Vinculado:");
+
+        ch_si.setText("Si");
+        ch_si.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ch_siActionPerformed(evt);
+            }
+        });
+
+        ch_no.setText("No");
+        ch_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ch_noActionPerformed(evt);
             }
         });
 
@@ -209,7 +229,8 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                                     .addComponent(lbl_Celular)
                                     .addComponent(lbl_Correo)
                                     .addComponent(lbl_PreguntSeg)
-                                    .addComponent(lbl_RespSeg))
+                                    .addComponent(lbl_RespSeg)
+                                    .addComponent(jLabel3))
                                 .addGap(70, 70, 70)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txt_Celular)
@@ -219,8 +240,12 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                                     .addComponent(txt_contrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                                     .addComponent(txt_cedula)
                                     .addComponent(txt_RespuestaSeg)
-                                    .addComponent(listaPreguntas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                                    .addComponent(listaPreguntas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(ch_si)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ch_no)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                         .addComponent(PanelDiasDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36))))
         );
@@ -275,9 +300,14 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_RespuestaSeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_RespSeg))
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(ch_si)
+                    .addComponent(ch_no))
+                .addGap(57, 57, 57)
                 .addComponent(btn_Registrar)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -300,13 +330,18 @@ public class RegistrarInstructor extends javax.swing.JFrame {
         // TODO add your handling code here:
             try {
 
-                Integer cedulaIngresada = Integer.parseInt(txt_cedula.getText());
-                Integer contrasenaIngresada = Integer.parseInt(txt_contrasena.getText());
+                Integer carnetIngresado = Integer.parseInt(txt_cedula.getText());
+                String contrasenaIngresada = txt_contrasena.getText();
                 String respuestaSIngresada = txt_RespuestaSeg.getText();
                 String nombresIngresados = txt_Nombres.getText();
                 String apellidosIngresados = txt_Apellidos.getText();
-                Long celularIngresados = Long.parseLong(txt_Celular.getText());
+                String celularIngresados = txt_Celular.getText();
                 String correoIngresados = txt_Correo.getText();
+                Boolean vinculadoBoolean=false;
+                
+                if (ch_si.isSelected()) {
+                    vinculadoBoolean= true;                    
+                }
                 
                 boolean estadoLunes = Ch_lunes.isSelected();
                 boolean estadoMartes = Ch_Martes.isSelected();
@@ -315,7 +350,7 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                 boolean estadoViernes = Ch_Viernes.isSelected();
                 boolean estadoSabado = Ch_Sabado.isSelected();
                 boolean estadoDomingo = Ch_Domingo.isSelected();
-                String diasDisp = "";
+                String codigoDias = "";
                 
                 boolean[] codigoDiasDisp = new boolean[7];
                 codigoDiasDisp[0]=estadoLunes;
@@ -327,17 +362,17 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                 codigoDiasDisp[6]=estadoDomingo;
                 for (int i = 0; i < 7; i++) {
                     if (codigoDiasDisp[i]== true) {
-                        diasDisp = diasDisp + (i+1);
+                        codigoDias = codigoDias + (i+1);
                     }
                     
                 }
                 
 
-                Docente nuevoInstructor = new Docente(cedulaIngresada, contrasenaIngresada, respuestaSIngresada, nombresIngresados, apellidosIngresados, celularIngresados, correoIngresados, diasDisp);
+                Docente nuevoDocente = new Docente(vinculadoBoolean, codigoDias, carnetIngresado, codigoDias, codigoDias, codigoDias, codigoDias, codigoDias, respuestaSIngresada);
 
-                System.out.println(nuevoInstructor.getDiasDisp());
+                System.out.println(nuevoDocente.getCodigoDias());
 
-                ControladorPerfiles.registrarPerfil(nuevoInstructor);
+                ControladorPerfiles.registrarPerfil(nuevoDocente);
                 JOptionPane.showMessageDialog(null, "Perfil Registrado Correctamente");
 
                 //Cerramos la ventana Actual
@@ -352,6 +387,14 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Debes Ingresar Por lo Menos Un Dato Correcto, Verifica los datos ingresados sean Validos");
             }
     }//GEN-LAST:event_btn_RegistrarActionPerformed
+
+    private void ch_siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ch_siActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ch_siActionPerformed
+
+    private void ch_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ch_noActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ch_noActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,20 +413,21 @@ public class RegistrarInstructor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarInstructor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarInstructor().setVisible(true);
+                new RegistrarDocente().setVisible(true);
             }
         });
     }
@@ -400,8 +444,12 @@ public class RegistrarInstructor extends javax.swing.JFrame {
     private javax.swing.JPanel PanelDiasDisp;
     private javax.swing.JButton btn_Registrar;
     private javax.swing.JButton btn_Volver;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox ch_no;
+    private javax.swing.JCheckBox ch_si;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lbl_Apellidos;
     private javax.swing.JLabel lbl_Cedula;
     private javax.swing.JLabel lbl_Celular;

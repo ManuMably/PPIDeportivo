@@ -43,7 +43,7 @@ public class ConexionBD {
             // preparamos el statement para solicitar los datos 
             con = DriverManager.getConnection(url, usuario, clave);
             stmt = con.createStatement();
-            rs = stmt.executeQuery("SELECT * FROM usuario");
+            rs = stmt.executeQuery("SELECT * FROM usuarios");
             rs.next();
             do {
                 if (rs.getString("programaMatriculado")!= null) {

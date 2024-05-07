@@ -18,13 +18,13 @@ public class SkateLab {
         
         
         
-        // Primero cargamos los Datos a las Listas del Programa
-        //ControladorPerfiles.cargarOrganizarPerfiles();
+        //Primero cargamos los Datos a las Listas del Programa
+        ControladorPerfiles.cargarOrganizarPerfiles();
         
-        //System.out.println(ControladorPerfiles.getSesionActualUsuario());        
+        System.out.println(ControladorPerfiles.getSesionActualUsuario());        
          // creamos una nueva instancia de la ventana Iniciar Sesion para Recorrer las funciones del Programa
-                //InicioSesion ventanaInicioSesion = new InicioSesion();
-                //ventanaInicioSesion.setVisible(true);
+                InicioSesion ventanaInicioSesion = new InicioSesion();
+                ventanaInicioSesion.setVisible(true);
                 
         //---------------------------------------------------------------------------------------------------------------------------
         

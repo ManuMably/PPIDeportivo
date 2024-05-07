@@ -310,13 +310,13 @@ public class Perfiles extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        Integer valorCedulaSesion = ControladorPerfiles.getSesionActualUsuario().getCedula();
+        Integer valorCedulaSesion = ControladorPerfiles.getSesionActualUsuario().getCarnet();
         campo_Cedula.setText(String.valueOf(valorCedulaSesion));
         String valorNombre = ControladorPerfiles.getSesionActualUsuario().getNombres();
         campo_Nombres.setText(valorNombre);
         String valorApellido = ControladorPerfiles.getSesionActualUsuario().getApellidos();
         campo_Apellidos.setText(valorApellido);
-        String valorCelular = String.valueOf(ControladorPerfiles.getSesionActualUsuario().getCelular());
+        String valorCelular = ControladorPerfiles.getSesionActualUsuario().getCelular();
         campo_Celular.setText(valorCelular);
         String valorCorreo = ControladorPerfiles.getSesionActualUsuario().getCorreo();
         campo_Correo.setText(valorCorreo);

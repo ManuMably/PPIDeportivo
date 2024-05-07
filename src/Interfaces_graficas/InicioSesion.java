@@ -51,7 +51,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
         imagenLogoInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/Logo.png"))); // NOI18N
 
-        lbl_IngresarCedula.setText("Ingresar Cedula:");
+        lbl_IngresarCedula.setText("Ingresar Carnet:");
 
         lbl_IngresarContrasena.setText("Ingresar Contraseña:");
 
@@ -95,7 +95,7 @@ public class InicioSesion extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btn_Entrar)
                                     .addComponent(txt_IngresarContrasena))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(imagenLogoInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -129,13 +129,13 @@ public class InicioSesion extends javax.swing.JFrame {
         
         try {
             System.out.println(ControladorPerfiles.getSesionActualUsuario());
-            Integer cedulaIngresada = Integer.parseInt(txt_IngresarCedula.getText());
-            Integer contrasenaIngresada = Integer.parseInt(txt_IngresarContrasena.getText());
+            Integer carnetIngresado = Integer.parseInt(txt_IngresarCedula.getText());
+            String contrasenaIngresada = txt_IngresarContrasena.getText();
                         
             System.out.println(contrasenaIngresada);
             System.out.println(ControladorPerfiles.getSesionActualUsuario());
 
-            ControladorPerfiles.setSesionActualUsuario(ControladorPerfiles.buscarPerfil(cedulaIngresada));
+            ControladorPerfiles.setSesionActualUsuario(ControladorPerfiles.buscarPerfil(carnetIngresado));
             System.out.println(ControladorPerfiles.getSesionActualUsuario().getNombres());
             if (ControladorPerfiles.getSesionActualUsuario().getCarnet()== 0) {
                 // Mostrar una ventana de alerta con un mensaje

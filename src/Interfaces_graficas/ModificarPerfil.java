@@ -47,7 +47,7 @@ public class ModificarPerfil extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txt_RespSeg = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txt_Contrasena2 = new javax.swing.JTextField();
+        txt_ClaveAdmin = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         listaPreguntas = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -59,6 +59,8 @@ public class ModificarPerfil extends javax.swing.JFrame {
         txt_Cedula = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_Ocupacion = new javax.swing.JTextField();
+        txt_ProgramaM = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         panel_DiasDisp = new javax.swing.JPanel();
         lbl_DiasDisp = new javax.swing.JLabel();
         ch_Lunes = new javax.swing.JCheckBox();
@@ -68,6 +70,9 @@ public class ModificarPerfil extends javax.swing.JFrame {
         ch_Viernes = new javax.swing.JCheckBox();
         ch_Sabado = new javax.swing.JCheckBox();
         ch_Domingo = new javax.swing.JCheckBox();
+        ch_Si = new javax.swing.JCheckBox();
+        ch_No = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
         btn_Modificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,15 +120,15 @@ public class ModificarPerfil extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Pregunta Seguridad:");
 
-        txt_Contrasena2.setText("Ingrese Contraseña 2");
+        txt_ClaveAdmin.setText("Ingrese Contraseña 2");
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Respuesta Seguridad:");
 
-        listaPreguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listaPreguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre Mascota?", "color Favorito?", "nombre de la madre?", "libro preferido" }));
 
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Contraseña 2:");
+        jLabel12.setText("claveAdmin");
 
         txt_Contrasena.setText("Ingrese Contraseña");
 
@@ -144,6 +149,11 @@ public class ModificarPerfil extends javax.swing.JFrame {
         jLabel2.setText("Ocupacion:");
 
         txt_Ocupacion.setText("Ingrese Ocupacion");
+
+        txt_ProgramaM.setText("Ingrese Programa Matriculado");
+
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("ProgramaMatriculado:");
 
         javax.swing.GroupLayout panel_DatosLayout = new javax.swing.GroupLayout(panel_Datos);
         panel_Datos.setLayout(panel_DatosLayout);
@@ -174,12 +184,14 @@ public class ModificarPerfil extends javax.swing.JFrame {
                         .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_Contrasena2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(txt_ClaveAdmin)
                             .addComponent(txt_RespSeg)
-                            .addComponent(txt_Ocupacion)))))
+                            .addComponent(txt_Ocupacion)
+                            .addComponent(txt_ProgramaM)))))
         );
         panel_DatosLayout.setVerticalGroup(
             panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,20 +230,24 @@ public class ModificarPerfil extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Contrasena2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_ClaveAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txt_Ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13)
+                    .addComponent(txt_ProgramaM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         panel_DiasDisp.setBackground(new java.awt.Color(204, 255, 204));
         panel_DiasDisp.setForeground(new java.awt.Color(0, 0, 0));
 
         lbl_DiasDisp.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_DiasDisp.setText("Dias Disponibles: (solo para Instructores)");
+        lbl_DiasDisp.setText("Dias Disponibles: (solo para Docentes)");
 
         ch_Lunes.setForeground(new java.awt.Color(0, 0, 0));
         ch_Lunes.setText("Lunes");
@@ -254,6 +270,15 @@ public class ModificarPerfil extends javax.swing.JFrame {
         ch_Domingo.setForeground(new java.awt.Color(0, 0, 0));
         ch_Domingo.setText("Domingo");
 
+        ch_Si.setForeground(new java.awt.Color(0, 0, 0));
+        ch_Si.setText("Si");
+
+        ch_No.setForeground(new java.awt.Color(0, 0, 0));
+        ch_No.setText("No");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Vinculado:");
+
         javax.swing.GroupLayout panel_DiasDispLayout = new javax.swing.GroupLayout(panel_DiasDisp);
         panel_DiasDisp.setLayout(panel_DiasDispLayout);
         panel_DiasDispLayout.setHorizontalGroup(
@@ -261,14 +286,26 @@ public class ModificarPerfil extends javax.swing.JFrame {
             .addGroup(panel_DiasDispLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel_DiasDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_DiasDisp)
-                    .addComponent(ch_Lunes)
-                    .addComponent(ch_Martes)
-                    .addComponent(ch_Miercoles)
-                    .addComponent(ch_Jueves)
-                    .addComponent(ch_Viernes)
-                    .addComponent(ch_Sabado)
-                    .addComponent(ch_Domingo))
+                    .addGroup(panel_DiasDispLayout.createSequentialGroup()
+                        .addGroup(panel_DiasDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ch_Jueves)
+                            .addComponent(ch_Viernes))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panel_DiasDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(panel_DiasDispLayout.createSequentialGroup()
+                                .addComponent(ch_Si)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ch_No))))
+                    .addGroup(panel_DiasDispLayout.createSequentialGroup()
+                        .addGroup(panel_DiasDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_DiasDisp)
+                            .addComponent(ch_Lunes)
+                            .addComponent(ch_Martes)
+                            .addComponent(ch_Miercoles)
+                            .addComponent(ch_Sabado)
+                            .addComponent(ch_Domingo))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_DiasDispLayout.setVerticalGroup(
@@ -283,9 +320,17 @@ public class ModificarPerfil extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ch_Miercoles)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ch_Jueves)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ch_Viernes)
+                .addGroup(panel_DiasDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_DiasDispLayout.createSequentialGroup()
+                        .addComponent(ch_Jueves)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ch_Viernes))
+                    .addGroup(panel_DiasDispLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel_DiasDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ch_Si)
+                            .addComponent(ch_No))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ch_Sabado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,23 +352,24 @@ public class ModificarPerfil extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(panel_Datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(panel_DiasDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Volver)
-                        .addGap(67, 67, 67)
-                        .addComponent(I_ModPerf)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_ModificarPerf))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                        .addComponent(panel_DiasDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
-                        .addComponent(btn_Modificar)))
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Modificar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_Volver)
+                .addGap(67, 67, 67)
+                .addComponent(I_ModPerf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_ModificarPerf)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -343,16 +389,16 @@ public class ModificarPerfil extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(lbl_ModificarPerf)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(panel_Datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(panel_DiasDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_Modificar)
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addComponent(panel_DiasDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Modificar)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -369,9 +415,9 @@ public class ModificarPerfil extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        if (usuarioEnviado.getCedula() == null) {
-            txt_Cedula.setText(String.valueOf(ControladorPerfiles.getSesionActualUsuario().getCedula()));
-            txt_Contrasena.setText(String.valueOf(ControladorPerfiles.getSesionActualUsuario().getContrasena()));
+        if (usuarioEnviado.getCarnet()== null) {
+            txt_Cedula.setText(String.valueOf(ControladorPerfiles.getSesionActualUsuario().getCarnet()));
+            txt_Contrasena.setText(ControladorPerfiles.getSesionActualUsuario().getContrasena());
             txt_Nombres.setText(ControladorPerfiles.getSesionActualUsuario().getNombres());
             txt_Apellidos.setText(ControladorPerfiles.getSesionActualUsuario().getApellidos());
             txt_Celular.setText(String.valueOf(ControladorPerfiles.getSesionActualUsuario().getCelular()));
@@ -379,13 +425,19 @@ public class ModificarPerfil extends javax.swing.JFrame {
             txt_RespSeg.setText(ControladorPerfiles.getSesionActualUsuario().getRespuestaSeguridad());
 
             if (ControladorPerfiles.getSesionActualUsuario() instanceof Estudiante) {            
-                txt_Ocupacion.setText(((Estudiante)ControladorPerfiles.getSesionActualUsuario()).getOcupacion());
-                txt_Contrasena2.setText("Solo Administradores");
+                txt_ProgramaM.setText(((Estudiante)ControladorPerfiles.getSesionActualUsuario()).getProgramaMatriculado());
+                txt_ClaveAdmin.setText("Solo Administradores");
             }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Docente) {
-                txt_Ocupacion.setText("Solo Alumnos");
-                txt_Contrasena2.setText("Solo Administradores");
+                
+                Boolean vinculado = ((Docente)ControladorPerfiles.getSesionActualUsuario()).getVinculado();
+                if (vinculado) {
+                    ch_Si.setSelected(true);
+                }else{
+                    ch_No.setSelected(true);
+                }
+                txt_ClaveAdmin.setText("Solo Administradores");
 
-                String diasDisp = ((Docente)ControladorPerfiles.getSesionActualUsuario()).getDiasDisp();
+                String diasDisp = ((Docente)ControladorPerfiles.getSesionActualUsuario()).getCodigoDias();
                 for (int i = 0; i < diasDisp.length(); i++) {
                     switch (diasDisp.charAt(i)) {
                         case '1':
@@ -416,7 +468,7 @@ public class ModificarPerfil extends javax.swing.JFrame {
                 }
 
             }else{
-                txt_Ocupacion.setText("Solo Alumnos");
+                txt_Ocupacion.setText(txt_ClaveAdmin;
                 txt_Contrasena2.setText(((Administrativo)ControladorPerfiles.getSesionActualUsuario()).getContrasena2());                    
             }
             
@@ -430,10 +482,10 @@ public class ModificarPerfil extends javax.swing.JFrame {
             txt_RespSeg.setText(usuarioEnviado.getRespuestaSeguridad());
 
             if (usuarioEnviado instanceof Estudiante) {            
-                txt_Ocupacion.setText(((Estudiante)usuarioEnviado).getOcupacion());
+                txt_Ocupacion.setText(((Estudiante)usuarioEnviado).txt_ClaveAdmin;
                 txt_Contrasena2.setText("Solo Administradores");
             }else if (usuarioEnviado instanceof Docente) {
-                txt_Ocupacion.setText("Solo Alumnos");
+                txt_Ocupacion.setText(txt_ClaveAdmin;
                 txt_Contrasena2.setText("Solo Administradores");
 
                 String diasDisp = ((Docente)usuarioEnviado).getDiasDisp();
@@ -467,7 +519,7 @@ public class ModificarPerfil extends javax.swing.JFrame {
                 }
 
             }else{
-                txt_Ocupacion.setText("Solo Alumnos");
+                txt_Ocupacion.setText(txt_ClaveAdmin;
                 txt_Contrasena2.setText(((Administrativo)usuarioEnviado).getContrasena2());                    
             }
         
@@ -538,7 +590,7 @@ public class ModificarPerfil extends javax.swing.JFrame {
             ControladorPerfiles.getSesionActualUsuario().setApellidos(txt_Apellidos.getText());
             ControladorPerfiles.getSesionActualUsuario().setCelular(Long.parseLong(txt_Celular.getText()));
             ControladorPerfiles.getSesionActualUsuario().setCorreo(txt_Correo.getText());
-            ((Administrativo)ControladorPerfiles.getSesionActualUsuario()).setContrasena2(txt_Contrasena2.getText());
+            ((Administrativo)ControladorPerfiles.getSesiotxt_ClaveAdmin)).setContrasena2(txt_Contrasena2.getText());
             
             ControladorPerfiles.actualizarPerfil(ControladorPerfiles.getSesionActualUsuario());
         
@@ -614,7 +666,7 @@ public class ModificarPerfil extends javax.swing.JFrame {
             usuarioEnviado.setApellidos(txt_Apellidos.getText());
             usuarioEnviado.setCelular(Long.parseLong(txt_Celular.getText()));
             usuarioEnviado.setCorreo(txt_Correo.getText());
-            ((Administrativo)usuarioEnviado).setContrasena2(txt_Contrasena2.getText());
+            ((Administrativtxt_ClaveAdmino).setContrasena2(txt_Contrasena2.getText());
             
             ControladorPerfiles.actualizarPerfil(usuarioEnviado);
         
@@ -682,13 +734,17 @@ public class ModificarPerfil extends javax.swing.JFrame {
     private javax.swing.JCheckBox ch_Lunes;
     private javax.swing.JCheckBox ch_Martes;
     private javax.swing.JCheckBox ch_Miercoles;
+    private javax.swing.JCheckBox ch_No;
     private javax.swing.JCheckBox ch_Sabado;
+    private javax.swing.JCheckBox ch_Si;
     private javax.swing.JCheckBox ch_Viernes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -703,11 +759,12 @@ public class ModificarPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Apellidos;
     private javax.swing.JLabel txt_Cedula;
     private javax.swing.JTextField txt_Celular;
+    private javax.swing.JTextField txt_ClaveAdmin;
     private javax.swing.JTextField txt_Contrasena;
-    private javax.swing.JTextField txt_Contrasena2;
     private javax.swing.JTextField txt_Correo;
     private javax.swing.JTextField txt_Nombres;
     private javax.swing.JTextField txt_Ocupacion;
+    private javax.swing.JTextField txt_ProgramaM;
     private javax.swing.JTextField txt_RespSeg;
     // End of variables declaration//GEN-END:variables
 

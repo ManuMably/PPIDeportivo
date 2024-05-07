@@ -28,29 +28,35 @@
               <Component id="I_Volver" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="bnt_Volver" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="lbl_RegistrarPerfil" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="393" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="I_RAlumno" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_AlumnoR" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_EstudianteR" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="I_RInstructor" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_InstructorR" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_DocenteR" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btn_AdminR" min="-2" max="-2" attributes="0"/>
                           <Component id="I_RAdmin" min="-2" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="bnt_Volver" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                      <Component id="lbl_RegistrarPerfil" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="I_RAdmin1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_ExternoR" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -61,36 +67,46 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="I_RAdmin1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="I_Volver" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_ExternoR" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="bnt_Volver" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="I_Volver" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="bnt_Volver" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_RegistrarPerfil" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="lbl_PreguntaTipo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="92" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="I_RInstructor" min="-2" max="-2" attributes="0"/>
+                          <Component id="I_RAlumno" min="-2" max="-2" attributes="0"/>
+                          <Component id="I_RAdmin" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lbl_RegistrarPerfil" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btn_EstudianteR" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_DocenteR" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_AdminR" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-              <Component id="lbl_PreguntaTipo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="96" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="I_RInstructor" min="-2" max="-2" attributes="0"/>
-                  <Component id="I_RAlumno" min="-2" max="-2" attributes="0"/>
-                  <Component id="I_RAdmin" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_AlumnoR" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_InstructorR" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_AdminR" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -140,20 +156,20 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_AlumnoR">
+    <Component class="javax.swing.JButton" name="btn_EstudianteR">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Alumno"/>
+        <Property name="text" type="java.lang.String" value="Estudiante"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_AlumnoRActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_EstudianteRActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_InstructorR">
+    <Component class="javax.swing.JButton" name="btn_DocenteR">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Instructor"/>
+        <Property name="text" type="java.lang.String" value="Docente"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_InstructorRActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_DocenteRActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_AdminR">
@@ -171,6 +187,21 @@
         </Property>
         <Property name="text" type="java.lang.String" value="&#xbf;Que tipo de Perfil desea registrar?"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="I_RAdmin1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Interfaces_graficas/Imagenes/registrarPrf.JPG"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_ExternoR">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Externo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ExternoRActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

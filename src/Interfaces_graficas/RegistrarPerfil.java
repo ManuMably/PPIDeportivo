@@ -47,10 +47,12 @@ public class RegistrarPerfil extends javax.swing.JFrame {
         I_RAlumno = new javax.swing.JLabel();
         I_RInstructor = new javax.swing.JLabel();
         I_RAdmin = new javax.swing.JLabel();
-        btn_AlumnoR = new javax.swing.JButton();
-        btn_InstructorR = new javax.swing.JButton();
+        btn_EstudianteR = new javax.swing.JButton();
+        btn_DocenteR = new javax.swing.JButton();
         btn_AdminR = new javax.swing.JButton();
         lbl_PreguntaTipo = new javax.swing.JLabel();
+        I_RAdmin1 = new javax.swing.JLabel();
+        btn_ExternoR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,17 +74,17 @@ public class RegistrarPerfil extends javax.swing.JFrame {
 
         I_RAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/registrarPrf.JPG"))); // NOI18N
 
-        btn_AlumnoR.setText("Alumno");
-        btn_AlumnoR.addActionListener(new java.awt.event.ActionListener() {
+        btn_EstudianteR.setText("Estudiante");
+        btn_EstudianteR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_AlumnoRActionPerformed(evt);
+                btn_EstudianteRActionPerformed(evt);
             }
         });
 
-        btn_InstructorR.setText("Instructor");
-        btn_InstructorR.addActionListener(new java.awt.event.ActionListener() {
+        btn_DocenteR.setText("Docente");
+        btn_DocenteR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_InstructorRActionPerformed(evt);
+                btn_DocenteRActionPerformed(evt);
             }
         });
 
@@ -96,6 +98,15 @@ public class RegistrarPerfil extends javax.swing.JFrame {
         lbl_PreguntaTipo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_PreguntaTipo.setText("¿Que tipo de Perfil desea registrar?");
 
+        I_RAdmin1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/registrarPrf.JPG"))); // NOI18N
+
+        btn_ExternoR.setText("Externo");
+        btn_ExternoR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExternoRActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,22 +117,27 @@ public class RegistrarPerfil extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(bnt_Volver)
+                        .addGap(131, 131, 131)
+                        .addComponent(lbl_RegistrarPerfil)
+                        .addContainerGap(393, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(I_RAlumno)
-                            .addComponent(btn_AlumnoR))
+                            .addComponent(btn_EstudianteR))
                         .addGap(134, 134, 134)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(I_RInstructor)
-                            .addComponent(btn_InstructorR))
+                            .addComponent(btn_DocenteR))
                         .addGap(134, 134, 134)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_AdminR)
-                            .addComponent(I_RAdmin)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bnt_Volver)
-                        .addGap(131, 131, 131)
-                        .addComponent(lbl_RegistrarPerfil)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                            .addComponent(I_RAdmin))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(I_RAdmin1)
+                            .addComponent(btn_ExternoR))
+                        .addGap(67, 67, 67))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_PreguntaTipo)
@@ -129,30 +145,37 @@ public class RegistrarPerfil extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(I_Volver))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(I_RAdmin1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_ExternoR))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(bnt_Volver))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_RegistrarPerfil)))
-                .addGap(79, 79, 79)
-                .addComponent(lbl_PreguntaTipo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(I_RInstructor)
-                    .addComponent(I_RAlumno)
-                    .addComponent(I_RAdmin))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_AlumnoR)
-                    .addComponent(btn_InstructorR)
-                    .addComponent(btn_AdminR))
-                .addGap(114, 114, 114))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(I_Volver))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(bnt_Volver))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lbl_RegistrarPerfil)))
+                        .addGap(79, 79, 79)
+                        .addComponent(lbl_PreguntaTipo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(I_RInstructor)
+                            .addComponent(I_RAlumno)
+                            .addComponent(I_RAdmin))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_EstudianteR)
+                            .addComponent(btn_DocenteR)
+                            .addComponent(btn_AdminR))))
+                .addGap(143, 143, 143))
         );
 
         pack();
@@ -174,23 +197,23 @@ public class RegistrarPerfil extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bnt_VolverActionPerformed
 
-    private void btn_AlumnoRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AlumnoRActionPerformed
+    private void btn_EstudianteRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EstudianteRActionPerformed
         // TODO add your handling code here:
         // cerramos la ventana actual
         this.dispose();
         // creamos una instancia de la ventana registrar alumno
-        RegistrarAlumno ventanaRegistrarAlumno = new RegistrarAlumno();
+        RegistrarEstudiante ventanaRegistrarAlumno = new RegistrarEstudiante();
         ventanaRegistrarAlumno.setVisible(true);
-    }//GEN-LAST:event_btn_AlumnoRActionPerformed
+    }//GEN-LAST:event_btn_EstudianteRActionPerformed
 
-    private void btn_InstructorRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_InstructorRActionPerformed
+    private void btn_DocenteRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DocenteRActionPerformed
         // TODO add your handling code here:
         // cerramos la ventana actual
         this.dispose();
         // creamos una instancia de la ventana registrar alumno
-        RegistrarInstructor ventanaRegistrarInstructor = new RegistrarInstructor();
+        RegistrarDocente ventanaRegistrarInstructor = new RegistrarDocente();
         ventanaRegistrarInstructor.setVisible(true);
-    }//GEN-LAST:event_btn_InstructorRActionPerformed
+    }//GEN-LAST:event_btn_DocenteRActionPerformed
 
     private void btn_AdminRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdminRActionPerformed
         // TODO add your handling code here:
@@ -203,6 +226,17 @@ public class RegistrarPerfil extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btn_AdminRActionPerformed
+
+    private void btn_ExternoRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExternoRActionPerformed
+        // TODO add your handling code here:
+        // cerramos la ventana actual
+        if (ControladorPerfiles.getSesionActualUsuario() instanceof Administrativo){this.dispose();
+        // creamos una instancia de la ventana registrar alumno
+        RegistrarExterno ventanaRegistrarExterno = new RegistrarExterno();
+        ventanaRegistrarExterno.setVisible(true);}else{
+            JOptionPane.showMessageDialog(null, "No cuentas con el acceso de administrador, comunicate con un administrador para crear este perfil");        
+        }
+    }//GEN-LAST:event_btn_ExternoRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,13 +275,15 @@ public class RegistrarPerfil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel I_RAdmin;
+    private javax.swing.JLabel I_RAdmin1;
     private javax.swing.JLabel I_RAlumno;
     private javax.swing.JLabel I_RInstructor;
     private javax.swing.JLabel I_Volver;
     private javax.swing.JButton bnt_Volver;
     private javax.swing.JButton btn_AdminR;
-    private javax.swing.JButton btn_AlumnoR;
-    private javax.swing.JButton btn_InstructorR;
+    private javax.swing.JButton btn_DocenteR;
+    private javax.swing.JButton btn_EstudianteR;
+    private javax.swing.JButton btn_ExternoR;
     private javax.swing.JLabel lbl_PreguntaTipo;
     private javax.swing.JLabel lbl_RegistrarPerfil;
     // End of variables declaration//GEN-END:variables
