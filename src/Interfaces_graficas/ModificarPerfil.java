@@ -467,9 +467,9 @@ public class ModificarPerfil extends javax.swing.JFrame {
 
                 }
 
-            }else{
-                txt_Ocupacion.setText(txt_ClaveAdmin;
-                txt_Contrasena2.setText(((Administrativo)ControladorPerfiles.getSesionActualUsuario()).getContrasena2());                    
+            }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Docente){
+                txt_Ocupacion.setText(txt_ClaveAdmin.getText());
+                txt_ClaveAdmin.setText(((Administrativo)ControladorPerfiles.getSesionActualUsuario()).getClaveAdmin());                    
             }
             
         }else{
