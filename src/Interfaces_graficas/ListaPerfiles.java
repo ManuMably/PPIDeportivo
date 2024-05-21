@@ -13,6 +13,7 @@ import skatelab.Administrativo;
 import skatelab.Estudiante;
 import skatelab.ControladorPerfiles;
 import skatelab.Docente;
+import skatelab.TrabajadorExterno;
 import skatelab.Usuario;
 
 /**
@@ -48,8 +49,6 @@ public class ListaPerfiles extends javax.swing.JFrame {
         btn_FiltroAlumnos = new javax.swing.JButton();
         btn_FiltroInstructores = new javax.swing.JButton();
         btn_FiltroAdmin = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaPerfiles = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txt_cedulaB = new javax.swing.JTextField();
@@ -57,6 +56,8 @@ public class ListaPerfiles extends javax.swing.JFrame {
         btn_ModificarP = new javax.swing.JButton();
         btn_EliminarP = new javax.swing.JButton();
         btn_ListaCompleta = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listadoTabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -99,16 +100,6 @@ public class ListaPerfiles extends javax.swing.JFrame {
                 btn_FiltroAdminActionPerformed(evt);
             }
         });
-
-        tablaPerfiles.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Cedula", "Contraseña", "Respuesta Seg", "Nombres", "Apellidos", "Celular", "Correo", "Ocupacion", "Contraseña 2", "Dias Disp"
-            }
-        ));
-        jScrollPane1.setViewportView(tablaPerfiles);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -169,6 +160,31 @@ public class ListaPerfiles extends javax.swing.JFrame {
             }
         });
 
+        listadoTabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Carnet", "Nombre", "Apellido", "Correo", "Celular", "Contraseña", "Resp Seguridad", "Programa Matriculado", "Clave Admin", "Vinculado", "Ocupacion", "Codigo Dias"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(listadoTabla);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,35 +193,33 @@ public class ListaPerfiles extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_ListaCompleta)
-                                        .addGap(208, 208, 208)
-                                        .addComponent(btn_FiltroAlumnos)
-                                        .addGap(59, 59, 59)
-                                        .addComponent(btn_FiltroInstructores)
-                                        .addGap(53, 53, 53)
-                                        .addComponent(btn_FiltroAdmin))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(I_Volver)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn_Volver)
-                                        .addGap(228, 228, 228)
-                                        .addComponent(jLabel1)
-                                        .addGap(64, 64, 64)
-                                        .addComponent(jLabel2)))
-                                .addGap(0, 268, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(229, 229, 229)
+                        .addGap(379, 379, 379)
                         .addComponent(btn_ModificarP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_EliminarP)
-                        .addGap(47, 47, 47))))
+                        .addGap(212, 212, 212)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_ListaCompleta)
+                                .addGap(208, 208, 208)
+                                .addComponent(btn_FiltroAlumnos)
+                                .addGap(59, 59, 59)
+                                .addComponent(btn_FiltroInstructores)
+                                .addGap(53, 53, 53)
+                                .addComponent(btn_FiltroAdmin))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(I_Volver)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_Volver)
+                                .addGap(228, 228, 228)
+                                .addComponent(jLabel1)
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel2))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,15 +244,19 @@ public class ListaPerfiles extends javax.swing.JFrame {
                     .addComponent(btn_FiltroInstructores)
                     .addComponent(btn_FiltroAdmin)
                     .addComponent(btn_ListaCompleta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_ModificarP)
-                        .addComponent(btn_EliminarP)))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_ModificarP)
+                            .addComponent(btn_EliminarP))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -255,30 +273,45 @@ public class ListaPerfiles extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        modelo = (DefaultTableModel) tablaPerfiles.getModel();
-        String[] PerfilRegistrado = new String[10];
+        modelo = (DefaultTableModel) listadoTabla.getModel();
+        String[] PerfilRegistrado = new String[12];
         
         for (int j = 0; j < ControladorPerfiles.getPerfilesBD().size(); j++) {
-            PerfilRegistrado[0] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getCedula());
-            PerfilRegistrado[1] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getContrasena());
-            PerfilRegistrado[2] = ControladorPerfiles.getPerfilesBD().get(j).getRespuestaSeguridad();
-            PerfilRegistrado[3] = ControladorPerfiles.getPerfilesBD().get(j).getNombres();
-            PerfilRegistrado[4] = ControladorPerfiles.getPerfilesBD().get(j).getApellidos();
-            PerfilRegistrado[5] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getCelular());
-            PerfilRegistrado[6] = ControladorPerfiles.getPerfilesBD().get(j).getCorreo();
+            PerfilRegistrado[0] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getCarnet());
+            PerfilRegistrado[1] = ControladorPerfiles.getPerfilesBD().get(j).getNombres();
+            PerfilRegistrado[2] = ControladorPerfiles.getPerfilesBD().get(j).getApellidos();
+            PerfilRegistrado[3] = ControladorPerfiles.getPerfilesBD().get(j).getCorreo();
+            PerfilRegistrado[4] = ControladorPerfiles.getPerfilesBD().get(j).getCelular();
+            PerfilRegistrado[5] = ControladorPerfiles.getPerfilesBD().get(j).getContrasena();
+            PerfilRegistrado[6] = ControladorPerfiles.getPerfilesBD().get(j).getRespuestaSeguridad();
             if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Estudiante) {
-                PerfilRegistrado[7] = ((Estudiante)ControladorPerfiles.getPerfilesBD().get(j)).getOcupacion();
+                PerfilRegistrado[7] = ((Estudiante)ControladorPerfiles.getPerfilesBD().get(j)).getProgramaMatriculado();
                 PerfilRegistrado[8] = "null";
                 PerfilRegistrado[9] = "null";
+                PerfilRegistrado[10] = "null";
+                PerfilRegistrado[11] = "null";
+                
+                
             }else if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Administrativo) {
                 PerfilRegistrado[7] = "null";
-                PerfilRegistrado[8] = ((Administrativo)ControladorPerfiles.getPerfilesBD().get(j)).getContrasena2();
+                PerfilRegistrado[8] = ((Administrativo)ControladorPerfiles.getPerfilesBD().get(j)).getClaveAdmin();
                 PerfilRegistrado[9] = "null";
+                PerfilRegistrado[10] = "null";
+                PerfilRegistrado[11] = "null";
                 
-            }else{
+            }else if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Docente){
                 PerfilRegistrado[7] = "null";
                 PerfilRegistrado[8] = "null";
-                PerfilRegistrado[9] = ((Docente)ControladorPerfiles.getPerfilesBD().get(j)).getDiasDisp();          
+                PerfilRegistrado[9] = String.valueOf(((Docente)ControladorPerfiles.getPerfilesBD().get(j)).getVinculado()); 
+                PerfilRegistrado[10] = "null";
+                PerfilRegistrado[11] = ((Docente)ControladorPerfiles.getPerfilesBD().get(j)).getCodigoDias();
+            }else {
+                PerfilRegistrado[7] = "null";
+                PerfilRegistrado[8] = "null";
+                PerfilRegistrado[9] = "null"; 
+                PerfilRegistrado[10] = ((TrabajadorExterno)ControladorPerfiles.getPerfilesBD().get(j)).getOcupacion();
+                PerfilRegistrado[11] = "null";
+            
             }
             modelo.addRow(PerfilRegistrado);
         }
@@ -287,91 +320,111 @@ public class ListaPerfiles extends javax.swing.JFrame {
 
     private void btn_FiltroAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FiltroAlumnosActionPerformed
         // TODO add your handling code here:
-        modelo = (DefaultTableModel) tablaPerfiles.getModel();
+        modelo = (DefaultTableModel) listadoTabla.getModel();
         modelo.setRowCount(0);
-        String[] PerfilAlumno = new String[10];
-        for (int j = 0; j < ControladorPerfiles.getPerfilesAlumno().size(); j++) {
-            PerfilAlumno[0] = String.valueOf(ControladorPerfiles.getPerfilesAlumno().get(j).getCedula());
-            PerfilAlumno[1] = String.valueOf(ControladorPerfiles.getPerfilesAlumno().get(j).getContrasena());
-            PerfilAlumno[2] = ControladorPerfiles.getPerfilesAlumno().get(j).getRespuestaSeguridad();
-            PerfilAlumno[3] = ControladorPerfiles.getPerfilesAlumno().get(j).getNombres();
-            PerfilAlumno[4] = ControladorPerfiles.getPerfilesAlumno().get(j).getApellidos();
-            PerfilAlumno[5] = String.valueOf(ControladorPerfiles.getPerfilesAlumno().get(j).getCelular());
-            PerfilAlumno[6] = ControladorPerfiles.getPerfilesAlumno().get(j).getCorreo();
-            PerfilAlumno[7] = ControladorPerfiles.getPerfilesAlumno().get(j).getOcupacion();
+        String[] PerfilAlumno = new String[12];
+        for (int j = 0; j < ControladorPerfiles.getPerfilesEstudiantes().size(); j++) {
+            PerfilAlumno[0] = String.valueOf(ControladorPerfiles.getPerfilesEstudiantes().get(j).getCarnet());
+            PerfilAlumno[1] = ControladorPerfiles.getPerfilesEstudiantes().get(j).getNombres();
+            PerfilAlumno[2] = ControladorPerfiles.getPerfilesEstudiantes().get(j).getApellidos();
+            PerfilAlumno[3] = ControladorPerfiles.getPerfilesEstudiantes().get(j).getCorreo();
+            PerfilAlumno[4] = ControladorPerfiles.getPerfilesEstudiantes().get(j).getCelular();
+            PerfilAlumno[5] = ControladorPerfiles.getPerfilesEstudiantes().get(j).getContrasena();
+            PerfilAlumno[6] = ControladorPerfiles.getPerfilesEstudiantes().get(j).getRespuestaSeguridad();
+            PerfilAlumno[7] = ControladorPerfiles.getPerfilesEstudiantes().get(j).getProgramaMatriculado();
             PerfilAlumno[8] = "null";
             PerfilAlumno[9] = "null";
+            PerfilAlumno[10] = "null";
+            PerfilAlumno[11] = "null";
+            
             modelo.addRow(PerfilAlumno);      
         }
     }//GEN-LAST:event_btn_FiltroAlumnosActionPerformed
 
     private void btn_FiltroInstructoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FiltroInstructoresActionPerformed
         // TODO add your handling code here:
-        modelo = (DefaultTableModel) tablaPerfiles.getModel();
+        modelo = (DefaultTableModel) listadoTabla.getModel();
         modelo.setRowCount(0);
-        String[] PerfilInstructor = new String[10];
-        for (int j = 0; j < ControladorPerfiles.getPerfilesInstruc().size(); j++) {
-            PerfilInstructor[0] = String.valueOf(ControladorPerfiles.getPerfilesInstruc().get(j).getCedula());
-            PerfilInstructor[1] = String.valueOf(ControladorPerfiles.getPerfilesInstruc().get(j).getContrasena());
-            PerfilInstructor[2] = ControladorPerfiles.getPerfilesInstruc().get(j).getRespuestaSeguridad();
-            PerfilInstructor[3] = ControladorPerfiles.getPerfilesInstruc().get(j).getNombres();
-            PerfilInstructor[4] = ControladorPerfiles.getPerfilesInstruc().get(j).getApellidos();
-            PerfilInstructor[5] = String.valueOf(ControladorPerfiles.getPerfilesInstruc().get(j).getCelular());
-            PerfilInstructor[6] = ControladorPerfiles.getPerfilesInstruc().get(j).getCorreo();
-            PerfilInstructor[7] = "null";
-            PerfilInstructor[8] = "null";
-            PerfilInstructor[9] = ControladorPerfiles.getPerfilesInstruc().get(j).getDiasDisp();
-            modelo.addRow(PerfilInstructor);      
+        String[] PerfilDocentes = new String[12];
+        for (int j = 0; j < ControladorPerfiles.getPerfilesDocentes().size(); j++) {
+            PerfilDocentes[0] = String.valueOf(ControladorPerfiles.getPerfilesDocentes().get(j).getCarnet());
+            PerfilDocentes[1] = ControladorPerfiles.getPerfilesDocentes().get(j).getNombres();
+            PerfilDocentes[2] = ControladorPerfiles.getPerfilesDocentes().get(j).getApellidos();
+            PerfilDocentes[3] = ControladorPerfiles.getPerfilesDocentes().get(j).getCorreo();
+            PerfilDocentes[4] = ControladorPerfiles.getPerfilesDocentes().get(j).getCelular();
+            PerfilDocentes[5] = ControladorPerfiles.getPerfilesDocentes().get(j).getContrasena();
+            PerfilDocentes[6] = ControladorPerfiles.getPerfilesDocentes().get(j).getRespuestaSeguridad();
+            PerfilDocentes[7] = "null";
+            PerfilDocentes[8] = "null";
+            PerfilDocentes[9] = String.valueOf(ControladorPerfiles.getPerfilesDocentes().get(j).getVinculado());
+            PerfilDocentes[10] = "null";
+            PerfilDocentes[11] = ControladorPerfiles.getPerfilesDocentes().get(j).getCodigoDias();
+            modelo.addRow(PerfilDocentes);      
         }
     }//GEN-LAST:event_btn_FiltroInstructoresActionPerformed
 
     private void btn_FiltroAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FiltroAdminActionPerformed
         // TODO add your handling code here:
-        modelo = (DefaultTableModel) tablaPerfiles.getModel();
+        modelo = (DefaultTableModel) listadoTabla.getModel();
         modelo.setRowCount(0);
-        String[] PerfilAdministrativo = new String[10];
+        String[] PerfilAdministrativo = new String[12];
         for (int j = 0; j < ControladorPerfiles.getPerfilesAdmin().size(); j++) {
-            PerfilAdministrativo[0] = String.valueOf(ControladorPerfiles.getPerfilesAdmin().get(j).getCedula());
-            PerfilAdministrativo[1] = String.valueOf(ControladorPerfiles.getPerfilesAdmin().get(j).getContrasena());
-            PerfilAdministrativo[2] = ControladorPerfiles.getPerfilesAdmin().get(j).getRespuestaSeguridad();
-            PerfilAdministrativo[3] = ControladorPerfiles.getPerfilesAdmin().get(j).getNombres();
-            PerfilAdministrativo[4] = ControladorPerfiles.getPerfilesAdmin().get(j).getApellidos();
-            PerfilAdministrativo[5] = String.valueOf(ControladorPerfiles.getPerfilesAdmin().get(j).getCelular());
-            PerfilAdministrativo[6] = ControladorPerfiles.getPerfilesAdmin().get(j).getCorreo();
+            PerfilAdministrativo[0] = String.valueOf(ControladorPerfiles.getPerfilesAdmin().get(j).getCarnet());
+            PerfilAdministrativo[1] = ControladorPerfiles.getPerfilesAdmin().get(j).getNombres();
+            PerfilAdministrativo[2] = ControladorPerfiles.getPerfilesAdmin().get(j).getApellidos();
+            PerfilAdministrativo[3] = ControladorPerfiles.getPerfilesAdmin().get(j).getCorreo();
+            PerfilAdministrativo[4] = ControladorPerfiles.getPerfilesAdmin().get(j).getCelular();
+            PerfilAdministrativo[5] = ControladorPerfiles.getPerfilesAdmin().get(j).getContrasena();
+            PerfilAdministrativo[6] = ControladorPerfiles.getPerfilesAdmin().get(j).getRespuestaSeguridad();
             PerfilAdministrativo[7] = "null";
-            PerfilAdministrativo[8] = ControladorPerfiles.getPerfilesAdmin().get(j).getContrasena2();
+            PerfilAdministrativo[8] = ControladorPerfiles.getPerfilesAdmin().get(j).getClaveAdmin();
             PerfilAdministrativo[9] = "null";
+            PerfilAdministrativo[10] = "null";
+            PerfilAdministrativo[11] = "null";
             modelo.addRow(PerfilAdministrativo);      
         }
     }//GEN-LAST:event_btn_FiltroAdminActionPerformed
 
     private void btn_ListaCompletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ListaCompletaActionPerformed
         // TODO add your handling code here:
-        modelo = (DefaultTableModel) tablaPerfiles.getModel();
+        modelo = (DefaultTableModel) listadoTabla.getModel();
         modelo.setRowCount(0);
-        String[] PerfilRegistrado = new String[10];
+        String[] PerfilRegistrado = new String[12];
         
         for (int j = 0; j < ControladorPerfiles.getPerfilesBD().size(); j++) {
-            PerfilRegistrado[0] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getCedula());
-            PerfilRegistrado[1] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getContrasena());
-            PerfilRegistrado[2] = ControladorPerfiles.getPerfilesBD().get(j).getRespuestaSeguridad();
-            PerfilRegistrado[3] = ControladorPerfiles.getPerfilesBD().get(j).getNombres();
-            PerfilRegistrado[4] = ControladorPerfiles.getPerfilesBD().get(j).getApellidos();
-            PerfilRegistrado[5] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getCelular());
-            PerfilRegistrado[6] = ControladorPerfiles.getPerfilesBD().get(j).getCorreo();
+            PerfilRegistrado[0] = String.valueOf(ControladorPerfiles.getPerfilesBD().get(j).getCarnet());
+            PerfilRegistrado[1] = ControladorPerfiles.getPerfilesBD().get(j).getNombres();
+            PerfilRegistrado[2] = ControladorPerfiles.getPerfilesBD().get(j).getApellidos();
+            PerfilRegistrado[3] = ControladorPerfiles.getPerfilesBD().get(j).getCorreo();
+            PerfilRegistrado[4] = ControladorPerfiles.getPerfilesBD().get(j).getCelular();
+            PerfilRegistrado[5] = ControladorPerfiles.getPerfilesBD().get(j).getContrasena();
+            PerfilRegistrado[6] = ControladorPerfiles.getPerfilesBD().get(j).getRespuestaSeguridad();
             if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Estudiante) {
-                PerfilRegistrado[7] = ((Estudiante)ControladorPerfiles.getPerfilesBD().get(j)).getOcupacion();
+                PerfilRegistrado[7] = ((Estudiante)ControladorPerfiles.getPerfilesBD().get(j)).getProgramaMatriculado();
                 PerfilRegistrado[8] = "null";
                 PerfilRegistrado[9] = "null";
+                PerfilRegistrado[10] = "null";
+                PerfilRegistrado[11] = "null";
             }else if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Administrativo) {
                 PerfilRegistrado[7] = "null";
-                PerfilRegistrado[8] = ((Administrativo)ControladorPerfiles.getPerfilesBD().get(j)).getContrasena2();
+                PerfilRegistrado[8] = ((Administrativo)ControladorPerfiles.getPerfilesBD().get(j)).getClaveAdmin();
                 PerfilRegistrado[9] = "null";
+                PerfilRegistrado[10] = "null";
+                PerfilRegistrado[11] = "null";
                 
-            }else{
+                
+            }else if (ControladorPerfiles.getPerfilesBD().get(j) instanceof Docente){
                 PerfilRegistrado[7] = "null";
                 PerfilRegistrado[8] = "null";
-                PerfilRegistrado[9] = ((Docente)ControladorPerfiles.getPerfilesBD().get(j)).getDiasDisp();          
+                PerfilRegistrado[9] = String.valueOf(((Docente)ControladorPerfiles.getPerfilesBD().get(j)).getVinculado());  
+                PerfilRegistrado[10] = "null";
+                PerfilRegistrado[11] = ((Docente)ControladorPerfiles.getPerfilesBD().get(j)).getCodigoDias();
+            } else{
+                PerfilRegistrado[7] = "null";
+                PerfilRegistrado[8] = "null";
+                PerfilRegistrado[9] = "null";  
+                PerfilRegistrado[10] = ((TrabajadorExterno)ControladorPerfiles.getPerfilesBD().get(j)).getOcupacion();
+                PerfilRegistrado[11] = "null";
             }
             modelo.addRow(PerfilRegistrado);
         }
@@ -380,16 +433,16 @@ public class ListaPerfiles extends javax.swing.JFrame {
     private void btn_ModificarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarPActionPerformed
         // TODO add your handling code here:
         
-                tablaPerfiles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-                String[] filaDatos = new String[10];
-                tablaPerfiles.getSelectionModel().addListSelectionListener(e -> {
-                int filaSeleccionada = tablaPerfiles.getSelectedRow();
+                listadoTabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                String[] filaDatos = new String[12];
+                listadoTabla.getSelectionModel().addListSelectionListener(e -> {
+                int filaSeleccionada = listadoTabla.getSelectedRow();
             
             if (filaSeleccionada != -1) {
                 // Obtener los valores de la fila seleccionada
                 
                 for (int i = 0; i < filaDatos.length; i++) {
-                    filaDatos[i] = (String) tablaPerfiles.getValueAt(filaSeleccionada, i);
+                    filaDatos[i] = (String) listadoTabla.getValueAt(filaSeleccionada, i);
                 }
                 // Mostrar los valores en la consola
                 System.out.println("Datos de la fila seleccionada:");
@@ -414,30 +467,42 @@ public class ListaPerfiles extends javax.swing.JFrame {
         Integer cedulaIngresada = Integer.parseInt(txt_cedulaB.getText());
         Usuario perfilSolicitado = ControladorPerfiles.buscarPerfil(cedulaIngresada);
         
-        modelo = (DefaultTableModel) tablaPerfiles.getModel();
+        modelo = (DefaultTableModel) listadoTabla.getModel();
         modelo.setRowCount(0);
-        String[] PerfilU = new String[10];
+        String[] PerfilU = new String[12];
         
-            PerfilU[0] = String.valueOf(perfilSolicitado.getCedula());
-            PerfilU[1] = String.valueOf(perfilSolicitado.getContrasena());
-            PerfilU[2] = perfilSolicitado.getRespuestaSeguridad();
-            PerfilU[3] = perfilSolicitado.getNombres();
-            PerfilU[4] = perfilSolicitado.getApellidos();
-            PerfilU[5] = String.valueOf(perfilSolicitado.getCelular());
-            PerfilU[6] = perfilSolicitado.getCorreo();
+            PerfilU[0] = String.valueOf(perfilSolicitado.getCarnet());
+            PerfilU[1] = perfilSolicitado.getNombres();
+            PerfilU[2] = perfilSolicitado.getApellidos();
+            PerfilU[3] = perfilSolicitado.getCorreo();
+            PerfilU[4] = perfilSolicitado.getCelular();
+            PerfilU[5] = perfilSolicitado.getContrasena();
+            PerfilU[6] = perfilSolicitado.getRespuestaSeguridad();
             if (perfilSolicitado instanceof Estudiante) {
-                PerfilU[7] = ((Estudiante)perfilSolicitado).getOcupacion();
+                PerfilU[7] = ((Estudiante)perfilSolicitado).getProgramaMatriculado();
                 PerfilU[8] = "null";
                 PerfilU[9] = "null";
+                PerfilU[10] = "null";
+                PerfilU[11] = "null";
             }else if (perfilSolicitado instanceof Administrativo) {
                 PerfilU[7] = "null";
-                PerfilU[8] = ((Administrativo)perfilSolicitado).getContrasena2();
+                PerfilU[8] = ((Administrativo)perfilSolicitado).getClaveAdmin();
                 PerfilU[9] = "null";
+                PerfilU[10] = "null";
+                PerfilU[11] = "null";
                 
+            }else if (perfilSolicitado instanceof Docente){
+                PerfilU[7] = "null";
+                PerfilU[8] = "null";
+                PerfilU[9] = String.valueOf(((Docente)perfilSolicitado).getVinculado()); 
+                PerfilU[10] = "null";
+                PerfilU[11] = ((Docente)perfilSolicitado).getCodigoDias();
             }else{
                 PerfilU[7] = "null";
                 PerfilU[8] = "null";
-                PerfilU[9] = ((Docente)perfilSolicitado).getDiasDisp();          
+                PerfilU[9] = "null"; 
+                PerfilU[10] = ((TrabajadorExterno)perfilSolicitado).getOcupacion();
+                PerfilU[11] = "null";            
             }
             modelo.addRow(PerfilU);
                 
@@ -446,16 +511,16 @@ public class ListaPerfiles extends javax.swing.JFrame {
 
     private void btn_EliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarPActionPerformed
         // TODO add your handling code here:
-        tablaPerfiles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        listadoTabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 String[] filaDatos = new String[10];
-                tablaPerfiles.getSelectionModel().addListSelectionListener(e -> {
-                int filaSeleccionada = tablaPerfiles.getSelectedRow();
+                listadoTabla.getSelectionModel().addListSelectionListener(e -> {
+                int filaSeleccionada = listadoTabla.getSelectedRow();
             
             if (filaSeleccionada != -1) {
                 // Obtener los valores de la fila seleccionada
                 
                 for (int i = 0; i < filaDatos.length; i++) {
-                    filaDatos[i] = (String) tablaPerfiles.getValueAt(filaSeleccionada, i);
+                    filaDatos[i] = (String) listadoTabla.getValueAt(filaSeleccionada, i);
                 }
                 // Mostrar los valores en la consola
                 System.out.println("Datos de la fila seleccionada:");
@@ -530,8 +595,8 @@ public class ListaPerfiles extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaPerfiles;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable listadoTabla;
     private javax.swing.JTextField txt_cedulaB;
     // End of variables declaration//GEN-END:variables
 }

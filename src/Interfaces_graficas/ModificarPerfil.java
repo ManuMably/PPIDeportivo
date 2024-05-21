@@ -10,6 +10,7 @@ import skatelab.Administrativo;
 import skatelab.Estudiante;
 import skatelab.ControladorPerfiles;
 import skatelab.Docente;
+import skatelab.TrabajadorExterno;
 import skatelab.Usuario;
 
 /**
@@ -467,13 +468,13 @@ public class ModificarPerfil extends javax.swing.JFrame {
 
                 }
 
-            }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Docente){
+            }else if (ControladorPerfiles.getSesionActualUsuario() instanceof TrabajadorExterno){
                 txt_Ocupacion.setText(txt_ClaveAdmin.getText());
                 txt_ClaveAdmin.setText(((Administrativo)ControladorPerfiles.getSesionActualUsuario()).getClaveAdmin());                    
             }
             
         }else{
-            txt_Cedula.setText(String.valueOf(usuarioEnviado.getCedula()));
+            txt_Cedula.setText(String.valueOf(usuarioEnviado.getCarnet()));
             txt_Contrasena.setText(String.valueOf(usuarioEnviado.getContrasena()));
             txt_Nombres.setText(usuarioEnviado.getNombres());
             txt_Apellidos.setText(usuarioEnviado.getApellidos());
@@ -482,13 +483,18 @@ public class ModificarPerfil extends javax.swing.JFrame {
             txt_RespSeg.setText(usuarioEnviado.getRespuestaSeguridad());
 
             if (usuarioEnviado instanceof Estudiante) {            
-                txt_Ocupacion.setText(((Estudiante)usuarioEnviado).txt_ClaveAdmin;
-                txt_Contrasena2.setText("Solo Administradores");
+                txt_ProgramaM.setText(((Estudiante)ControladorPerfiles.getSesionActualUsuario()).getProgramaMatriculado());
+                
             }else if (usuarioEnviado instanceof Docente) {
-                txt_Ocupacion.setText(txt_ClaveAdmin;
-                txt_Contrasena2.setText("Solo Administradores");
+                Boolean vinculado = ((Docente)ControladorPerfiles.getSesionActualUsuario()).getVinculado();
+                if (vinculado) {
+                    ch_Si.setSelected(true);
+                }else{
+                    ch_No.setSelected(true);
+                }
+                txt_ClaveAdmin.setText("Solo Administradores");
 
-                String diasDisp = ((Docente)usuarioEnviado).getDiasDisp();
+                String diasDisp = ((Docente)usuarioEnviado).getCodigoDias();
                 for (int i = 0; i < diasDisp.length(); i++) {
                     switch (diasDisp.charAt(i)) {
                         case '1':
@@ -518,9 +524,11 @@ public class ModificarPerfil extends javax.swing.JFrame {
 
                 }
 
-            }else{
-                txt_Ocupacion.setText(txt_ClaveAdmin;
-                txt_Contrasena2.setText(((Administrativo)usuarioEnviado).getContrasena2());                    
+            }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Administrativo){
+                
+                txt_ClaveAdmin.setText(((Administrativo)ControladorPerfiles.getSesionActualUsuario()).getClaveAdmin());                    
+            }else {
+                txt_Ocupacion.setText(((TrabajadorExterno)ControladorPerfiles.getSesionActualUsuario()).getOcupacion());
             }
         
         }
@@ -529,28 +537,32 @@ public class ModificarPerfil extends javax.swing.JFrame {
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
         // TODO add your handling code here:
-        if (usuarioEnviado.getCedula() == null){
+        if (usuarioEnviado.getCarnet()== null){
             try {
             if (ControladorPerfiles.getSesionActualUsuario() instanceof Estudiante) {
-            ControladorPerfiles.getSesionActualUsuario().setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setContrasena(txt_Contrasena.getText());
             ControladorPerfiles.getSesionActualUsuario().setRespuestaSeguridad(txt_RespSeg.getText());
             ControladorPerfiles.getSesionActualUsuario().setNombres(txt_Nombres.getText());
             ControladorPerfiles.getSesionActualUsuario().setApellidos(txt_Apellidos.getText());
-            ControladorPerfiles.getSesionActualUsuario().setCelular(Long.parseLong(txt_Celular.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setCelular(txt_Celular.getText());
             ControladorPerfiles.getSesionActualUsuario().setCorreo(txt_Correo.getText());
-            ((Estudiante)ControladorPerfiles.getSesionActualUsuario()).setOcupacion(txt_Ocupacion.getText());
+            ((Estudiante)ControladorPerfiles.getSesionActualUsuario()).setProgramaMatriculado(txt_ProgramaM.getText());
             
             
             
             ControladorPerfiles.actualizarPerfil(ControladorPerfiles.getSesionActualUsuario());
             
         }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Docente) {
-            ControladorPerfiles.getSesionActualUsuario().setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setContrasena(txt_Contrasena.getText());
             ControladorPerfiles.getSesionActualUsuario().setRespuestaSeguridad(txt_RespSeg.getText());
             ControladorPerfiles.getSesionActualUsuario().setNombres(txt_Nombres.getText());
             ControladorPerfiles.getSesionActualUsuario().setApellidos(txt_Apellidos.getText());
-            ControladorPerfiles.getSesionActualUsuario().setCelular(Long.parseLong(txt_Celular.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setCelular(txt_Celular.getText());
             ControladorPerfiles.getSesionActualUsuario().setCorreo(txt_Correo.getText());
+            
+                if (ch_Si.isSelected()) {
+                    ((Docente)ControladorPerfiles.getSesionActualUsuario()).setVinculado(ch_Si.isSelected());
+                }
             
                 boolean estadoLunes = ch_Lunes.isSelected();
                 boolean estadoMartes = ch_Martes.isSelected();
@@ -576,23 +588,35 @@ public class ModificarPerfil extends javax.swing.JFrame {
                     
                 }
             
-            ((Docente)ControladorPerfiles.getSesionActualUsuario()).setDiasDisp(diasDisp);
+            ((Docente)ControladorPerfiles.getSesionActualUsuario()).setCodigoDias(diasDisp);
             
             
             
             ControladorPerfiles.actualizarPerfil(ControladorPerfiles.getSesionActualUsuario());
             
             
-        }else{
-            ControladorPerfiles.getSesionActualUsuario().setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+        }else if (ControladorPerfiles.getSesionActualUsuario() instanceof Administrativo){
+            ControladorPerfiles.getSesionActualUsuario().setContrasena(txt_Contrasena.getText());
             ControladorPerfiles.getSesionActualUsuario().setRespuestaSeguridad(txt_RespSeg.getText());
             ControladorPerfiles.getSesionActualUsuario().setNombres(txt_Nombres.getText());
             ControladorPerfiles.getSesionActualUsuario().setApellidos(txt_Apellidos.getText());
-            ControladorPerfiles.getSesionActualUsuario().setCelular(Long.parseLong(txt_Celular.getText()));
+            ControladorPerfiles.getSesionActualUsuario().setCelular(txt_Celular.getText());
             ControladorPerfiles.getSesionActualUsuario().setCorreo(txt_Correo.getText());
-            ((Administrativo)ControladorPerfiles.getSesiotxt_ClaveAdmin)).setContrasena2(txt_Contrasena2.getText());
+            ((Administrativo)ControladorPerfiles.getSesionActualUsuario()).setClaveAdmin(txt_ClaveAdmin.getText());
             
             ControladorPerfiles.actualizarPerfil(ControladorPerfiles.getSesionActualUsuario());
+        
+        }else{
+            ControladorPerfiles.getSesionActualUsuario().setContrasena(txt_Contrasena.getText());
+            ControladorPerfiles.getSesionActualUsuario().setRespuestaSeguridad(txt_RespSeg.getText());
+            ControladorPerfiles.getSesionActualUsuario().setNombres(txt_Nombres.getText());
+            ControladorPerfiles.getSesionActualUsuario().setApellidos(txt_Apellidos.getText());
+            ControladorPerfiles.getSesionActualUsuario().setCelular(txt_Celular.getText());
+            ControladorPerfiles.getSesionActualUsuario().setCorreo(txt_Correo.getText());
+            ((TrabajadorExterno)ControladorPerfiles.getSesionActualUsuario()).setOcupacion(txt_Ocupacion.getText());
+            
+            ControladorPerfiles.actualizarPerfil(ControladorPerfiles.getSesionActualUsuario());
+        
         
         }
             JOptionPane.showMessageDialog(null, "Perfil Actualizado con exito");
@@ -608,25 +632,30 @@ public class ModificarPerfil extends javax.swing.JFrame {
         }else{
             try {
             if (usuarioEnviado instanceof Estudiante) {
-            usuarioEnviado.setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            usuarioEnviado.setContrasena(txt_Contrasena.getText());
             usuarioEnviado.setRespuestaSeguridad(txt_RespSeg.getText());
             usuarioEnviado.setNombres(txt_Nombres.getText());
             usuarioEnviado.setApellidos(txt_Apellidos.getText());
-            usuarioEnviado.setCelular(Long.parseLong(txt_Celular.getText()));
+            usuarioEnviado.setCelular(txt_Celular.getText());
             usuarioEnviado.setCorreo(txt_Correo.getText());
-            ((Estudiante)usuarioEnviado).setOcupacion(txt_Ocupacion.getText());
+            ((Estudiante)usuarioEnviado).setProgramaMatriculado(txt_ProgramaM.getText());
             
             
             
             ControladorPerfiles.actualizarPerfil(usuarioEnviado);
             
         }else if (usuarioEnviado instanceof Docente) {
-            usuarioEnviado.setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+            usuarioEnviado.setContrasena(txt_Contrasena.getText());
             usuarioEnviado.setRespuestaSeguridad(txt_RespSeg.getText());
             usuarioEnviado.setNombres(txt_Nombres.getText());
             usuarioEnviado.setApellidos(txt_Apellidos.getText());
-            usuarioEnviado.setCelular(Long.parseLong(txt_Celular.getText()));
+            usuarioEnviado.setCelular(txt_Celular.getText());
             usuarioEnviado.setCorreo(txt_Correo.getText());
+            
+                if (ch_Si.isSelected()) {
+                    ((Docente)ControladorPerfiles.getSesionActualUsuario()).setVinculado(ch_Si.isSelected());
+                    
+                }
             
                 boolean estadoLunes = ch_Lunes.isSelected();
                 boolean estadoMartes = ch_Martes.isSelected();
@@ -652,21 +681,32 @@ public class ModificarPerfil extends javax.swing.JFrame {
                     
                 }
             
-            ((Docente)usuarioEnviado).setDiasDisp(diasDisp);
+            ((Docente)usuarioEnviado).setCodigoDias(diasDisp);
             
             
             
             ControladorPerfiles.actualizarPerfil(usuarioEnviado);
             
             
-        }else{
-            usuarioEnviado.setContrasena(Integer.parseInt(txt_Contrasena.getText()));
+        }else if (usuarioEnviado instanceof Administrativo){
+            usuarioEnviado.setContrasena(txt_Contrasena.getText());
             usuarioEnviado.setRespuestaSeguridad(txt_RespSeg.getText());
             usuarioEnviado.setNombres(txt_Nombres.getText());
             usuarioEnviado.setApellidos(txt_Apellidos.getText());
-            usuarioEnviado.setCelular(Long.parseLong(txt_Celular.getText()));
+            usuarioEnviado.setCelular(txt_Celular.getText());
             usuarioEnviado.setCorreo(txt_Correo.getText());
-            ((Administrativtxt_ClaveAdmino).setContrasena2(txt_Contrasena2.getText());
+            ((Administrativo)usuarioEnviado).setClaveAdmin(txt_ClaveAdmin.getText());
+            
+            ControladorPerfiles.actualizarPerfil(usuarioEnviado);
+        
+        } else {
+                        usuarioEnviado.setContrasena(txt_Contrasena.getText());
+            usuarioEnviado.setRespuestaSeguridad(txt_RespSeg.getText());
+            usuarioEnviado.setNombres(txt_Nombres.getText());
+            usuarioEnviado.setApellidos(txt_Apellidos.getText());
+            usuarioEnviado.setCelular(txt_Celular.getText());
+            usuarioEnviado.setCorreo(txt_Correo.getText());
+            ((TrabajadorExterno)usuarioEnviado).setOcupacion(txt_Ocupacion.getText());
             
             ControladorPerfiles.actualizarPerfil(usuarioEnviado);
         
