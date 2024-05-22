@@ -27,27 +27,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        iconoPerfiles = new javax.swing.JLabel();
-        iconoEntrenamientos = new javax.swing.JLabel();
-        iconoAgendamiento = new javax.swing.JLabel();
-        iconoInformes = new javax.swing.JLabel();
         lbl_MenuPPal = new javax.swing.JLabel();
         imgCerrarSesion = new javax.swing.JLabel();
         btn_Perfiles = new javax.swing.JButton();
-        btn_Agendamiento = new javax.swing.JButton();
+        btn_RegitrarGruposDeportivos = new javax.swing.JButton();
         btn_EntrenamientosAgendados = new javax.swing.JButton();
         btn_InformesEntrenamientos = new javax.swing.JButton();
         bnt_CerrarSesion = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        iconoPerfiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/Perfiles.png"))); // NOI18N
-
-        iconoEntrenamientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/Entrenamientos Agendados.png"))); // NOI18N
-
-        iconoAgendamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/Agendamiento.png"))); // NOI18N
-
-        iconoInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/Informes Entrenamientos.png"))); // NOI18N
 
         lbl_MenuPPal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_MenuPPal.setText("Menu Principal");
@@ -61,11 +53,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_Agendamiento.setText("Agendamiento");
+        btn_RegitrarGruposDeportivos.setText("Registro Grupos Deportivos");
+        btn_RegitrarGruposDeportivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegitrarGruposDeportivosActionPerformed(evt);
+            }
+        });
 
-        btn_EntrenamientosAgendados.setText("Entrenamientos Agendados");
+        btn_EntrenamientosAgendados.setText("Listado de Grupos Registrados");
 
-        btn_InformesEntrenamientos.setText("Informes Entrenamientos");
+        btn_InformesEntrenamientos.setText("Informe Grupos Actuales");
 
         bnt_CerrarSesion.setText("Cerrar Sesion");
         bnt_CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -74,65 +71,77 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/perfiles.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/listado.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/informes.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces_graficas/Imagenes/gruposd.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(imgCerrarSesion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(bnt_CerrarSesion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                        .addComponent(lbl_MenuPPal)
-                        .addGap(269, 269, 269))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lbl_MenuPPal))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(iconoEntrenamientos)
-                            .addComponent(iconoPerfiles)
-                            .addComponent(btn_Perfiles)
-                            .addComponent(btn_EntrenamientosAgendados))
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(iconoAgendamiento)
-                            .addComponent(iconoInformes)
-                            .addComponent(btn_Agendamiento)
-                            .addComponent(btn_InformesEntrenamientos))
-                        .addGap(137, 137, 137))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_EntrenamientosAgendados))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_Perfiles)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_InformesEntrenamientos)
+                    .addComponent(btn_RegitrarGruposDeportivos))
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_MenuPPal)
+                    .addComponent(bnt_CerrarSesion)
+                    .addComponent(imgCerrarSesion))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_MenuPPal)
-                            .addComponent(bnt_CerrarSesion))
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(iconoAgendamiento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_Agendamiento))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(iconoPerfiles)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_Perfiles)))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(iconoEntrenamientos, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(iconoInformes, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_EntrenamientosAgendados)
-                            .addComponent(btn_InformesEntrenamientos))
-                        .addGap(56, 56, 56))
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(btn_Perfiles)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(imgCerrarSesion)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_RegitrarGruposDeportivos))))
+                .addGap(62, 62, 62)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_InformesEntrenamientos)
+                    .addComponent(btn_EntrenamientosAgendados))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,6 +166,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         InicioSesion inicioSesion = new InicioSesion();
         inicioSesion.setVisible(true);
     }//GEN-LAST:event_bnt_CerrarSesionActionPerformed
+
+    private void btn_RegitrarGruposDeportivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegitrarGruposDeportivosActionPerformed
+        // TODO add your handling code here:
+        // Cerrar la ventana actual
+        this.dispose();
+        // Crear una instancia de la ventana del menú principal 
+        RegistroGruposDeportivos gruposDeportivos = new RegistroGruposDeportivos();
+        gruposDeportivos.setVisible(true);
+    }//GEN-LAST:event_btn_RegitrarGruposDeportivosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,15 +213,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnt_CerrarSesion;
-    private javax.swing.JButton btn_Agendamiento;
     private javax.swing.JButton btn_EntrenamientosAgendados;
     private javax.swing.JButton btn_InformesEntrenamientos;
     private javax.swing.JButton btn_Perfiles;
-    private javax.swing.JLabel iconoAgendamiento;
-    private javax.swing.JLabel iconoEntrenamientos;
-    private javax.swing.JLabel iconoInformes;
-    private javax.swing.JLabel iconoPerfiles;
+    private javax.swing.JButton btn_RegitrarGruposDeportivos;
     private javax.swing.JLabel imgCerrarSesion;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbl_MenuPPal;
     // End of variables declaration//GEN-END:variables
 }

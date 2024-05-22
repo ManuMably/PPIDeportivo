@@ -16,7 +16,14 @@ public class ControladorDepEsce {
     
     static List<EscenarioDeportivo> escenariosBD = new ArrayList<>();
     
+    static  List<GruposDeportivos> gruposBD = new ArrayList<>();
+    
     // se cargan los deportes registrados a la lista del sistema
+    public static void cargarGrupos(){
+        ConexionBD conectorBD = new  ConexionBD();
+        gruposBD = conectorBD.cargarListaGrupos();
+    }
+    
     public static void cargarDeportes(){
         ConexionBD conectorBD= new ConexionBD();
         deportesBD = conectorBD.cargarListaDeportes();
@@ -25,6 +32,19 @@ public class ControladorDepEsce {
     public static void cargarEscenarios(){
         ConexionBD conectorBD= new ConexionBD();
         escenariosBD = conectorBD.cargarListaEscenarios();
+    }
+    
+    public static void actualizarGrupo(GruposDeportivos actualizaGrupo){
+        for (int i = 0; i < gruposBD.size(); i++) {
+            if (gruposBD.get(i).getCodigoGrupo() == actualizaGrupo.getCodigoGrupo()) {
+                gruposBD.set(i, actualizaGrupo);
+            }
+            
+        }
+        ConexionBD conectorBD = new ConexionBD();
+        conectorBD.actualizarGrupo(actualizaGrupo);
+        
+        
     }
     
     public static void actualizarDeporte(Deporte actualizaDeporte){
@@ -51,6 +71,17 @@ public class ControladorDepEsce {
     
     }
     
+    public static void eliminarGrupo(GruposDeportivos eliminarGrupo){
+        for (int i = 0; i < gruposBD.size(); i++) {
+            if (gruposBD.get(i).getCodigoGrupo() == eliminarGrupo.getCodigoGrupo()) {
+                gruposBD.remove(i);
+            }
+            
+        }
+        ConexionBD conectorBD= new ConexionBD();
+        conectorBD.eliminarGrupo(eliminarGrupo);
+    }
+    
     public static void eliminarDeporte(Deporte eliminarDeporte){
         for (int i = 0; i < deportesBD.size(); i++) {
             if (deportesBD.get(i).getCodigoDeporte()== eliminarDeporte.getCodigoDeporte()) {
@@ -74,6 +105,14 @@ public class ControladorDepEsce {
     
     }
     
+    public static void registrarGrupo(GruposDeportivos grupoNuevo){
+        gruposBD.add(grupoNuevo);
+        
+        
+        ConexionBD conectorBD= new ConexionBD();
+        conectorBD.InsertarGrupoD(grupoNuevo);
+    }
+    
     public static void registrarDeporte(Deporte deporteNuevo){
         deportesBD.add(deporteNuevo);
         
@@ -89,6 +128,31 @@ public class ControladorDepEsce {
         ConexionBD conectorBD= new ConexionBD();
         conectorBD.InsertarEscenario(escenarioNuevo);
     }
+
+    public static List<Deporte> getDeportesBD() {
+        return deportesBD;
+    }
+
+    public static void setDeportesBD(List<Deporte> deportesBD) {
+        ControladorDepEsce.deportesBD = deportesBD;
+    }
+
+    public static List<EscenarioDeportivo> getEscenariosBD() {
+        return escenariosBD;
+    }
+
+    public static void setEscenariosBD(List<EscenarioDeportivo> escenariosBD) {
+        ControladorDepEsce.escenariosBD = escenariosBD;
+    }
+
+    public static List<GruposDeportivos> getGruposBD() {
+        return gruposBD;
+    }
+
+    public static void setGruposBD(List<GruposDeportivos> gruposBD) {
+        ControladorDepEsce.gruposBD = gruposBD;
+    }
+    
     
     
     

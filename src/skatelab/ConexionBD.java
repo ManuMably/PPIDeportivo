@@ -875,6 +875,134 @@ public class ConexionBD {
     }
     
     //FIN CRUD integrantesgrupos:-------------------------------------------------------------------------
+   // crud Grupos deportivos----------------------------------
+    public List cargarListaGrupos(){
+        List<GruposDeportivos> gruposbdList = new ArrayList<>();
+        try {
+            // preparamos el statement para solicitar los datos 
+            con = DriverManager.getConnection(url, usuario, clave);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM gruposdeportivos");
+            rs.next();
+            do {   
+                String codigoGrupo = rs.getString("codigoGrupo");
+                String codigoEscenario = rs.getString("codigoEscenario");
+                String codigoDeporte = rs.getString("codigoDeporte");
+                Integer carnetEncargado = rs.getInt("carnetEncargado");
+                String diasEntrenamiento = rs.getString("diasEntrenamiento");
+                String horasEntrenamiento = rs.getString("horasEntrenamiento");
+                
+                GruposDeportivos grupoBD = new GruposDeportivos(codigoGrupo, codigoEscenario, codigoDeporte, carnetEncargado, diasEntrenamiento, horasEntrenamiento);
+                gruposbdList.add(grupoBD);
+                
+            } while (rs.next());
+        }
+            catch (Exception e) {
+            System.out.println("Error al conectar con la base de datos: " + e.getMessage());
+        }return gruposbdList;
+        }
     
+    public void InsertarGrupoD(GruposDeportivos nuevoGrupoDeportivo) {
+        try {
+             // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "INSERT INTO gruposdeportivos (codigoGrupo, codigoEscenario, codigoDeporte, carnetEncargado, diasEntrenamiento, horasEntrenamiento) VALUES (?, ?, ?, ?, ?, ?)";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                
+                pstmt.setString(1, nuevoGrupoDeportivo.getCodigoGrupo());
+                pstmt.setString(2, nuevoGrupoDeportivo.getCodigoEscenario());
+                pstmt.setString(3, nuevoGrupoDeportivo.getCodigoDeporte());
+                pstmt.setInt(4, nuevoGrupoDeportivo.getDocenteEncargado());
+                pstmt.setString(5, nuevoGrupoDeportivo.getDiasEntrenamiento());
+                pstmt.setString(6, nuevoGrupoDeportivo.getHorasEntrenamiento());
+                
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han insertado correctamente.");
+                } else {
+                    System.out.println("No se han insertado datos.");
+                }
+            
+        } catch (Exception e) {
+            System.out.println("Error al conectar con la base de datos o al insertar datos: " + e.getMessage());
+        }
+    }
+    
+    public void eliminarGrupo(GruposDeportivos grupoBorrar){
+            String codigoGrupo = grupoBorrar.getCodigoGrupo();
+            
+        try {
+            con = DriverManager.getConnection(url, usuario, clave);
+            stmt = con.createStatement();
+            // Sentencia DELETE para eliminar el usuario con la cédula proporcionada
+            String sql = "DELETE FROM gruposdeportivos WHERE codigoGrupo = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, codigoGrupo);
+            
+            
+
+            int filasAfectadas = pstmt.executeUpdate();
+            if (filasAfectadas > 0) {
+                System.out.println("escenario y deporte eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún grupo con el codigo proporcionado.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al conectar con la base de datos: " + e.getMessage());
+        } finally {
+            // Cerrar recursos
+            try {
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            }
+        }
+    }
+    
+    public void actualizarGrupo(GruposDeportivos actualizaGrupo) {
+        
+        try {
+                // Preparamos la conexión y la sentencia SQL para insertar los datos
+                con = DriverManager.getConnection(url, usuario, clave);
+                String sql = "UPDATE gruposdeportivos SET codigoEscenario = ?, codigoDeporte = ?, carnetEncargado = ?, diasEntrenamiento = ?, horasEntrenamiento = ? WHERE codigoGrupo = ?";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+
+                // Establecemos los valores de los parámetros en la sentencia SQL
+                
+                pstmt.setString(1, actualizaGrupo.getCodigoEscenario());
+                pstmt.setString(2, actualizaGrupo.getCodigoDeporte());
+                pstmt.setInt(3, actualizaGrupo.getDocenteEncargado());
+                pstmt.setString(4, actualizaGrupo.getDiasEntrenamiento());
+                pstmt.setString(5, actualizaGrupo.getHorasEntrenamiento());
+                pstmt.setString(6, actualizaGrupo.getCodigoGrupo());
+                
+
+                // Ejecutamos la sentencia SQL para insertar los datos
+                int filasAfectadas = pstmt.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    System.out.println("Los datos se han actualizado correctamente.");
+                } else {
+                    System.out.println("No se han actualizado datos.");
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al conectar con la base de datos o al actualizar datos: " + e.getMessage());
+            } finally {
+                // Cerramos los recursos
+                try {
+                    if (stmt != null) stmt.close();
+                    if (con != null) con.close();
+                } catch (SQLException e) {
+                    System.out.println("Error al cerrar la conexión: " + e.getMessage());
+                }
+            }   
+        
+    }
+    
+    // fin crud grupos ---------------------
     
 }

@@ -20,6 +20,9 @@ public class SkateLab {
         
         //Primero cargamos los Datos a las Listas del Programa
         ControladorPerfiles.cargarOrganizarPerfiles();
+        ControladorDepEsce.cargarGrupos();
+        ControladorDepEsce.cargarDeportes();
+        ControladorDepEsce.cargarEscenarios();
         
         System.out.println(ControladorPerfiles.getSesionActualUsuario());        
          // creamos una nueva instancia de la ventana Iniciar Sesion para Recorrer las funciones del Programa
