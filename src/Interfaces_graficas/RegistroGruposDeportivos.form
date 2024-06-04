@@ -38,7 +38,7 @@
                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                       <Component id="jButton4" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_RegistrarModalidad" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_RegistrarEsce" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -89,7 +89,7 @@
                   <Group type="102" attributes="0">
                       <Component id="btn_RegistrarEsce" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_RegistrarModalidad" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
@@ -119,10 +119,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VolverActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btn_RegistrarModalidad">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar Modalidad Deportiva"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_RegistrarModalidadActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>

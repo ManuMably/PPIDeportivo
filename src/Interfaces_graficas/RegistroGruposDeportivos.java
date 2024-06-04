@@ -31,7 +31,7 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
 
         I_Volver = new javax.swing.JLabel();
         btn_Volver = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btn_RegistrarModalidad = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btn_RegistrarEsce = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -59,7 +59,12 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Registrar Modalidad Deportiva");
+        btn_RegistrarModalidad.setText("Registrar Modalidad Deportiva");
+        btn_RegistrarModalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistrarModalidadActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Registrar Grupo Deportivo");
 
@@ -122,7 +127,7 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)
+                        .addComponent(btn_RegistrarModalidad)
                         .addComponent(btn_RegistrarEsce, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -159,7 +164,7 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_RegistrarEsce)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(btn_RegistrarModalidad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
                         .addGap(11, 11, 11)
@@ -216,6 +221,13 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
         ventanaREsce.setVisible(true);
     }//GEN-LAST:event_btn_RegistrarEsceActionPerformed
 
+    private void btn_RegistrarModalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarModalidadActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        RegistroModalidadD ventanaRMod = new RegistroModalidadD();
+        ventanaRMod.setVisible(true);        
+    }//GEN-LAST:event_btn_RegistrarModalidadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,8 +266,8 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel I_Volver;
     private javax.swing.JButton btn_RegistrarEsce;
+    private javax.swing.JButton btn_RegistrarModalidad;
     private javax.swing.JButton btn_Volver;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
