@@ -32,9 +32,9 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
         I_Volver = new javax.swing.JLabel();
         btn_Volver = new javax.swing.JButton();
         btn_RegistrarModalidad = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_RegistGrupoDep = new javax.swing.JButton();
         btn_RegistrarEsce = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAgregarIntGrupo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -66,7 +66,12 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Registrar Grupo Deportivo");
+        btn_RegistGrupoDep.setText("Registrar Grupo Deportivo");
+        btn_RegistGrupoDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistGrupoDepActionPerformed(evt);
+            }
+        });
 
         btn_RegistrarEsce.setText("Registrar Escenario Deportivo");
         btn_RegistrarEsce.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +80,12 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Agregar Integrantes A Grupo");
+        btnAgregarIntGrupo.setText("Agregar Integrantes A Grupo");
+        btnAgregarIntGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarIntGrupoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Registro Grupos Deportivos");
@@ -125,8 +135,8 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
                         .addComponent(btn_Volver)
                         .addGap(57, 57, 57))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregarIntGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_RegistGrupoDep, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_RegistrarModalidad)
                         .addComponent(btn_RegistrarEsce, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,9 +176,9 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_RegistrarModalidad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btn_RegistGrupoDep)
                         .addGap(11, 11, 11)
-                        .addComponent(jButton4)))
+                        .addComponent(btnAgregarIntGrupo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -228,6 +238,20 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
         ventanaRMod.setVisible(true);        
     }//GEN-LAST:event_btn_RegistrarModalidadActionPerformed
 
+    private void btn_RegistGrupoDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistGrupoDepActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        RegistrarGruposDep ventanaRGr = new RegistrarGruposDep();
+        ventanaRGr.setVisible(true);
+    }//GEN-LAST:event_btn_RegistGrupoDepActionPerformed
+
+    private void btnAgregarIntGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarIntGrupoActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        AgregarIntegrantesGrupos ventanaAIG = new AgregarIntegrantesGrupos();
+        ventanaAIG.setVisible(true);        
+    }//GEN-LAST:event_btnAgregarIntGrupoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -265,11 +289,11 @@ public class RegistroGruposDeportivos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel I_Volver;
+    private javax.swing.JButton btnAgregarIntGrupo;
+    private javax.swing.JButton btn_RegistGrupoDep;
     private javax.swing.JButton btn_RegistrarEsce;
     private javax.swing.JButton btn_RegistrarModalidad;
     private javax.swing.JButton btn_Volver;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -18,6 +18,16 @@ public class ControladorDepEsce {
     
     static  List<GruposDeportivos> gruposBD = new ArrayList<>();
     
+    // se busca en los grupos disponibles por el codigo de grupo
+    public static GruposDeportivos buscarGrupoDeportivoPorCodigo(String codigoGrupo) {
+        for (GruposDeportivos grupo : gruposBD) {
+            if (grupo.getCodigoGrupo().equals(codigoGrupo)) {
+                return grupo;
+            }
+        }
+        return null;
+    }
+    
     // se cargan los deportes registrados a la lista del sistema
     public static void cargarGrupos(){
         ConexionBD conectorBD = new  ConexionBD();
