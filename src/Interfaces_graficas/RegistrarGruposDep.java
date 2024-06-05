@@ -166,7 +166,7 @@ public class RegistrarGruposDep extends javax.swing.JFrame {
             String codigoGrupo = txt_CodigoGrupo.getText();
             String codigoEscenario = txt_CodigoEscenario.getText();
             String codigoDeporte = txt_CodigoDep.getText();
-            Integer carnetEncargado = Integer.getInteger(txt_CarnetEcarg.getText());
+            Integer carnetEncargado = Integer.valueOf(txt_CarnetEcarg.getText());
             String diasEntrenamiento = txt_DiasEntrenamiento.getText();
             String HorasEntrenamiento = txt_HorasEntren.getText();
             

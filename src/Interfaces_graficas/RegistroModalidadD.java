@@ -152,7 +152,7 @@ public class RegistroModalidadD extends javax.swing.JFrame {
         try {
             String codigoDeporte = txtCodigoModalidad.getText();
             String nombreDeporte = txtNombreModalidad.getText();
-            Integer docenteEncargado = Integer.getInteger(txtCarnetEncargado.getText());
+            Integer docenteEncargado = Integer.valueOf(txtCarnetEncargado.getText());
             String exigencia = txtExigencia.getText();
             
             Deporte nuevoDep = new Deporte(codigoDeporte, nombreDeporte, docenteEncargado, exigencia);

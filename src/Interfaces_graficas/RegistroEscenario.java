@@ -157,24 +157,30 @@ public class RegistroEscenario extends javax.swing.JFrame {
 
     private void btnRegistrarEscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEscActionPerformed
         // TODO add your handling code here:
-        try {
             String codigoEscenario = txtCodigoEscenario.getText();
-            Integer docenteEncargado = Integer.getInteger(txtCarnetEncargado.getText());
-            Integer capacidadPersonas = Integer.getInteger(txtCapacidadPersonas.getText());
+            Integer carnetEncargado = Integer.valueOf(txtCarnetEncargado.getText());            
+            Integer capacidadPersonas = Integer.valueOf(txtCapacidadPersonas.getText());
             String horariosDisponibles = txtHorariosDisp.getText();
+        try {
             
-            EscenarioDeportivo nuevoEscenario = new EscenarioDeportivo(codigoEscenario, docenteEncargado, capacidadPersonas, horariosDisponibles);
-            System.out.println(nuevoEscenario);
+            
+            EscenarioDeportivo nuevoEscenario = new EscenarioDeportivo(codigoEscenario, carnetEncargado, capacidadPersonas, horariosDisponibles);
+            System.out.println(nuevoEscenario.getDocenteEncargado());
             
             ControladorDepEsce.registrarEscenario(nuevoEscenario);
+                    
             
-            JOptionPane.showMessageDialog(null, "Escenario Registrado Correctamente");
+                
+                JOptionPane.showMessageDialog(null, "Escenario Registrado Correctamente");
+                //Cerramos la ventana Actual
+                this.dispose();
+                // creamos una instancia de la ventana anterior
+                RegistroGruposDeportivos ventanaRegistroG = new RegistroGruposDeportivos();
+                ventanaRegistroG.setVisible(true);   
             
-            //Cerramos la ventana Actual
-            this.dispose();
-            // creamos una instancia de la ventana anterior
-            RegistroGruposDeportivos ventanaRegistroG = new RegistroGruposDeportivos();
-            ventanaRegistroG.setVisible(true);
+            
+            
+            
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Debes Ingresar Por lo Menos Un Dato Correcto, Verifica los datos ingresados sean Validos");

@@ -148,7 +148,7 @@ public class AgregarIntegrantesGrupos extends javax.swing.JFrame {
     private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
         // TODO add your handling code here:
         String codigoG = txtCodigoGrupo.getText();
-        Integer carnetU = Integer.getInteger(txtCarnetIntegrante.getText());
+        Integer carnetU = Integer.valueOf(txtCarnetIntegrante.getText());
         GruposDeportivos grupoBuscado = ControladorDepEsce.buscarGrupoDeportivoPorCodigo(codigoG);
         Usuario usuarioBuscado = ControladorPerfiles.buscarPerfil(carnetU);
         if (grupoBuscado == null) {
@@ -164,7 +164,7 @@ public class AgregarIntegrantesGrupos extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         String codigoG = txtCodigoGrupo.getText();
-        Integer carnetU = Integer.getInteger(txtCarnetIntegrante.getText());
+        Integer carnetU = Integer.valueOf(txtCarnetIntegrante.getText());
         GruposDeportivos grupoBuscado = ControladorDepEsce.buscarGrupoDeportivoPorCodigo(codigoG);
         Usuario usuarioBuscado = ControladorPerfiles.buscarPerfil(carnetU);
         
